@@ -115,57 +115,129 @@
     (function setupNavToggle() {
         const btn = $('#navToggle');
         const list = $('#navList');
+        const langBtn = $('#langToggle');
+        const themeBtn = $('#darkToggle');
         if (!btn || !list) return;
 
-        // create a close button inside the panel (if not present)
-        function ensureCloseBtn() {
-            if (list.querySelector('.nav-close')) return;
-            const close = document.createElement('button');
-            close.className = 'nav-close btn icon';
-            close.setAttribute('aria-label', 'Fechar menu');
-            close.innerHTML = '×';
-            close.style.position = 'absolute';
-            close.style.top = '12px';
-            close.style.right = '12px';
-            list.appendChild(close);
-            close.addEventListener('click', closeMenu);
+        console.debug('[nav] setupNavToggle init', { btn: !!btn, list: !!list, langBtn: !!langBtn, themeBtn: !!themeBtn });
+
+        // Build full-screen mobile overlay when needed
+        function buildOverlay() {
+            try {
+                const existing = document.querySelector('.mobile-menu-overlay');
+                if (existing) return existing;
+                const ov = document.createElement('div');
+                ov.className = 'mobile-menu-overlay';
+                ov.innerHTML = `
+                <button class="mobile-close" aria-label="Fechar menu">×</button>
+                <nav class="mobile-nav" role="navigation" aria-label="Menu móvel"></nav>
+                <div class="mobile-toggles">
+                  <button class="mobile-lang btn" aria-label="Mudar idioma">${langBtn ? langBtn.textContent : '🌐'}</button>
+                  <button class="mobile-theme btn" aria-label="Alternar tema">${themeBtn ? themeBtn.textContent : '🌓'}</button>
+                </div>
+            `;
+                document.body.appendChild(ov);
+                return ov;
+            } catch (err) {
+                console.error('[nav] buildOverlay failed', err);
+                return null;
+            }
         }
 
         function openMenu() {
-            list.classList.add('open');
-            document.body.classList.add('nav-open');
-            btn.setAttribute('aria-expanded', 'true');
-            // create overlay
-            if (!document.querySelector('.nav-overlay')) {
-                const ov = document.createElement('div');
-                ov.className = 'nav-overlay';
-                document.body.appendChild(ov);
-                ov.addEventListener('click', closeMenu);
-                // small fade-in
-                requestAnimationFrame(() => ov.classList.add('visible'));
+            try {
+                const ov = buildOverlay();
+                if (!ov) {
+                    console.warn('[nav] overlay unavailable, falling back to toggling #navList');
+                    // fallback: toggle inline navList for older devices
+                    list.style.display = list.style.display === 'flex' ? 'none' : 'flex';
+                    btn.setAttribute('aria-expanded', list.style.display === 'flex');
+                    return;
+                }
+
+                // populate nav links by cloning existing navList links
+                const nav = ov.querySelector('.mobile-nav');
+                nav.innerHTML = '';
+                Array.from(list.querySelectorAll('a')).forEach(a => {
+                    const link = document.createElement('a');
+                    link.href = a.getAttribute('href') || '#';
+                    link.textContent = a.textContent.trim();
+                    link.setAttribute('data-href', link.href);
+                    link.className = 'mobile-nav-link';
+                    nav.appendChild(link);
+                });
+
+                ov.classList.add('active');
+                document.body.classList.add('nav-open');
+                btn.setAttribute('aria-expanded', 'true');
+
+                // wire close and backdrop (remove duplicates first)
+                const closeBtn = ov.querySelector('.mobile-close');
+                if (closeBtn) {
+                    closeBtn.removeEventListener('click', closeMenu);
+                    closeBtn.addEventListener('click', closeMenu);
+                }
+                ov.removeEventListener('click', overlayBackdropHandler);
+                ov.addEventListener('click', overlayBackdropHandler);
+
+                // wire nav links to close and navigate
+                Array.from(nav.querySelectorAll('.mobile-nav-link')).forEach(l => {
+                    l.removeEventListener('click', mobileNavLinkHandler);
+                    l.addEventListener('click', mobileNavLinkHandler);
+                });
+
+                // wire toggles
+                const mobileLang = ov.querySelector('.mobile-lang');
+                const mobileTheme = ov.querySelector('.mobile-theme');
+                if (mobileLang && langBtn) {
+                    mobileLang.removeEventListener('click', langBtn.click);
+                    mobileLang.addEventListener('click', () => langBtn.click());
+                }
+                if (mobileTheme && themeBtn) {
+                    mobileTheme.removeEventListener('click', themeBtn.click);
+                    mobileTheme.addEventListener('click', () => themeBtn.click());
+                }
+
+                // focus management: move focus to first link
+                const first = nav.querySelector('.mobile-nav-link'); if (first) first.focus();
+
+                // ESC to close
+                document.addEventListener('keydown', escHandler);
+                console.debug('[nav] menu opened');
+            } catch (err) {
+                console.error('[nav] openMenu error', err);
             }
         }
 
         function closeMenu() {
-            list.classList.remove('open');
-            document.body.classList.remove('nav-open');
-            btn.setAttribute('aria-expanded', 'false');
-            const ov = document.querySelector('.nav-overlay');
-            if (ov) { ov.classList.remove('visible'); setTimeout(() => ov.remove(), 320); }
+            try {
+                const ov = document.querySelector('.mobile-menu-overlay');
+                if (!ov) return;
+                ov.classList.remove('active');
+                document.body.classList.remove('nav-open');
+                btn.setAttribute('aria-expanded', 'false');
+                document.removeEventListener('keydown', escHandler);
+                console.debug('[nav] menu closed');
+            } catch (err) {
+                console.error('[nav] closeMenu error', err);
+            }
         }
 
-        btn.addEventListener('click', (e) => {
-            if (list.classList.contains('open')) closeMenu(); else { ensureCloseBtn(); openMenu(); }
-        });
+        function escHandler(ev) { if (ev.key === 'Escape') closeMenu(); }
 
-        // close nav when a link is clicked (mobile behavior)
-        Array.from(list.querySelectorAll('a')).forEach(a => a.addEventListener('click', (ev) => {
-            // if link is anchor to same page we still close menu
-            if (list.classList.contains('open')) closeMenu();
-        }));
+        function overlayBackdropHandler(ev) { if (ev.target === ev.currentTarget) closeMenu(); }
 
-        // support Escape key to close
-        document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && list.classList.contains('open')) closeMenu(); });
+        function mobileNavLinkHandler(e) {
+            e.preventDefault();
+            closeMenu();
+            const h = e.currentTarget.getAttribute('data-href');
+            if (h && h.startsWith('#')) {
+                const target = document.querySelector(h);
+                if (target) { const top = target.getBoundingClientRect().top + window.scrollY - (16 + 56); window.scrollTo({ top, behavior: 'smooth' }); }
+            } else if (h && h !== '#') { window.location.href = h; }
+        }
+
+        btn.addEventListener('click', (e) => { try { if (document.querySelector('.mobile-menu-overlay')?.classList.contains('active')) closeMenu(); else openMenu(); } catch (err) { console.error('[nav] toggle click error', err); } });
     })();
 
     /* Smooth anchor scrolling with offset */
