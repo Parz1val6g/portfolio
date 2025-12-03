@@ -1,0 +1,295 @@
+<!doctype html>
+<!doctype html>
+<html lang="pt-PT">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Joel Tavares Martins — Engenharia Informática | Portfólio</title>
+  <meta name="description"
+    content="Portefólio académico e profissional de Joel Tavares Martins — Estudante de Engenharia Informática (ESTGV/IPV). Backend, Cloud, Java, Node.js, C/C++, Azure.">
+  <link rel="canonical" href="http://localhost:8000/">
+  <meta property="og:title" content="Joel Tavares Martins — Portfólio">
+  <meta property="og:description" content="Portefólio académico e projetos: backend, cloud e integrações.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Preload fonts for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/inline.css">
+</head>
+
+<body>
+
+  <header class="site-header" id="top" role="banner">
+    <div class="header-inner">
+      <a class="brand" href="#" data-i18n="brand" data-lang="pt">Joel Tavares Martins</a>
+      <nav class="nav" role="navigation" aria-label="Main Navigation">
+        <button id="navToggle" class="nav-toggle btn icon" aria-expanded="false" aria-controls="navList"
+          aria-label="Abrir menu">☰</button>
+        <ul id="navList" class="nav-list" role="menubar">
+          <li><a href="#about" data-i18n="nav.about" data-lang="pt">Sobre</a></li>
+          <li><a href="#resume" data-i18n="nav.resume" data-lang="pt">CV</a></li>
+          <li><a href="#skills" data-i18n="nav.skills" data-lang="pt">Skills</a></li>
+          <li><a href="#projects" data-i18n="nav.projects" data-lang="pt">Projetos</a></li>
+          <li><a href="#contact" data-i18n="nav.contact" data-lang="pt">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions" role="toolbar" aria-label="Ações">
+        <button id="langToggle" class="btn icon" aria-haspopup="true" title="Mudar idioma">🌐 PT</button>
+        <button id="darkToggle" class="btn icon" aria-pressed="true" title="Alternar tema"
+          aria-label="Alternar tema">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero" aria-label="Intro">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-badge badge reveal" data-i18n="hero.badge" data-lang="pt">Estudante • Engenharia Informática
+            — Backend & Cloud</div>
+          <h1 class="hero-title reveal" data-i18n="hero.title" data-lang="pt">Desenvolvedor Full-Stack em formação |
+            Backend & Cloud</h1>
+          <p class="hero-sub reveal" data-i18n="hero.sub" data-lang="pt">Construo e estudo aplicações de backend, APIs e
+            soluções cloud. Java, Node.js, PHP e C/C++.</p>
+          <p class="hero-lead reveal" data-i18n="hero.lead" data-lang="pt">Foco em entrega de backends robustos, testes
+            e deploys em Azure. Procuro estágio e projetos colaborativos para crescer como engenheiro.</p>
+          <div class="hero-cta reveal">
+            <a class="btn primary" href="#projects" data-i18n="hero.projects" data-lang="pt">Ver Projetos</a>
+            <a class="btn ghost" href="#resume" data-i18n="hero.cv" data-lang="pt">Ver CV</a>
+            <a id="cvDownload" class="btn ghost" href="assets/files/CV-Joel-Tavares-Martins.pdf" download
+              data-i18n="hero.cvdownload" data-lang="pt">Download CV</a>
+          </div>
+          <div style="margin-top:1rem" class="reveal"><small class="muted" data-i18n="hero.contactnote"
+              data-lang="pt">Respondo em 24h via email / LinkedIn • Mangualde, Portugal</small></div>
+        </div>
+        <aside class="avatar-wrap reveal" aria-hidden="false">
+          <img id="profilePhoto" class="avatar" alt="Foto de Joel Tavares Martins"
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b0d6422cb1b9d2c3f6f8b1e3e6b5c9a">
+        </aside>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section reveal" aria-label="Sobre">
+      <div class="container card-grid two-col">
+        <div class="card reveal">
+          <h2 data-i18n="about.title" data-lang="pt">Sobre Mim</h2>
+          <p data-i18n="about.p1" data-lang="pt">Sou estudante de Engenharia Informática no Instituto Politécnico de
+            Viseu (ESTGV/IPV). Interesso-me por desenvolvimento backend, computação em nuvem e integração de sistemas.
+          </p>
+          <p data-i18n="about.p2" data-lang="pt">Trabalhei em projetos académicos que envolvem APIs REST, pipelines
+            CI/CD e deploy em Azure; foco em qualidade, testes e documentação técnica.</p>
+        </div>
+
+        <div class="card reveal">
+          <h3 data-i18n="about.subtitle" data-lang="pt">Resumo Académico & Formações</h3>
+          <ul>
+            <li><strong data-i18n="edu.institution" data-lang="pt">ESTGV — Instituto Politécnico de Viseu</strong> —
+              Licenciatura em Engenharia Informática (em curso)</li>
+            <li data-i18n="edu.azure" data-lang="pt">Labs e projetos Azure: WebApps, Functions, Databases e CI/CD</li>
+            <li data-i18n="edu.pint" data-lang="pt">Contribuições: repositório PINT / J.A.R.V.I.S. — testes, integrações
+              e documentação (<a href="https://github.com/Parz1val6g" target="_blank" rel="noopener">PINT @ GitHub</a>)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume" class="section reveal" aria-label="Currículo">
+      <div class="container">
+        <h2 data-i18n="resume.title" data-lang="pt">Currículo</h2>
+        <div class="card-grid two-col" style="margin-top:1rem">
+          <div class="card">
+            <h3 data-i18n="resume.education" data-lang="pt">Educação</h3>
+            <div class="card-item">
+              <strong>Licenciatura em Engenharia Informática — ESTGV / IPV</strong>
+              <small class="muted">2022 — atual</small>
+              <p class="muted" data-i18n="resume.education.detail" data-lang="pt">Programação (Java, C/C++), Redes,
+                Bases de Dados, Engenharia de Software.</p>
+            </div>
+            <h4 style="margin-top:.6rem">Formações</h4>
+            <ul>
+              <li data-i18n="resume.lab.azure" data-lang="pt">Azure Labs: deploy de WebApps, Azure Functions e Azure
+                Database for PostgreSQL</li>
+              <li data-i18n="resume.lab.devops" data-lang="pt">Workshops: Docker, GitHub Actions e testes automatizados
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 data-i18n="resume.experience" data-lang="pt">Experiência</h3>
+            <div class="card-item">
+              <strong data-i18n="resume.position" data-lang="pt">Colaborador académico / Desenvolvedor</strong>
+              <small class="muted">Projetos académicos & open-source</small>
+              <p class="muted" data-i18n="resume.experience.detail" data-lang="pt">Desenvolvimento de backends (Java,
+                Node.js), integração de bases de dados, e pipelines CI/CD.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section reveal" aria-label="Competências">
+      <div class="container">
+        <h2 data-i18n="skills.title" data-lang="pt">Skills</h2>
+        <p class="muted" data-i18n="skills.lead" data-lang="pt">Competências principais com percentagens e visualização.
+        </p>
+        <div class="skills-grid" style="margin-top:1rem">
+          <div class="card-item skill-card reveal" data-value="80">
+            <div class="skill-circle" data-value="80"><svg viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+              </svg><span class="pct">0%</span></div>
+            <div class="skill-label">Python</div>
+            <div class="muted">APIs, automação e processamento de dados</div>
+          </div>
+
+          <div class="card-item skill-card reveal" data-value="70">
+            <div class="skill-circle" data-value="70"><svg viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+              </svg><span class="pct">0%</span></div>
+            <div class="skill-label">JavaScript / Node.js</div>
+            <div class="muted">Back-end, APIs e automação</div>
+          </div>
+
+          <div class="card-item skill-card reveal" data-value="60">
+            <div class="skill-circle" data-value="60"><svg viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+              </svg><span class="pct">0%</span></div>
+            <div class="skill-label">C / C++</div>
+            <div class="muted">Sistemas embebidos e performance</div>
+          </div>
+
+          <div class="card-item skill-card reveal" data-value="75">
+            <div class="skill-circle" data-value="75"><svg viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+              </svg><span class="pct">0%</span></div>
+            <div class="skill-label">Git & GitHub</div>
+            <div class="muted">Versionamento e PR workflows</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section reveal" aria-label="Projetos">
+      <div class="container">
+        <h2 data-i18n="projects.title" data-lang="pt">Projetos</h2>
+        <p class="muted" data-i18n="projects.lead" data-lang="pt">Projetos académicos e pessoais com foco em backend,
+          APIs e deploy em Azure.</p>
+        <div class="projects-grid" style="margin-top:1rem">
+          <article class="card-item reveal">
+            <div class="project-media"><img alt="Dashboard académico"
+                src="https://images.unsplash.com/photo-1581093588401-6a7a1b5d07e0?q=80&w=1200&auto=format&fit=crop">
+            </div>
+            <h3 data-i18n="project.api.title">API de Gestão Académica</h3>
+            <p class="muted" data-i18n="project.api.tech">Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp</p>
+            <div class="project-actions">
+              <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank" rel="noopener"
+                data-i18n="project.action.github">GitHub</a>
+              <a class="btn primary" href="#" data-i18n="project.action.demo">Demo</a>
+            </div>
+          </article>
+
+          <article class="card-item reveal">
+            <div class="project-media"><img alt="Pipeline CI"
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+            </div>
+            <h3 data-i18n="project.pint.title">Pipeline PINT / J.A.R.V.I.S.</h3>
+            <p class="muted" data-i18n="project.pint.tech">Node.js • GitHub Actions • Testes • IaC</p>
+            <div class="project-actions">
+              <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank" rel="noopener"
+                data-i18n="project.action.github">GitHub</a>
+              <a class="btn primary" href="#" data-i18n="project.action.demo">Demo</a>
+            </div>
+          </article>
+
+          <article class="card-item reveal">
+            <div class="project-media"><img alt="Microserviço"
+                src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop">
+            </div>
+            <h3 data-i18n="project.auth.title">Microserviço de Autenticação</h3>
+            <p class="muted" data-i18n="project.auth.tech">Express.js • JWT • PostgreSQL • Docker</p>
+            <div class="project-actions">
+              <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank" rel="noopener"
+                data-i18n="project.action.github">GitHub</a>
+              <a class="btn primary" href="#" data-i18n="project.action.demo">Demo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog section removed -->
+
+    <!-- Contact -->
+    <section id="contact" class="section reveal" aria-label="Contacto">
+      <div class="container">
+        <h2 data-i18n="contact.title" data-lang="pt">Contacto</h2>
+        <div class="contact-grid" style="margin-top:1rem">
+          <div class="card">
+            <h3>Informação</h3>
+            <p><strong>Email:</strong> <a
+                href="mailto:joel.tavares.martins@outlook.pt">joel.tavares.martins@outlook.pt</a></p>
+            <p><strong>Telefone:</strong> <a href="tel:+351928031513">+351 928 031 513</a></p>
+            <p class="muted" data-i18n="contact.response" data-lang="pt">Respondo em 24h via email/LinkedIn</p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/Parz1val6g" target="_blank"
+                rel="noopener">Parz1val6g</a></p>
+            <p><strong>Local:</strong> Mangualde, Portugal</p>
+          </div>
+
+          <form id="contactForm" class="card" novalidate data-endpoint="">
+            <label for="name" data-i18n="form.name">Nome</label>
+            <input id="name" name="name" type="text" placeholder="Nome completo" required data-i18n="form.name">
+            <label for="email" data-i18n="form.email">Email</label>
+            <input id="email" name="email" type="email" placeholder="seu@email.com" required data-i18n="form.email">
+            <label for="message" data-i18n="form.message">Mensagem</label>
+            <textarea id="message" name="message" rows="5" placeholder="Escreva a sua mensagem..." required
+              data-i18n="form.message"></textarea>
+            <div class="actions" style="margin-top:.4rem">
+              <button type="submit" class="btn primary" data-i18n="form.send">Enviar</button>
+              <button type="reset" class="btn ghost" data-i18n="form.clear">Limpar</button>
+            </div>
+            <p id="contactFeedback" class="muted" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo" style="padding:2rem 0;border-top:1px solid rgba(255,255,255,0.03);background:transparent">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem">
+      <div>
+        <p style="margin:0">© <span id="year"></span> <span data-i18n="footer.name" data-lang="pt">Joel Tavares
+            Martins</span>. <small class="muted" data-i18n="footer.rights" data-lang="pt">Todos os direitos
+            reservados.</small></p>
+      </div>
+      <div><a class="btn ghost" href="https://www.linkedin.com/in/joel-tavares-martins-843bbb14a/" target="_blank"
+          rel="noopener">LinkedIn</a> <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank"
+          rel="noopener">GitHub</a></div>
+    </div>
+    <button id="backTop" aria-label="Voltar ao topo">↑</button>
+  </footer>
+
+  <div id="toast-instance" class="site-toast" aria-live="polite" role="status" style="display:none"></div>
+
+  <script src="assets/js/inline.js" defer></script>
+</body>
+
+</html>

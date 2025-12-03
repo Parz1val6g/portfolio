@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fallback favicon content (SVG) served at /favicon.ico to prevent 404s. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#0f56d3"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="28" fill="#fff">J</text>
+</svg>

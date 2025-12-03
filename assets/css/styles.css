@@ -1,0 +1,885 @@
+:root {
+  /* Dark-first theme */
+  /* slightly lighter dark background tones for improved readability */
+  --bg-0: #0f1720;
+  /* page base */
+  --bg-1: #11171d;
+  /* subtle gradient end */
+  --surface: #162027;
+  /* elevated surfaces */
+  /* Panels / cards */
+  --panel: rgba(255, 255, 255, 0.035);
+  --panel-grad-start: rgba(255, 255, 255, 0.045);
+  --panel-grad-end: rgba(255, 255, 255, 0.02);
+  --muted: #a7bcc9;
+  --text: #eaf6f7;
+  --accent1: #00e6b8;
+  --accent2: #00c7a1;
+  --accent-cyan: #06d6a0;
+  --accent-gradient: linear-gradient(90deg, var(--accent1), var(--accent2));
+  /* unify interactive accent to cyan for consistency */
+  --accent: var(--accent-cyan);
+  --theme-transition: 0.3s;
+  --accent-strong: #00f2c9;
+  --glass: rgba(255, 255, 255, 0.035);
+  --border: rgba(255, 255, 255, 0.08);
+  --card: rgba(255, 255, 255, 0.045);
+  --primary: #08d2a7;
+  --primary-contrast: #052422;
+  --shadow: 0 12px 40px rgba(3, 10, 20, 0.45);
+  --radius: 14px;
+  --max-w: 1320px;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+  --h1: 4rem;
+  --h2: 2.5rem;
+  --base-size: 1.05rem;
+  --hero-bg-start: #0a0a0a;
+  --hero-bg-end: #1a1a2e;
+  /* keep explicit dark/light hero stops for crossfade transitions */
+  --hero-bg-dark-start: #0a0a0a;
+  --hero-bg-dark-end: #1a1a2e;
+  --hero-bg-light-start: #ffffff;
+  --hero-bg-light-end: #f4fafc;
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--base-size);
+  line-height: 1.7;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg-0), var(--bg-1));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 220ms ease, color 220ms ease
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: 2px solid var(--accent-cyan);
+  background: rgba(26, 26, 26, 0.8);
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 120ms ease, background 180ms ease;
+  font-size: 0.98rem;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(153, 153, 153, 0.9);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(6, 214, 160, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Respect accessible focus-visible for keyboard users */
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 10px rgba(6, 214, 160, 0.55);
+}
+
+margin: 0;
+padding: 0
+}
+
+.nav-list a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.5rem
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 1.3rem
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(10, 30, 80, 0.18);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.btn.ghost {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+}
+
+.btn.small {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem
+}
+
+.btn.icon {
+  font-size: 1.05rem;
+  padding: 0.45rem
+}
+
+.hero {
+  padding: 3rem 0;
+  min-height: 64vh;
+  position: relative;
+  overflow: hidden;
+  /* use layered pseudo-elements for a smooth crossfade between themes */
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Crossfading hero backgrounds: dark (before) and light (after) layers */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: opacity var(--theme-transition) ease;
+  pointer-events: none;
+  background-size: cover;
+}
+
+.hero::before {
+  /* dark layer */
+  background: linear-gradient(180deg, var(--hero-bg-dark-start), var(--hero-bg-dark-end));
+  opacity: 1;
+}
+
+.hero::after {
+  /* light layer */
+  background: linear-gradient(180deg, var(--hero-bg-light-start), var(--hero-bg-light-end));
+  opacity: 0;
+}
+
+/* When light theme is active, fade to the light layer */
+:root.light .hero::before {
+  opacity: 0;
+}
+
+:root.light .hero::after {
+  opacity: 1;
+}
+
+/* Ensure normal content sits above the background layers */
+.hero .hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 0.2rem
+}
+
+.lead {
+  color: var(--muted);
+  margin-top: 0.5rem
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  transition: color 160ms ease
+}
+
+a:hover {
+  color: var(--accent-strong)
+}
+
+/* Accessible focus styles */
+.btn:focus,
+a:focus,
+.nav-toggle:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid rgba(100, 150, 255, 0.14);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.avatar-wrap {
+  display: block;
+  text-align: center;
+}
+
+.avatar {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, var(--panel), #09101a);
+  box-shadow: 0 10px 30px rgba(2, 6, 12, 0.6);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .avatar {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+.socials {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 0.8rem
+}
+
+.socials a {
+  color: var(--muted);
+  text-decoration: none
+}
+
+.section {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 6px 18px rgba(3, 6, 12, 0.45);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.skill {
+  background: var(--glass);
+  padding: 0.6rem;
+  border-radius: 8px
+}
+
+.skill-head {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600
+}
+
+.skill-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  overflow: hidden
+}
+
+.skill-bar>div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ffd18a);
+  transition: width 900ms cubic-bezier(.2, .9, .2, 1)
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.project-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 28px rgba(3, 8, 20, 0.55);
+  transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 22px 48px rgba(3, 8, 20, 0.6), 0 0 18px rgba(6, 214, 160, 0.06);
+}
+
+.project-media {
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .36s cubic-bezier(.2, .9, .2, 1);
+}
+
+.project-card:hover .project-media img {
+  transform: scale(1.05);
+}
+
+.project-body {
+  padding: 1rem
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.7rem
+}
+
+.blog-controls {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1rem
+}
+
+.blog-controls input,
+.blog-controls select {
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--accent-cyan);
+  background: #1a1a1a;
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 120ms ease;
+  font-size: 0.98rem;
+}
+
+.blog-controls select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.blog-controls input::placeholder,
+.blog-controls select::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.blog-controls input:focus,
+.blog-controls select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 6px 20px rgba(6, 214, 160, 0.05), 0 0 0 6px rgba(6, 214, 160, 0.04);
+  transform: translateY(-1px);
+}
+
+.posts-grid {
+  .blog-controls select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'><path fill='%23ffffff' d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+
+  html.light .blog-controls select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'><path fill='%2307121a' d='M7 10l5 5 5-5z'/></svg>");
+  }
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.post-card {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 10px
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 1rem
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  margin: 0.5rem 0;
+  border-radius: 12px;
+  border: 1px solid var(--accent-cyan);
+  background: #1a1a1a;
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 120ms ease;
+  font-size: 0.98rem;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 6px 20px rgba(6, 214, 160, 0.06), 0 0 0 6px rgba(6, 214, 160, 0.07);
+  transform: translateY(-1px);
+}
+
+/* Respect accessible focus-visible for keyboard users */
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 6px 26px rgba(6, 214, 160, 0.09), 0 0 0 6px rgba(6, 214, 160, 0.09);
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end
+}
+
+.site-footer {
+  padding: 1.2rem 0;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
+  border-top: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.site-footer {
+  padding: 1.2rem 0;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.14));
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width:900px) {
+  .hero-grid {
+    grid-template-columns: 1fr 220px
+  }
+
+  .projects-grid,
+  .posts-grid {
+    grid-template-columns: 1fr
+  }
+
+  .nav-list {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 44px;
+    background: var(--panel);
+    padding: 0.75rem;
+    border-radius: 8px;
+    flex-direction: column
+  }
+
+  .nav-toggle {
+    display: inline-block
+  }
+
+  .header-inner {
+    gap: 0.5rem
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr
+  }
+
+  .hero-photo img {
+    width: 180px;
+    height: 180px
+  }
+}
+
+@media (max-width:520px) {
+  .hero-grid {
+    grid-template-columns: 1fr
+  }
+
+  .hero-photo {
+    order: -1;
+    text-align: center;
+    margin-bottom: 1rem
+  }
+}
+
+/* Light-theme overrides (for dark toggle) */
+:root.light {
+  --bg-0: #fbfdff;
+  --bg-1: #f4fafc;
+  --panel: #ffffff;
+  --panel-grad-start: rgba(255, 255, 255, 0.98);
+  --panel-grad-end: rgba(255, 255, 255, 0.92);
+  --muted: #47515b;
+  --text: #07121a;
+  --accent1: #06d6a0;
+  --accent2: #06d6a0;
+  --accent: var(--accent-cyan);
+  --accent-strong: #06d6a0;
+  --accent-gradient: linear-gradient(90deg, var(--accent1), var(--accent2));
+  --primary: #06b994;
+  --primary: var(--accent-cyan);
+  --primary-contrast: #ffffff;
+  --hero-bg-start: #ffffff;
+  --hero-bg-end: #f4fafc;
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.6);
+  --border: rgba(6, 12, 18, 0.06);
+  color-scheme: light;
+}
+
+/* Light-theme overrides for form controls */
+html.light .contact-form input,
+html.light .contact-form textarea,
+html.light .blog-controls input,
+html.light .blog-controls select {
+  background: #f9f9f9;
+  color: var(--text);
+  border: 2px solid #cccccc;
+}
+
+html.light .contact-form input::placeholder,
+html.light .contact-form textarea::placeholder,
+html.light .blog-controls input::placeholder,
+html.light .blog-controls select::placeholder {
+  color: #888888;
+}
+
+html.light .contact-form input:focus,
+html.light .contact-form textarea:focus,
+html.light .blog-controls input:focus,
+html.light .blog-controls select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(6, 214, 160, 0.18);
+}
+
+/* Dark-mode explicit inputs to ensure consistency */
+.contact-form input,
+.contact-form textarea,
+.blog-controls input,
+.blog-controls select {
+  background: rgba(26, 26, 26, 0.8);
+  color: #ffffff;
+  border: 2px solid var(--accent-cyan);
+}
+
+/* Make primary buttons use the accent color across themes */
+.btn.primary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-color: transparent;
+}
+
+.hidden {
+  display: none
+}
+
+/* Reveal / animation helpers (used by JS) */
+.section,
+.project-card,
+.post-card,
+.hero-left,
+.skill-card {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 560ms cubic-bezier(.2, .9, .2, 1), transform 560ms cubic-bezier(.2, .9, .2, 1);
+  will-change: opacity, transform;
+}
+
+.section.in-view,
+.project-card.in-view,
+.post-card.in-view,
+.hero-left.in-view,
+.skill-card.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Header shrink when scrolling */
+.site-header {
+  transition: padding 220ms ease, box-shadow 220ms ease, background 220ms ease;
+  padding: 1.15rem 0;
+}
+
+.site-header.scrolled {
+  padding: 0.45rem 0;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+/* Back-to-top button */
+.back-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  background: linear-gradient(180deg, var(--panel), rgba(0, 0, 0, 0.04));
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.56rem 0.7rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(2, 6, 16, 0.5);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+  z-index: 140;
+}
+
+.back-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-top:focus {
+  outline: 3px solid rgba(100, 150, 255, 0.14);
+  outline-offset: 3px
+}
+
+/* Skill-circle styles */
+.skill-circle {
+  width: 96px;
+  height: 96px;
+  display: inline-grid;
+  place-items: center;
+  position: relative;
+}
+
+.skill-circle svg {
+  width: 72px;
+  height: 72px;
+  display: block;
+}
+
+.skill-circle .bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 3.6;
+}
+
+.skill-circle .progress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 900ms cubic-bezier(.2, .9, .2, 1);
+}
+
+/* Smooth theme transitions for key properties */
+body,
+.hero,
+.site-header,
+.card,
+.btn,
+.project-card,
+input,
+textarea,
+select,
+.site-toast {
+  transition: background-color var(--theme-transition), color var(--theme-transition), border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+.skill-circle .pct {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  transform: translateY(4px);
+}
+
+
+/* Toast / transient status message */
+.site-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  min-width: 160px;
+  max-width: 320px;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.72);
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(2, 6, 12, 0.6);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  z-index: 9999;
+  pointer-events: none
+}
+
+.site-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto
+}
+
+.site-toast.hidden {
+  display: block;
+  opacity: 0
+}
+
+/* Light-theme override for toast so it contrasts on bright backgrounds */
+html.light .site-toast {
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text);
+  box-shadow: 0 6px 18px rgba(10, 20, 30, 0.06)
+}
+
+/* Accessibility: focus-visible and reduced-motion */
+:focus-visible {
+  outline: 3px solid rgba(100, 150, 255, 0.18);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* reduce typed speed by stopping the loop (keeps initial phrase visible) */
+  .cursor {
+    display: none !important;
+  }
+}
+
+/* Improve contrast for primary buttons and ghost buttons */
+.btn.primary {
+  box-shadow: 0 8px 20px rgba(2, 14, 10, 0.18);
+}
+
+.btn.ghost {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Toast contrast fallback for light/dark */
+.site-toast {
+  background: rgba(6, 10, 14, 0.8);
+  color: var(--text);
+}
+
+html.light .site-toast {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text);
+}
+
+/* Navigation active state: stronger indicator */
+.nav-list a.active {
+  color: var(--text);
+  border-bottom: 3px solid var(--accent-cyan);
+  padding-bottom: 0.32rem;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+/* Footer social link hover */
+.socials a {
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.socials a:hover,
+.socials a:focus {
+  color: var(--accent-cyan);
+  transform: scale(1.06);
+}
+
+/* Buttons hover consistency */
+.btn {
+  transition: transform 140ms ease, box-shadow 160ms ease, background-color 140ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Links: subtle hover lift to match buttons */
+a:hover {
+  transform: translateY(-1px);
+}
+
+/* Light-theme button overrides: ensure readable text and borders */
+html.light .btn {
+  color: var(--text);
+}
+
+/* Ghost buttons should use a subtle dark border on light backgrounds */
+html.light .btn.ghost {
+  border-color: rgba(6, 12, 18, 0.06);
+  color: var(--text);
+  background: transparent;
+}
+
+/* Primary keeps its contrast (white text on cyan) */
+html.light .btn.primary {
+  color: var(--primary-contrast);
+}
