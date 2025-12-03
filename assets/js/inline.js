@@ -111,8 +111,62 @@
     /* Year */
     $('#year').textContent = new Date().getFullYear();
 
-    /* Nav mobile toggle */
-    $('#navToggle').addEventListener('click', () => { const list = $('#navList'); const open = list.style.display !== 'flex'; list.style.display = open ? 'flex' : 'none'; $('#navToggle').setAttribute('aria-expanded', String(open)); });
+    /* Nav mobile toggle: use class-based slide-in so CSS can animate */
+    (function setupNavToggle() {
+        const btn = $('#navToggle');
+        const list = $('#navList');
+        if (!btn || !list) return;
+
+        // create a close button inside the panel (if not present)
+        function ensureCloseBtn() {
+            if (list.querySelector('.nav-close')) return;
+            const close = document.createElement('button');
+            close.className = 'nav-close btn icon';
+            close.setAttribute('aria-label', 'Fechar menu');
+            close.innerHTML = '×';
+            close.style.position = 'absolute';
+            close.style.top = '12px';
+            close.style.right = '12px';
+            list.appendChild(close);
+            close.addEventListener('click', closeMenu);
+        }
+
+        function openMenu() {
+            list.classList.add('open');
+            document.body.classList.add('nav-open');
+            btn.setAttribute('aria-expanded', 'true');
+            // create overlay
+            if (!document.querySelector('.nav-overlay')) {
+                const ov = document.createElement('div');
+                ov.className = 'nav-overlay';
+                document.body.appendChild(ov);
+                ov.addEventListener('click', closeMenu);
+                // small fade-in
+                requestAnimationFrame(() => ov.classList.add('visible'));
+            }
+        }
+
+        function closeMenu() {
+            list.classList.remove('open');
+            document.body.classList.remove('nav-open');
+            btn.setAttribute('aria-expanded', 'false');
+            const ov = document.querySelector('.nav-overlay');
+            if (ov) { ov.classList.remove('visible'); setTimeout(() => ov.remove(), 320); }
+        }
+
+        btn.addEventListener('click', (e) => {
+            if (list.classList.contains('open')) closeMenu(); else { ensureCloseBtn(); openMenu(); }
+        });
+
+        // close nav when a link is clicked (mobile behavior)
+        Array.from(list.querySelectorAll('a')).forEach(a => a.addEventListener('click', (ev) => {
+            // if link is anchor to same page we still close menu
+            if (list.classList.contains('open')) closeMenu();
+        }));
+
+        // support Escape key to close
+        document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && list.classList.contains('open')) closeMenu(); });
+    })();
 
     /* Smooth anchor scrolling with offset */
     const OFFSET = 16 + 56; // 1rem + header
