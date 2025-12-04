@@ -1,0 +1,10 @@
+/* Hero full viewport height - navbar + hero = 100vh exato */
+/* Calcula 100vh menos a altura da navbar fixa (~80px) */
+.hero {
+    min-height: calc(100vh - 80px) !important;
+}
+
+/* Remove padding do main para hero começar logo após navbar */
+main {
+    padding-top: 0 !important;
+}

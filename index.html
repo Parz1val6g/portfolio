@@ -23,6 +23,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/inline.css">
+  <link rel="stylesheet" href="assets/css/hero-fullscreen.css">
 </head>
 
 <body>
@@ -112,28 +113,53 @@
         <div class="card-grid two-col" style="margin-top:1rem">
           <div class="card">
             <h3 data-i18n="resume.education" data-lang="pt">Educação</h3>
+
+            <!-- IPV: 2023-2024 -->
             <div class="card-item">
-              <strong>Licenciatura em Engenharia Informática — ESTGV / IPV</strong>
-              <small class="muted">2022 — atual</small>
-              <p class="muted" data-i18n="resume.education.detail" data-lang="pt">Programação (Java, C/C++), Redes,
-                Bases de Dados, Engenharia de Software.</p>
+              <strong>Licenciatura em Engenharia Informática — IPV</strong>
+              <small class="muted">2023 — 2024</small>
+              <p class="muted">Virtualização de desktops, Sistemas Operativos, Redes e Infraestruturas.</p>
             </div>
-            <h4 style="margin-top:.6rem">Formações</h4>
+            <!-- EPTOLIVA: 2020-2023 -->
+            <div class="card-item">
+              <strong>Gestão e Programação de Sistemas Informáticos — EPTOLIVA</strong>
+              <small class="muted">2020 — 2023</small>
+              <p class="muted">C#, PHP, C, HTML/CSS, Redes, Bases de Dados.</p>
+            </div>
+            <h4 style="margin-top:.6rem">Certificações</h4>
             <ul>
-              <li data-i18n="resume.lab.azure" data-lang="pt">Azure Labs: deploy de WebApps, Azure Functions e Azure
-                Database for PostgreSQL</li>
-              <li data-i18n="resume.lab.devops" data-lang="pt">Workshops: Docker, GitHub Actions e testes automatizados
-              </li>
+              <li>Partilha dos Projetos e Práticas — ANPRI (2022)</li>
+              <li>Pensamento Computacional e Mercado de Trabalho — ANPRI (2022)</li>
             </ul>
           </div>
 
           <div class="card">
             <h3 data-i18n="resume.experience" data-lang="pt">Experiência</h3>
+
+            <!-- Graduate Student @ IPV -->
             <div class="card-item">
-              <strong data-i18n="resume.position" data-lang="pt">Colaborador académico / Desenvolvedor</strong>
-              <small class="muted">Projetos académicos & open-source</small>
-              <p class="muted" data-i18n="resume.experience.detail" data-lang="pt">Desenvolvimento de backends (Java,
-                Node.js), integração de bases de dados, e pipelines CI/CD.</p>
+              <strong>Graduate Student</strong>
+              <small class="muted">Instituto Politécnico de Viseu • Set 2023 - Presente</small>
+              <p class="muted">Virtualização de desktops, sistemas operativos e infraestruturas de rede.</p>
+            </div>
+            <!-- Computer & Network Technician @ SPLNET -->
+            <div class="card-item">
+              <strong>Computer and Network Technician (Intern)</strong>
+              <small class="muted">SPLNET, LDA • Dez 2022</small>
+              <p class="muted">Desenvolvi software em C# para controlo industrial de captura 360º com comunicação
+                serial/IP. Instalações de redes Ethernet, videovigilância (NVR/DVR) e acessos remotos.</p>
+            </div>
+            <!-- Student Intern @ Mixlife -->
+            <div class="card-item">
+              <strong>Student Intern</strong>
+              <small class="muted">Mixlife - Digital Agency • Jan-Fev 2022</small>
+              <p class="muted">Desenvolvimento web com HTML, CSS, JavaScript e PHP.</p>
+            </div>
+            <!-- Aluno @ EPTOLIVA -->
+            <div class="card-item">
+              <strong>Aluno</strong>
+              <small class="muted">EPTOLIVA • Jan 2021 - Out 2023</small>
+              <p class="muted">Formação em Gestão e Programação de Sistemas Informáticos.</p>
             </div>
           </div>
         </div>
@@ -147,40 +173,41 @@
         <p class="muted" data-i18n="skills.lead" data-lang="pt">Competências principais com percentagens e visualização.
         </p>
         <div class="skills-grid" style="margin-top:1rem">
-          <div class="card-item skill-card reveal" data-value="80">
-            <div class="skill-circle" data-value="80"><svg viewBox="0 0 36 36">
+          <!-- Skill 1: C# / .NET (85%) -->
+          <div class="card-item skill-card reveal" data-value="85">
+            <div class="skill-circle" data-value="85"><svg viewBox="0 0 36 36">
                 <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
                 <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
               </svg><span class="pct">0%</span></div>
-            <div class="skill-label">Python</div>
-            <div class="muted">APIs, automação e processamento de dados</div>
+            <div class="skill-label">C# / .NET</div>
+            <div class="muted">Software industrial, comunicação serial/IP</div>
           </div>
-
-          <div class="card-item skill-card reveal" data-value="70">
-            <div class="skill-circle" data-value="70"><svg viewBox="0 0 36 36">
-                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-              </svg><span class="pct">0%</span></div>
-            <div class="skill-label">JavaScript / Node.js</div>
-            <div class="muted">Back-end, APIs e automação</div>
-          </div>
-
-          <div class="card-item skill-card reveal" data-value="60">
-            <div class="skill-circle" data-value="60"><svg viewBox="0 0 36 36">
-                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-              </svg><span class="pct">0%</span></div>
-            <div class="skill-label">C / C++</div>
-            <div class="muted">Sistemas embebidos e performance</div>
-          </div>
-
+          <!-- Skill 2: Node.js (75%) -->
           <div class="card-item skill-card reveal" data-value="75">
             <div class="skill-circle" data-value="75"><svg viewBox="0 0 36 36">
                 <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
                 <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
               </svg><span class="pct">0%</span></div>
-            <div class="skill-label">Git & GitHub</div>
-            <div class="muted">Versionamento e PR workflows</div>
+            <div class="skill-label">JavaScript / Node.js</div>
+            <div class="muted">Back-end, APIs e aplicações web</div>
+          </div>
+          <!-- Skill 3: PHP (70%) -->
+          <div class="card-item skill-card reveal" data-value="70">
+            <div class="skill-circle" data-value="70"><svg viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+              </svg><span class="pct">0%</span></div>
+            <div class="skill-label">PHP / HTML / CSS</div>
+            <div class="muted">Desenvolvimento web full-stack</div>
+          </div>
+          <!-- Skill 4: TCP/IP (80%) -->
+          <div class="card-item skill-card reveal" data-value="80">
+            <div class="skill-circle" data-value="80"><svg viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+              </svg><span class="pct">0%</span></div>
+            <div class="skill-label">TCP/IP & Networking</div>
+            <div class="muted">Redes Ethernet, configuração e administração</div>
           </div>
         </div>
       </div>
@@ -192,45 +219,19 @@
         <h2 data-i18n="projects.title" data-lang="pt">Projetos</h2>
         <p class="muted" data-i18n="projects.lead" data-lang="pt">Projetos académicos e pessoais com foco em backend,
           APIs e deploy em Azure.</p>
-        <div class="projects-grid" style="margin-top:1rem">
-          <article class="card-item reveal">
-            <div class="project-media"><img alt="Dashboard académico"
-                src="https://images.unsplash.com/photo-1581093588401-6a7a1b5d07e0?q=80&w=1200&auto=format&fit=crop">
-            </div>
-            <h3 data-i18n="project.api.title">API de Gestão Académica</h3>
-            <p class="muted" data-i18n="project.api.tech">Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp</p>
-            <div class="project-actions">
-              <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank" rel="noopener"
-                data-i18n="project.action.github">GitHub</a>
-              <a class="btn primary" href="#" data-i18n="project.action.demo">Demo</a>
-            </div>
-          </article>
+        <!-- Project filters (populated dynamically) -->
+        <div id="projectFilters" class="project-filters"
+          style="margin-top:1rem; display:flex; gap:.5rem; flex-wrap:wrap; align-items:center">
+          <button class="btn ghost small filter-btn active" data-filter="all">Todos</button>
+          <!-- Additional filter buttons will be generated by JavaScript based on repository topics -->
+        </div>
 
-          <article class="card-item reveal">
-            <div class="project-media"><img alt="Pipeline CI"
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
-            </div>
-            <h3 data-i18n="project.pint.title">Pipeline PINT / J.A.R.V.I.S.</h3>
-            <p class="muted" data-i18n="project.pint.tech">Node.js • GitHub Actions • Testes • IaC</p>
-            <div class="project-actions">
-              <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank" rel="noopener"
-                data-i18n="project.action.github">GitHub</a>
-              <a class="btn primary" href="#" data-i18n="project.action.demo">Demo</a>
-            </div>
-          </article>
-
-          <article class="card-item reveal">
-            <div class="project-media"><img alt="Microserviço"
-                src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop">
-            </div>
-            <h3 data-i18n="project.auth.title">Microserviço de Autenticação</h3>
-            <p class="muted" data-i18n="project.auth.tech">Express.js • JWT • PostgreSQL • Docker</p>
-            <div class="project-actions">
-              <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank" rel="noopener"
-                data-i18n="project.action.github">GitHub</a>
-              <a class="btn primary" href="#" data-i18n="project.action.demo">Demo</a>
-            </div>
-          </article>
+        <!-- Projects grid (populated dynamically from GitHub API) -->
+        <div id="projectsGrid" class="projects-grid" style="margin-top:1rem">
+          <!-- Loading state -->
+          <div class="card-item" style="grid-column: 1 / -1; text-align:center; padding:2rem">
+            <p class="muted">A carregar projetos da organização GitHub...</p>
+          </div>
         </div>
       </div>
     </section>

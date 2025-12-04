@@ -3,16 +3,34 @@
     /* Translations */
     const I18N = {
         pt: {
-            brand: 'Joel Tavares Martins', 'nav.about': 'Sobre', 'nav.resume': 'CV', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.blog': 'Blog', 'nav.contact': 'Contacto', 'nav.cta': 'Contactar',
-            'hero.badge': 'Estudante • Engenharia Informática — Backend & Cloud', 'hero.title': 'Desenvolvedor Full-Stack em formação | Backend & Cloud', 'hero.sub': 'Construo e estudo aplicações de backend, APIs e soluções cloud.', 'hero.lead': 'Foco em entrega de backends robustos, testes e deploys em Azure. Procuro estágio e projetos colaborativos.', 'hero.projects': 'Ver Projetos', 'hero.cv': 'Ver CV', 'hero.contactnote': 'Respondo em 24h via email / LinkedIn • Mangualde, Portugal', 'hero.cvdownload': 'Descarregar CV',
-            'about.title': 'Sobre Mim', 'about.p1': 'Sou estudante de Engenharia Informática no Instituto Politécnico de Viseu (ESTGV/IPV). Interesso-me por desenvolvimento backend, computação em nuvem e integração de sistemas.', 'about.p2': 'Trabalhei em projetos académicos que envolvem APIs REST, pipelines CI/CD e deploy em Azure; foco em testes e documentação.', 'about.subtitle': 'Resumo Académico & Formações', 'edu.institution': 'ESTGV — Instituto Politécnico de Viseu', 'edu.azure': 'Labs Azure: WebApps, Functions, Databases', 'edu.pint': 'PINT / J.A.R.V.I.S. — integrações e documentação',
+            'hero.badge': 'Junior Developer • C# & Node.js • Industrial Automation & Networking',
+            'hero.title': 'Junior Full Stack Developer | C#, Node.js | Industrial Automation & Networking Specialist',
+            'hero.sub': 'Desenvolvo software de controlo industrial em C# e aplicações web com Node.js. Especializado em automação, redes Ethernet e sistemas de videovigilância.',
+            'hero.lead': 'Experiência em comunicação serial/IP, TCP/IP, virtualização de desktops e gestão de sistemas. Procuro oportunidades para aplicar conhecimentos em automação industrial e desenvolvimento full-stack.',
+            'hero.projects': 'Ver Projetos', 'hero.cv': 'Ver CV', 'hero.contactnote': 'Respondo em 24h via email / LinkedIn • Mangualde, Viseu, Portugal', 'hero.cvdownload': 'Descarregar CV',
+            'about.title': 'Sobre Mim',
+            'about.p1': 'Sou estudante de Engenharia Informática no Instituto Politécnico de Viseu. Tenho experiência prática em desenvolvimento de software industrial (C#) e redes empresariais.',
+            'about.p2': 'Desenvolvi um sistema de controlo em C# para captura 360º de vestuário com comunicação serial e TCP/IP. Também realizei instalações de redes Ethernet, videovigilância (NVR/DVR) e configuração de acessos remotos.',
+            'about.subtitle': 'Resumo Académico & Experiência',
+            'edu.institution': 'Instituto Politécnico de Viseu',
+            'edu.azure': 'Virtualização, Sistemas Operativos e Redes',
+            'edu.pint': 'SPLNET: Software C# para automação industrial, redes Ethernet e videovigilância',
             'resume.title': 'Currículo', 'resume.education': 'Educação', 'resume.education.detail': 'Programação (Java, C/C++), Redes, Bases de Dados, Engenharia de Software.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, bancos de dados', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testes', 'resume.experience': 'Experiência', 'resume.position': 'Colaborador académico / Desenvolvedor', 'resume.experience.detail': 'Desenvolvimento de backends, integração com BD e pipelines CI/CD',
             'skills.title': 'Skills', 'skills.lead': 'Competências principais com percentagens representadas visualmente.', 'projects.title': 'Projetos', 'projects.lead': 'Projetos académicos e pessoais com foco em backend, APIs e Azure.', 'blog.title': 'Blog & Artigos', 'contact.title': 'Contacto', 'contact.response': 'Respondo em 24h via email/LinkedIn', 'form.name': 'Nome', 'form.email': 'Email', 'form.message': 'Mensagem', 'form.send': 'Enviar', 'form.clear': 'Limpar', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'Todos os direitos reservados.', 'project.api.title': 'API de Gestão Académica', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'Pipeline PINT / J.A.R.V.I.S.', 'project.pint.tech': 'Node.js • GitHub Actions • Testes • IaC', 'project.auth.title': 'Microserviço de Autenticação', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Procurar artigos, tutoriais...'
         },
         en: {
-            brand: 'Joel Tavares Martins', 'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills', 'nav.projects': 'Projects', 'nav.blog': 'Blog', 'nav.contact': 'Contact', 'nav.cta': 'Contact',
-            'hero.badge': 'Student • Computer Engineering — Backend & Cloud', 'hero.title': 'Full-Stack Developer in training | Backend & Cloud', 'hero.sub': 'I build and study backend applications, APIs and cloud solutions.', 'hero.lead': 'Focused on robust backends, testing and Azure deployments. Looking for internships and collaborative projects.', 'hero.projects': 'View Projects', 'hero.cv': 'View CV', 'hero.contactnote': 'I reply within 24h via email / LinkedIn • Mangualde, Portugal', 'hero.cvdownload': 'Download CV',
-            'about.title': 'About Me', 'about.p1': 'I am a Computer Engineering student at the Polytechnic Institute of Viseu (ESTGV/IPV). Interested in backend development, cloud computing and system integration.', 'about.p2': 'I worked on academic projects involving REST APIs, CI/CD pipelines and Azure deployments; focused on testing and documentation.', 'about.subtitle': 'Academic Summary & Training', 'edu.institution': 'ESTGV — Polytechnic Institute of Viseu', 'edu.azure': 'Azure Labs: WebApps, Functions, Databases', 'edu.pint': 'PINT / J.A.R.V.I.S. — integrations and documentation',
+            'hero.badge': 'Junior Developer • C# & Node.js • Industrial Automation & Networking',
+            'hero.title': 'Junior Full Stack Developer | C#, Node.js | Industrial Automation & Networking Specialist',
+            'hero.sub': 'I develop industrial control software in C# and web applications with Node.js. Specialized in automation, Ethernet networks and video surveillance systems.',
+            'hero.lead': 'Experience in serial/IP communication, TCP/IP, desktop virtualization and systems management. Looking for opportunities to apply knowledge in industrial automation and full-stack development.',
+            'hero.projects': 'View Projects', 'hero.cv': 'View CV', 'hero.contactnote': 'I reply within 24h via email / LinkedIn • Mangualde, Viseu, Portugal', 'hero.cvdownload': 'Download CV',
+            'about.title': 'About Me',
+            'about.p1': 'I am a Computer Engineering student at the Polytechnic Institute of Viseu. I have practical experience in industrial software development (C#) and enterprise networking.',
+            'about.p2': 'I developed a control system in C# for 360º capture of clothing with serial and TCP/IP communication. I also performed Ethernet network installations, video surveillance (NVR/DVR) and remote access configuration.',
+            'about.subtitle': 'Academic Summary & Experience',
+            'edu.institution': 'Polytechnic Institute of Viseu',
+            'edu.azure': 'Virtualization, Operating Systems and Networks',
+            'edu.pint': 'SPLNET: C# software for industrial automation, Ethernet networks and video surveillance',
             'resume.title': 'Resume', 'resume.education': 'Education', 'resume.education.detail': 'Programming (Java, C/C++), Networks, Databases, Software Engineering.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, databases', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testing', 'resume.experience': 'Experience', 'resume.position': 'Academic collaborator / Developer', 'resume.experience.detail': 'Backend development, DB integration and CI/CD pipelines',
             'skills.title': 'Skills', 'skills.lead': 'Core competencies with percentages visualised.', 'projects.title': 'Projects', 'projects.lead': 'Academic and personal projects focused on backend, APIs and Azure.', 'blog.title': 'Blog & Articles', 'contact.title': 'Contact', 'contact.response': 'I reply within 24h via email/LinkedIn', 'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send', 'form.clear': 'Clear', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'All rights reserved.', 'project.api.title': 'Academic Management API', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'PINT / J.A.R.V.I.S. Pipeline', 'project.pint.tech': 'Node.js • GitHub Actions • Testing • IaC', 'project.auth.title': 'Authentication Microservice', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Search posts, tutorials...'
         },
@@ -454,5 +472,190 @@
         // start typing the hero title at ~100ms per character
         try { typeHeroTitle(100); } catch (e) { /* ignore */ }
     });
+
+    /* ========================================
+       GITHUB PROJECTS: Dynamic loading & filtering
+       ======================================== */
+
+    // Configuration - change this to your GitHub organization
+    const GITHUB_ORG = 'joel-portfolio';
+
+    // Utility: Generate a placeholder image based on the project name
+    function getProjectPlaceholder(name) {
+        const colors = ['1d3557', '457b9d', 'a8dadc', 'e63946', 'f1faee'];
+        const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+        const color = colors[hash % colors.length];
+        return `https://via.placeholder.com/1200x675/${color}/ffffff?text=${encodeURIComponent(name)}`;
+    }
+
+    // Fetch repositories from GitHub organization
+    async function fetchGitHubProjects() {
+        try {
+            const response = await fetch(`https://api.github.com/orgs/${GITHUB_ORG}/repos?sort=updated&per_page=100`);
+            if (!response.ok) {
+                throw new Error(`GitHub API returned ${response.status}`);
+            }
+            const repos = await response.json();
+
+            // Transform repos into project objects
+            return repos.filter(repo => !repo.fork && !repo.archived).map(repo => ({
+                name: repo.name,
+                description: repo.description || 'Projeto sem descrição',
+                url: repo.html_url,
+                homepage: repo.homepage,
+                topics: repo.topics || [],
+                language: repo.language,
+                stars: repo.stargazers_count,
+                updated: new Date(repo.updated_at)
+            }));
+        } catch (error) {
+            console.error('[GitHub] Error fetching projects:', error);
+            showToast('Erro ao carregar projetos do GitHub', 3000);
+            return [];
+        }
+    }
+
+    // Render a single project card
+    function renderProjectCard(project) {
+        const article = document.createElement('article');
+        article.className = 'card-item reveal in-view';
+        article.dataset.topics = JSON.stringify(project.topics);
+
+        // Determine which image to use (can be enhanced with repo social preview later)
+        const imgSrc = getProjectPlaceholder(project.name);
+
+        // Build tech stack display from topics + language
+        const techStack = [];
+        if (project.language) techStack.push(project.language);
+        techStack.push(...project.topics.slice(0, 3)); // Show max 3 topics
+        const techText = techStack.join(' • ') || 'Várias tecnologias';
+
+        article.innerHTML = `
+            <div class="project-media">
+                <img alt="${project.name}" src="${imgSrc}" loading="lazy">
+            </div>
+            <h3>${project.name.replace(/-/g, ' ')}</h3>
+            <p class="muted">${techText}</p>
+            <p style="font-size:0.95rem; margin-top:0.5rem">${project.description}</p>
+            <div class="project-actions" style="margin-top:auto;">
+                <a class="btn ghost" href="${project.url}" target="_blank" rel="noopener">GitHub</a>
+                ${project.homepage ? `<a class="btn primary" href="${project.homepage}" target="_blank" rel="noopener">Demo</a>` : ''}
+            </div>
+        `;
+
+        return article;
+    }
+
+    // Extract unique topics from all projects
+    function extractTopics(projects) {
+        const topicsSet = new Set();
+        projects.forEach(p => {
+            p.topics.forEach(t => topicsSet.add(t));
+        });
+        return Array.from(topicsSet).sort();
+    }
+
+    // Render filter buttons
+    function renderFilters(topics) {
+        const filtersContainer = $('#projectFilters');
+        if (!filtersContainer) return;
+
+        // Clear existing filters except "Todos" button
+        filtersContainer.innerHTML = '<button class="btn ghost small filter-btn active" data-filter="all">Todos</button>';
+
+        // Add filter button for each topic
+        topics.forEach(topic => {
+            const btn = document.createElement('button');
+            btn.className = 'btn ghost small filter-btn';
+            btn.dataset.filter = topic;
+            btn.textContent = topic;
+            btn.addEventListener('click', () => filterProjects(topic));
+            filtersContainer.appendChild(btn);
+        });
+
+        // Add click handler to "Todos" button
+        const allBtn = filtersContainer.querySelector('[data-filter="all"]');
+        if (allBtn) {
+            allBtn.addEventListener('click', () => filterProjects('all'));
+        }
+    }
+
+    // Filter projects by topic
+    function filterProjects(topic) {
+        const projectCards = Array.from(document.querySelectorAll('#projectsGrid .card-item[data-topics]'));
+        const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+
+        // Update active state on buttons
+        filterBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === topic);
+        });
+
+        // Show/hide projects based on topic
+        let visibleCount = 0;
+        projectCards.forEach(card => {
+            const topics = JSON.parse(card.dataset.topics || '[]');
+            const matches = topic === 'all' || topics.includes(topic);
+            card.style.display = matches ? '' : 'none';
+            if (matches) visibleCount++;
+        });
+
+        // Show empty state if no projects match
+        const grid = $('#projectsGrid');
+        let emptyState = grid.querySelector('.empty-state');
+        if (visibleCount === 0) {
+            if (!emptyState) {
+                emptyState = document.createElement('div');
+                emptyState.className = 'card-item empty-state';
+                emptyState.style.cssText = 'grid-column: 1 / -1; text-align:center; padding:2rem';
+                emptyState.innerHTML = '<p class="muted">Nenhum projeto encontrado com este tópico.</p>';
+                grid.appendChild(emptyState);
+            }
+        } else {
+            if (emptyState) emptyState.remove();
+        }
+    }
+
+    // Main: Load and render GitHub projects
+    async function initGitHubProjects() {
+        const grid = $('#projectsGrid');
+        if (!grid) return;
+
+        try {
+            // Fetch projects
+            const projects = await fetchGitHubProjects();
+
+            if (projects.length === 0) {
+                grid.innerHTML = '<div class="card-item" style="grid-column: 1 / -1; text-align:center; padding:2rem"><p class="muted">Nenhum projeto encontrado na organização GitHub.</p></div>';
+                return;
+            }
+
+            // Clear loading state
+            grid.innerHTML = '';
+
+            // Render each project
+            projects.forEach(project => {
+                const card = renderProjectCard(project);
+                grid.appendChild(card);
+            });
+
+            // Extract and render filter buttons
+            const topics = extractTopics(projects);
+            if (topics.length > 0) {
+                renderFilters(topics);
+            }
+
+            console.log(`[GitHub] Loaded ${projects.length} projects with ${topics.length} unique topics`);
+        } catch (error) {
+            console.error('[GitHub] Failed to initialize projects:', error);
+            grid.innerHTML = '<div class="card-item" style="grid-column: 1 / -1; text-align:center; padding:2rem"><p class="muted">Erro ao carregar projetos. Por favor, tente novamente mais tarde.</p></div>';
+        }
+    }
+
+    // Initialize GitHub projects on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initGitHubProjects);
+    } else {
+        initGitHubProjects();
+    }
 
 })();
