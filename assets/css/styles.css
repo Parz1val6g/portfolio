@@ -1232,58 +1232,76 @@ html.light .btn.primary {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(6, 10, 14, 0.96);
+  /* use theme-aware panel for nicer visuals */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5));
   color: var(--text);
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 60px 28px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 300ms ease, transform 300ms ease;
+  transition: opacity 220ms ease, transform 220ms ease;
+  backdrop-filter: blur(6px);
 }
 
 .mobile-menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 99999 !important;
+  transform: none !important;
+  /* stronger background while debugging/QA to make overlay obvious */
+  background: rgba(6, 10, 14, 0.98) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(6, 214, 160, 0.03);
 }
 
 .mobile-menu-overlay .mobile-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  font-size: 1.6rem;
-  background: transparent;
+  top: 18px;
+  right: 18px;
+  width: 48px;
+  height: 48px;
+  font-size: 1.45rem;
+  background: rgba(255, 255, 255, 0.02);
   border: 0;
   color: var(--text);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile-menu-overlay .mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  align-items: center;
+  gap: 10px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 .mobile-menu-overlay .mobile-nav a {
-  color: var(--text);
-  font-size: 1.5rem;
-  height: 60px;
+  color: var(--muted);
+  font-size: 1.25rem;
+  min-height: 56px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
-  max-width: 600px;
+  padding: 0 18px;
   text-decoration: none;
+  border-radius: 8px;
+  transition: background 160ms ease, color 160ms ease, transform 120ms ease;
 }
 
 .mobile-menu-overlay .mobile-nav a:hover,
 .mobile-menu-overlay .mobile-nav a:focus {
-  color: var(--accent);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateX(6px);
 }
 
 .mobile-menu-overlay .mobile-toggles {
@@ -1295,6 +1313,28 @@ html.light .btn.primary {
 .mobile-menu-overlay .mobile-toggles .btn {
   padding: 12px 18px;
   min-width: 140px;
+}
+
+/* Light-theme variant for the overlay: slightly lighter for mobile white theme */
+.mobile-menu-overlay[data-theme="light"] {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 250, 252, 0.98));
+  color: var(--text);
+  box-shadow: 0 8px 28px rgba(6, 12, 18, 0.06);
+}
+
+.mobile-menu-overlay[data-theme="light"] .mobile-close {
+  background: rgba(6, 12, 18, 0.03);
+  color: var(--text);
+}
+
+.mobile-menu-overlay[data-theme="light"] .mobile-nav a {
+  color: var(--muted);
+}
+
+.mobile-menu-overlay[data-theme="light"] .mobile-nav a:hover,
+.mobile-menu-overlay[data-theme="light"] .mobile-nav a:focus {
+  background: rgba(6, 12, 18, 0.02);
+  color: var(--text);
 }
 
 /* Ensure header is minimal on mobile (logo + hamburger) */
@@ -1313,4 +1353,17 @@ html.light .btn.primary {
   .header-actions {
     display: flex;
   }
+}
+
+/* When nav overlay is open prevent body scroll */
+body.nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* temporary click flash for hamburger to confirm event firing */
+#navToggle.clicked-flash {
+  box-shadow: 0 0 0 6px rgba(6, 214, 160, 0.14);
+  transform: scale(0.98);
+  transition: box-shadow 220ms ease, transform 160ms ease;
 }

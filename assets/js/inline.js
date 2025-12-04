@@ -71,6 +71,8 @@
         localStorage.setItem(LANG_KEY, effective);
         // Re-run hero typing so the title re-types for the selected language
         try { typeHeroTitle(100); } catch (e) { /* ignore */ }
+        // If mobile overlay exists, update its contents to reflect new language
+        try { if (window._updateMobileOverlay) window._updateMobileOverlay(); } catch (e) { /* ignore */ }
     }
     applyLang(localStorage.getItem(LANG_KEY) || lang);
     // Restore simple cycle toggle (click to rotate languages). Do not show a dropdown.
@@ -101,9 +103,28 @@
     /* Theme */
     const THEME_KEY = 'site_theme';
     let theme = localStorage.getItem(THEME_KEY) || 'dark';
-    function applyTheme(t) { if (t === 'light') document.documentElement.classList.add('light'); else document.documentElement.classList.remove('light'); $('#darkToggle').setAttribute('aria-pressed', String(t !== 'light')); localStorage.setItem(THEME_KEY, t); }
+    function applyTheme(t) {
+        if (t === 'light') document.documentElement.classList.add('light'); else document.documentElement.classList.remove('light');
+        const dt = $('#darkToggle'); if (dt) dt.setAttribute('aria-pressed', String(t !== 'light'));
+        localStorage.setItem(THEME_KEY, t);
+        // update overlay attribute so CSS can react immediately
+        try {
+            const ov = document.querySelector('.mobile-menu-overlay');
+            if (ov) ov.setAttribute('data-theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+        } catch (e) { /* ignore */ }
+        try { if (window._updateMobileOverlay) window._updateMobileOverlay(); } catch (e) { /* ignore */ }
+    }
     applyTheme(localStorage.getItem(THEME_KEY) || theme);
-    $('#darkToggle').addEventListener('click', () => { theme = document.documentElement.classList.contains('light') ? 'dark' : 'light'; applyTheme(theme); showToast(theme === 'dark' ? 'Modo escuro ativado' : 'Modo claro ativado'); });
+    // guard header theme toggle (may be hidden on mobile)
+    const _hdrThemeBtn = $('#darkToggle');
+    if (_hdrThemeBtn) {
+        _hdrThemeBtn.addEventListener('click', () => {
+            console.debug('[theme] header toggle clicked');
+            theme = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+            applyTheme(theme);
+            showToast(theme === 'dark' ? 'Modo escuro ativado' : 'Modo claro ativado');
+        });
+    }
 
     /* Toast helper */
     function showToast(msg, t = 2000) { const el = $('#toast-instance'); el.style.display = 'block'; el.textContent = msg; el.classList.add('visible'); clearTimeout(el._to); el._to = setTimeout(() => { el.classList.remove('visible'); setTimeout(() => el.style.display = 'none', 260); }, t); }
@@ -160,10 +181,17 @@
                 nav.innerHTML = '';
                 Array.from(list.querySelectorAll('a')).forEach(a => {
                     const link = document.createElement('a');
-                    link.href = a.getAttribute('href') || '#';
-                    link.textContent = a.textContent.trim();
-                    link.setAttribute('data-href', link.href);
+                    const href = a.getAttribute('href') || '#';
+                    link.href = href;
+                    // preserve i18n keys so applyLang updates cloned links live
+                    const key = a.getAttribute('data-i18n');
+                    if (key) link.setAttribute('data-i18n', key);
+                    // store a default fallback for immediate visibility
+                    link.dataset.i18nDefault = a.textContent.trim() || '';
+                    link.setAttribute('data-href', href);
                     link.className = 'mobile-nav-link';
+                    // show something until translations are applied
+                    link.textContent = a.textContent.trim();
                     nav.appendChild(link);
                 });
 
@@ -186,20 +214,41 @@
                     l.addEventListener('click', mobileNavLinkHandler);
                 });
 
-                // wire toggles
+                // wire toggles: call applyLang/applyTheme directly for robustness
                 const mobileLang = ov.querySelector('.mobile-lang');
                 const mobileTheme = ov.querySelector('.mobile-theme');
-                if (mobileLang && langBtn) {
-                    mobileLang.removeEventListener('click', langBtn.click);
-                    mobileLang.addEventListener('click', () => langBtn.click());
+                if (mobileLang) {
+                    mobileLang.removeEventListener('click', mobileLang._handler);
+                    mobileLang._handler = function () {
+                        try {
+                            console.debug('[nav] mobile-lang clicked');
+                            // cycle languages (only pt/en)
+                            const order = ['pt', 'en'];
+                            const current = localStorage.getItem(LANG_KEY) || lang;
+                            let idx = order.indexOf(current); if (idx < 0) idx = 0; idx = (idx + 1) % order.length;
+                            applyLang(order[idx]);
+                        } catch (err) { console.error('[nav] mobile-lang handler error', err); }
+                    };
+                    mobileLang.addEventListener('click', mobileLang._handler);
                 }
-                if (mobileTheme && themeBtn) {
-                    mobileTheme.removeEventListener('click', themeBtn.click);
-                    mobileTheme.addEventListener('click', () => themeBtn.click());
+                if (mobileTheme) {
+                    mobileTheme.removeEventListener('click', mobileTheme._handler);
+                    mobileTheme._handler = function () {
+                        try {
+                            console.debug('[nav] mobile-theme clicked');
+                            theme = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+                            applyTheme(theme);
+                            showToast(theme === 'dark' ? 'Modo escuro ativado' : 'Modo claro ativado');
+                        } catch (err) { console.error('[nav] mobile-theme handler error', err); }
+                    };
+                    mobileTheme.addEventListener('click', mobileTheme._handler);
                 }
 
                 // focus management: move focus to first link
                 const first = nav.querySelector('.mobile-nav-link'); if (first) first.focus();
+
+                // ensure overlay texts & toggles reflect current state immediately
+                if (window._updateMobileOverlay) window._updateMobileOverlay();
 
                 // ESC to close
                 document.addEventListener('keydown', escHandler);
@@ -237,7 +286,30 @@
             } else if (h && h !== '#') { window.location.href = h; }
         }
 
-        btn.addEventListener('click', (e) => { try { if (document.querySelector('.mobile-menu-overlay')?.classList.contains('active')) closeMenu(); else openMenu(); } catch (err) { console.error('[nav] toggle click error', err); } });
+        // expose helper to refresh overlay labels and ensure translations update
+        window._updateMobileOverlay = function () {
+            try {
+                const ov = document.querySelector('.mobile-menu-overlay');
+                if (!ov) return;
+                // update toggles labels to reflect current header state
+                const hdrLang = document.getElementById('langToggle');
+                const hdrTheme = document.getElementById('darkToggle');
+                const mobileLangBtn = ov.querySelector('.mobile-lang');
+                const mobileThemeBtn = ov.querySelector('.mobile-theme');
+                if (mobileLangBtn && hdrLang) mobileLangBtn.textContent = hdrLang.textContent;
+                if (mobileThemeBtn && hdrTheme) mobileThemeBtn.textContent = hdrTheme.textContent || (document.documentElement.classList.contains('light') ? '☀️' : '🌙');
+                // ensure overlay carries theme state for CSS selectors
+                try { ov.setAttribute('data-theme', document.documentElement.classList.contains('light') ? 'light' : 'dark'); } catch (e) { /* ignore */ }
+                // run applyLang to update any elements (cloned anchors carry data-i18n)
+                try { applyLang(localStorage.getItem(LANG_KEY) || lang); } catch (e) { /* ignore */ }
+            } catch (err) { console.error('[nav] _updateMobileOverlay error', err); }
+        };
+
+        btn.addEventListener('click', (e) => {
+            // visual flash to confirm click fired (temporary for debugging)
+            try { btn.classList.add('clicked-flash'); setTimeout(() => btn.classList.remove('clicked-flash'), 300); } catch (e) { /* ignore */ }
+            try { if (document.querySelector('.mobile-menu-overlay')?.classList.contains('active')) closeMenu(); else openMenu(); } catch (err) { console.error('[nav] toggle click error', err); }
+        });
     })();
 
     /* Smooth anchor scrolling with offset */
