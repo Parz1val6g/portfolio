@@ -1,5 +1,4 @@
 <!doctype html>
-<!doctype html>
 <html lang="pt-PT">
 
 <head>
@@ -22,8 +21,6 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/inline.css">
-  <link rel="stylesheet" href="assets/css/hero-fullscreen.css">
 </head>
 
 <body>
@@ -44,9 +41,32 @@
       </nav>
 
       <div class="header-actions" role="toolbar" aria-label="Ações">
-        <button id="langToggle" class="btn icon" aria-haspopup="true" title="Mudar idioma">🌐 PT</button>
-        <button id="darkToggle" class="btn icon" aria-pressed="true" title="Alternar tema"
-          aria-label="Alternar tema">🌓</button>
+        <!-- Language Switcher: PT | EN format -->
+        <div class="lang-switcher" role="group" aria-label="Select language">
+          <button class="lang-option" data-lang="pt" aria-label="Português" aria-pressed="true">PT</button>
+          <span class="lang-divider" aria-hidden="true">|</span>
+          <button class="lang-option" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+        </div>
+        <!-- Theme Toggle: Icon-based -->
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="true"
+          title="Toggle dark mode">
+          <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
@@ -280,6 +300,7 @@
         <p style="margin:0">© <span id="year"></span> <span data-i18n="footer.name" data-lang="pt">Joel Tavares
             Martins</span>. <small class="muted" data-i18n="footer.rights" data-lang="pt">Todos os direitos
             reservados.</small></p>
+        <p class="footer-credit">Desenvolvido com a ajuda do navegador Comet e da aplicação Antigravity.</p>
       </div>
       <div><a class="btn ghost" href="https://www.linkedin.com/in/joel-tavares-martins-843bbb14a/" target="_blank"
           rel="noopener">LinkedIn</a> <a class="btn ghost" href="https://github.com/Parz1val6g" target="_blank"
@@ -290,7 +311,8 @@
 
   <div id="toast-instance" class="site-toast" aria-live="polite" role="status" style="display:none"></div>
 
-  <script src="assets/js/inline.js" defer></script>
+  <script src="assets/js/controls.js"></script>
+  <script src="assets/js/inline&comprehensive-fixes.js" defer></script>
 </body>
 
 </html>

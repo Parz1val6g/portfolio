@@ -1367,3 +1367,2517 @@ body.nav-open {
   transform: scale(0.98);
   transition: box-shadow 220ms ease, transform 160ms ease;
 }
+
+
+/* Inline styles extracted from index.html
+   Kept as a separate file to preserve the original single-file look.
+   This file is intentionally loaded after `assets/css/styles.css` so it can
+   override or provide compatibility variables used by the single-file page.
+*/
+/* Design tokens (exact values as requested) */
+:root {
+  --bg: #0a0a0a;
+  --bg-2: #0f1112;
+  --surface: #1a1a1e;
+  --accent: #00d4aa;
+  --accent-2: #00b894;
+  --text: #e0e0e0;
+  --text-muted: #8b949e;
+  --radius: 1rem;
+  --max-w: 1120px;
+  --pad-y: 5rem;
+  --pad-x: 1rem;
+  --card-pad: 1rem;
+  --shadow: 0 12px 30px rgba(2, 6, 12, 0.6);
+  --focus: 3px solid rgba(0, 212, 170, 0.12);
+  --h1: 3.2rem;
+  --h2: 2.5rem;
+  --base: 1.1rem;
+  --lh: 1.7;
+}
+
+:root.light {
+  --bg: #f8fafc;
+  --bg-2: #f1f6fb;
+  --surface: #ffffff;
+  --accent: #0066ff;
+  --accent-2: #004ee6;
+  --text: #0b1220;
+  --text-muted: #6b7785;
+  --shadow: 0 10px 28px rgba(10, 20, 30, 0.06);
+  --focus: 3px solid rgba(0, 100, 255, 0.12);
+}
+
+/* Base */
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), var(--bg-2));
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  font-size: var(--base);
+  line-height: var(--lh);
+  -webkit-font-smoothing: antialiased
+}
+
+img {
+  max-width: 100%;
+  display: block
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none
+}
+
+/* Layout container */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: calc(var(--pad-y)/2) var(--pad-x)
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: padding .22s ease, box-shadow .22s ease;
+  padding: 1rem 0
+}
+
+.site-header.scrolled {
+  padding: .38rem 0;
+  box-shadow: var(--shadow)
+}
+
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad-x);
+  gap: 1rem
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.05rem
+}
+
+nav.nav {
+  display: flex;
+  align-items: center;
+  gap: .6rem
+}
+
+ul.nav-list {
+  display: flex;
+  gap: .6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+ul.nav-list a {
+  padding: .5rem .7rem;
+  border-radius: .5rem;
+  color: var(--text-muted);
+  font-weight: 600
+}
+
+ul.nav-list a.active {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #041018
+}
+
+.header-actions {
+  display: flex;
+  gap: .5rem;
+  align-items: center
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem .75rem;
+  border-radius: .75rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-weight: 700
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #041018;
+  box-shadow: var(--shadow);
+  transition: transform .16s ease
+}
+
+.btn.primary:hover {
+  transform: scale(1.05)
+}
+
+.btn.ghost {
+  border: 1px solid rgba(255, 255, 255, 0.04)
+}
+
+.btn.icon {
+  padding: .5rem;
+  border-radius: .6rem
+}
+
+.nav-toggle {
+  display: none
+}
+
+@media (max-width:768px) {
+  ul.nav-list {
+    display: none
+  }
+
+  .nav-toggle {
+    display: inline-flex
+  }
+}
+
+main {
+  padding-top: calc(var(--pad-y) + 64px)
+}
+
+/* Hero */
+.hero {
+  min-height: 65vh;
+  display: flex;
+  align-items: center
+}
+
+/* Typing animation for hero title */
+.hero-title.typing {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.hero-title.typing::after {
+  content: '';
+  display: inline-block;
+  width: 0.2rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  background: var(--text);
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+@keyframes blink-cursor {
+
+  0%,
+  50% {
+    opacity: 1
+  }
+
+  51%,
+  100% {
+    opacity: 0
+  }
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 1.25rem;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--pad-x)
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.02);
+  padding: .35rem .6rem;
+  border-radius: .5rem;
+  color: var(--text-muted);
+  font-weight: 700
+}
+
+.hero-title {
+  font-size: var(--h1);
+  margin: .4rem 0 0 0
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin: .5rem 0
+}
+
+.hero-lead {
+  color: var(--text-muted);
+  max-width: 62ch
+}
+
+.hero-cta {
+  display: flex;
+  gap: .6rem;
+  margin-top: 1rem
+}
+
+.avatar {
+  width: 320px;
+  height: 320px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow)
+}
+
+/* Sections & cards unified */
+section {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.card {
+  background: var(--surface);
+  padding: var(--card-pad);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.card-grid {
+  display: grid;
+  gap: 1rem
+}
+
+.two-col {
+  grid-template-columns: 1fr 1fr
+}
+
+.card-item {
+  padding: .9rem;
+  border-radius: .9rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005));
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem
+}
+
+/* Skills grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: .75rem
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem
+}
+
+.skill-circle {
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  position: relative
+}
+
+.skill-circle svg {
+  width: 72px;
+  height: 72px;
+  transform: rotate(-90deg)
+}
+
+.skill-circle .bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 4
+}
+
+.skill-circle .progress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset .9s cubic-bezier(.2, .9, .2, 1)
+}
+
+.pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .85rem;
+  color: var(--text-muted);
+  position: absolute
+}
+
+/* Projects grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .9rem
+}
+
+.project-media img {
+  height: 160px;
+  object-fit: cover;
+  border-radius: .6rem
+}
+
+.project-actions {
+  display: flex;
+  gap: .5rem;
+  margin-top: auto
+}
+
+/* Blog grid */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .9rem
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem
+}
+
+/* Contact layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 1rem
+}
+
+@media (max-width:900px) {
+  .hero-inner {
+    grid-template-columns: 1fr 240px
+  }
+
+  .projects-grid,
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr
+  }
+}
+
+@media (max-width:520px) {
+  .hero-inner {
+    grid-template-columns: 1fr
+  }
+
+  .avatar {
+    width: 180px;
+    height: 180px
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr
+  }
+}
+
+/* Toast / back-to-top */
+.site-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  background: rgba(6, 8, 12, 0.88);
+  color: var(--text);
+  padding: .6rem .9rem;
+  border-radius: .6rem;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .22s ease, transform .22s ease;
+  pointer-events: none;
+  z-index: 9999
+}
+
+.site-toast.visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto
+}
+
+#backTop {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  background: var(--surface);
+  color: var(--text);
+  padding: .6rem;
+  border-radius: .6rem;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .24s ease, transform .24s ease;
+  pointer-events: none;
+  z-index: 80
+}
+
+#backTop.visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s cubic-bezier(.2, .9, .2, 1), transform .6s cubic-bezier(.2, .9, .2, 1)
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none
+}
+
+/* Focus & accessible hit-targets */
+:focus {
+  outline: none
+}
+
+:focus-visible {
+  outline: var(--focus);
+  outline-offset: 3px;
+  border-radius: .5rem
+}
+
+/* Small utilities */
+.muted {
+  color: var(--text-muted)
+}
+
+.badge {
+  display: inline-block;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  color: var(--text-muted)
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important
+  }
+}
+
+/* Hero full viewport height - navbar + hero = 100vh exato */
+/* Calcula 100vh menos a altura da navbar fixa (~80px) */
+.hero {
+  min-height: calc(100vh - 80px) !important;
+}
+
+/* Remove padding do main para hero começar logo após navbar */
+main {
+  padding-top: 0 !important;
+}
+
+
+/* ================================================================
+   SIMPLIFIED VISUAL DESIGN SYSTEM
+   Minimal color palette, consistent components, clean hierarchy
+   ================================================================ */
+
+/* ============================================================
+   MINIMAL 4-COLOR DESIGN SYSTEM
+   1. Background (dark) - ONE color for entire page
+   2. Surface (cards/sections) - ONE color for all cards
+   3. Accent (interactive) - ONE color for links/buttons
+   4. Text (neutrals) - Simple hierarchy
+   ============================================================ */
+:root {
+  /* 1. BACKGROUND - Single dark background for entire page */
+  --bg-main: #0d1117 !important;
+  --bg-0: #0d1117 !important;
+  --bg-1: #0d1117 !important;
+
+  /* 2. SURFACE - Single color for ALL cards and containers */
+  --surface: #161b22 !important;
+  --panel: #161b22 !important;
+  --card: #161b22 !important;
+  --glass: rgba(255, 255, 255, 0.03) !important;
+
+  /* 3. ACCENT - ONE accent color for all interactive elements */
+  --accent: #06d6a0 !important;
+  --accent-cyan: #06d6a0 !important;
+  --accent-strong: #08ffb8 !important;
+  --accent1: #06d6a0 !important;
+  --accent2: #06d6a0 !important;
+  --accent-gradient: linear-gradient(90deg, #06d6a0, #06d6a0) !important;
+  --primary: #06d6a0 !important;
+  --primary-contrast: #0a1a16 !important;
+
+  /* 4. TEXT - Simple neutral hierarchy */
+  --text: #e6edf3 !important;
+  --muted: #8b949e !important;
+
+  /* SIMPLIFIED BORDERS - Subtle, consistent */
+  --border: rgba(255, 255, 255, 0.08) !important;
+  --border-subtle: rgba(255, 255, 255, 0.04);
+
+  /* SIMPLIFIED SHADOWS - Clean, minimal */
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Light theme - same minimal approach */
+:root.light {
+  --bg-main: #ffffff !important;
+  --surface: #f6f8fa !important;
+  --accent: #06d6a0 !important;
+  --text: #24292f !important;
+  --muted: #57606a !important;
+  --border: rgba(27, 31, 36, 0.08) !important;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================
+   UNIFIED SECTION BACKGROUNDS - NO alternating colors
+   ============================================================ */
+body {
+  background: var(--bg-main) !important;
+}
+
+.section {
+  background: transparent !important;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: none !important;
+  padding: 3rem 0 !important;
+}
+
+/* Remove alternating backgrounds completely */
+.section:nth-child(even) {
+  background: transparent !important;
+}
+
+.hero {
+  background: transparent !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.hero::before,
+.hero::after {
+  display: none !important;
+}
+
+/* ============================================================
+   STANDARDIZED CARD DESIGN - Same style everywhere
+   ============================================================ */
+.card,
+.project-card,
+.card-item,
+.skill-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow) !important;
+  padding: 1.5rem !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* Remove all gradient backgrounds */
+.card::before,
+.project-card::before,
+.card-item::before {
+  display: none !important;
+}
+
+/* Simple, consistent hover state */
+.card:hover,
+.project-card:hover,
+.card-item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-md) !important;
+  border-color: var(--accent) !important;
+}
+
+.skill-card {
+  padding: 1.25rem !important;
+  text-align: center;
+}
+
+.skill-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-md) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Remove pulse animation - too busy */
+.skill-card:hover .skill-circle {
+  animation: none !important;
+}
+
+/* ============================================================
+   SIMPLIFIED RESUME SECTION - Remove nested boxes
+   ============================================================ */
+/* Remove nested card-item boxes in resume */
+#resume .card-item,
+.resume-grid .card-item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  padding-bottom: 1.5rem !important;
+}
+
+#resume .card-item:last-child {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Simple typography hierarchy for resume entries */
+#resume .card-item strong,
+.resume-grid .card-item strong {
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+#resume .card-item .muted,
+.resume-grid .card-item .muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+/* Clean up resume card containers */
+#resume .card,
+.resume-grid .card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  padding: 2rem !important;
+}
+
+#resume .card:hover {
+  transform: none !important;
+}
+
+/* ============================================================
+   SIMPLIFIED BUTTONS - Consistent accent usage
+   ============================================================ */
+.btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease !important;
+  border-radius: 8px !important;
+}
+
+.btn.primary {
+  background: var(--accent) !important;
+  color: var(--primary-contrast) !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(6, 214, 160, 0.25) !important;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.35) !important;
+  opacity: 0.9;
+}
+
+.btn.ghost {
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: var(--accent) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ============================================================
+   SIMPLIFIED NAVIGATION - Clean hover states
+   ============================================================ */
+.nav-list a {
+  transition: color 0.2s ease !important;
+  position: relative;
+}
+
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.nav-list a:hover {
+  color: var(--accent) !important;
+  transform: none !important;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+.nav-list a.active {
+  color: var(--accent) !important;
+}
+
+/* ============================================================
+   SIMPLIFIED HERO SECTION
+   ============================================================ */
+.hero-badge {
+  background: rgba(6, 214, 160, 0.08) !important;
+  border: 1px solid rgba(6, 214, 160, 0.15) !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+.hero-badge:hover {
+  transform: none !important;
+}
+
+.avatar {
+  border: 2px solid var(--border) !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.avatar:hover {
+  transform: scale(1.01) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: var(--border) !important;
+}
+
+/* ============================================================
+   SIMPLIFIED PROJECT CARDS
+   ============================================================ */
+.project-media img {
+  transition: transform 0.3s ease !important;
+}
+
+.project-card:hover .project-media img {
+  transform: scale(1.03) !important;
+}
+
+/* ============================================================
+   SIMPLIFIED FOOTER
+   ============================================================ */
+footer {
+  background: transparent !important;
+  border-top: 1px solid var(--border-subtle) !important;
+}
+
+footer a {
+  transition: color 0.2s ease !important;
+  position: relative;
+}
+
+footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--accent) !important;
+  transform: none !important;
+}
+
+footer a:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   SIMPLIFIED FORMS
+   ============================================================ */
+input,
+textarea {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  border-radius: 8px !important;
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--border) !important;
+  background: var(--surface) !important;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.1) !important;
+  transform: none !important;
+  background: var(--surface) !important;
+}
+
+/* ============================================================
+   SIMPLIFIED BACK-TO-TOP
+   ============================================================ */
+#backTop {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#backTop:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: var(--accent) !important;
+  background: var(--surface) !important;
+}
+
+/* ============================================================
+   SIMPLIFIED ANIMATIONS - Less intense
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: none !important;
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  filter: none !important;
+}
+
+/* Remove stagger delays - too much animation */
+.card-grid .card,
+.projects-grid .card-item,
+.skills-grid .skill-card {
+  transition-delay: 0ms !important;
+}
+
+/* ============================================================
+   REMOVE VISUAL NOISE - Animations
+   ============================================================ */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    filter: none !important;
+  }
+}
+
+/* ============================================================
+   LIGHT MODE - Same minimal approach
+   ============================================================ */
+html.light .card,
+html.light .project-card,
+html.light .card-item,
+html.light .skill-card {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+html.light .card:hover,
+html.light .project-card:hover,
+html.light .card-item:hover,
+html.light .skill-card:hover {
+  box-shadow: var(--shadow-md) !important;
+  border-color: var(--accent) !important;
+}
+
+html.light input,
+html.light textarea {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+}
+
+html.light input:focus,
+html.light textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.1) !important;
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE - No changes to structure
+   ============================================================ */
+@media (hover: none) {
+
+  .card:hover,
+  .project-card:hover,
+  .skill-card:hover {
+    transform: none !important;
+  }
+}
+
+
+
+/* ================================================================
+   LANGUAGE SWITCHER & THEME TOGGLE STYLES
+   Clean, accessible controls consistent with minimal design
+   ================================================================ */
+
+/* ============================================================
+   HEADER ACTIONS LAYOUT
+   ============================================================ */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ============================================================
+   LANGUAGE SWITCHER - PT | EN Format
+   ============================================================ */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.lang-switcher:hover {
+  border-color: var(--accent);
+}
+
+.lang-option {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.25rem 0.4rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+  min-width: 28px;
+  text-align: center;
+}
+
+.lang-option:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lang-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Active language state */
+.lang-option[aria-pressed="true"] {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lang-divider {
+  color: var(--border);
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+/* ============================================================
+   THEME TOGGLE - Icon-based with Sun/Moon
+   ============================================================ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  min-width: 44px;
+  min-height: 44px;
+  position: relative;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Theme icons */
+.theme-icon {
+  color: var(--text);
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  position: absolute;
+}
+
+/* Show/hide icons based on theme */
+.theme-icon-dark {
+  opacity: 1;
+}
+
+.theme-icon-light {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+/* When light mode is active */
+:root.light .theme-icon-dark {
+  opacity: 0;
+  transform: rotate(-180deg);
+}
+
+:root.light .theme-icon-light {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+@media (max-width: 767px) {
+  .header-actions {
+    gap: 0.75rem;
+  }
+
+  .lang-switcher {
+    padding: 0.3rem 0.5rem;
+  }
+
+  .lang-option {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.3rem;
+    min-width: 26px;
+  }
+
+  .theme-toggle {
+    padding: 0.45rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .theme-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ============================================================
+   MOBILE MENU - Replicate controls in mobile overlay
+   ============================================================ */
+.mobile-menu-overlay .mobile-toggles {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.mobile-menu-overlay .lang-switcher {
+  flex: 1;
+  max-width: 140px;
+  justify-content: center;
+}
+
+.mobile-menu-overlay .theme-toggle {
+  flex: 0 0 auto;
+}
+
+/* ============================================================
+   ACCESSIBILITY - High Contrast Mode
+   ============================================================ */
+@media (prefers-contrast: high) {
+
+  .lang-switcher,
+  .theme-toggle {
+    border-width: 2px;
+  }
+
+  .lang-option[aria-pressed="true"] {
+    text-decoration: underline;
+  }
+}
+
+/* ============================================================
+   LIGHT MODE ADJUSTMENTS
+   ============================================================ */
+:root.light .lang-switcher,
+:root.light .theme-toggle {
+  border-color: rgba(27, 31, 36, 0.12);
+}
+
+:root.light .lang-switcher:hover,
+:root.light .theme-toggle:hover {
+  border-color: var(--accent);
+  background: rgba(6, 214, 160, 0.05);
+}
+
+:root.light .lang-option {
+  color: var(--muted);
+}
+
+:root.light .lang-option:hover {
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+:root.light .lang-divider {
+  color: rgba(27, 31, 36, 0.15);
+}
+
+:root.light .theme-icon {
+  color: var(--text);
+}
+
+/* ================================================================
+   FINAL POLISH: RESPONSIVE, FORM, LIGHT THEME & CREDIT
+   Contact form upgrade, light theme fixes, full responsiveness
+   ================================================================ */
+
+/* ============================================================
+   ENHANCED FORM STYLING - Modern, Clean Inputs
+   ============================================================ */
+
+/* Form container */
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Labels */
+#contactForm label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+/* Modern input styling */
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  background: var(--input-bg) !important;
+  border: 2px solid var(--input-border) !important;
+  border-radius: 8px;
+  color: var(--text) !important;
+  transition: border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Placeholder styling */
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+  color: var(--text-placeholder);
+  opacity: 0.6;
+}
+
+/* Hover state */
+#contactForm input:hover,
+#contactForm textarea:hover {
+  border-color: var(--input-border-hover) !important;
+  background: var(--input-bg-hover) !important;
+}
+
+/* Focus state with glow */
+#contactForm input:focus,
+#contactForm textarea:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  background: var(--input-bg-focus) !important;
+}
+
+/* Textarea specific */
+#contactForm textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Form actions (buttons) */
+#contactForm .actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Primary button (Enviar) */
+#contactForm .btn.primary {
+  background: var(--accent) !important;
+  color: #0a1a16;
+  border: none;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 2px 8px rgba(6, 214, 160, 0.25);
+  min-width: 120px;
+}
+
+#contactForm .btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(6, 214, 160, 0.35);
+  opacity: 0.95;
+}
+
+#contactForm .btn.primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary button (Limpar) */
+#contactForm .btn.ghost {
+  background: transparent !important;
+  color: var(--text);
+  border: 2px solid var(--border);
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  min-width: 120px;
+}
+
+#contactForm .btn.ghost:hover {
+  border-color: var(--accent);
+  background: rgba(6, 214, 160, 0.05) !important;
+  transform: translateY(-1px);
+}
+
+/* Feedback message */
+#contactFeedback {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: none;
+}
+
+#contactFeedback:not(:empty) {
+  display: block;
+}
+
+/* Success state */
+#contactFeedback.success {
+  background: rgba(6, 214, 160, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(6, 214, 160, 0.3);
+}
+
+/* Error state */
+#contactFeedback.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* ============================================================
+   ENHANCED LIGHT THEME VARIABLES & FIXES
+   ============================================================ */
+
+:root {
+  /* Dark theme input variables */
+  --input-bg: #1a1f28;
+  --input-bg-hover: #1e242e;
+  --input-bg-focus: #1e242e;
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-border-hover: rgba(255, 255, 255, 0.15);
+  --text-placeholder: #8b949e;
+}
+
+:root.light {
+  /* Light theme - complete overhaul */
+  --bg-main: #ffffff !important;
+  --surface: #f6f8fa !important;
+  --text: #24292f !important;
+  --muted: #57606a !important;
+  --border: rgba(27, 31, 36, 0.1) !important;
+  --accent: #06d6a0 !important;
+
+  /* Light theme input variables */
+  --input-bg: #ffffff;
+  --input-bg-hover: #f6f8fa;
+  --input-bg-focus: #ffffff;
+  --input-border: rgba(27, 31, 36, 0.15);
+  --input-border-hover: rgba(27, 31, 36, 0.2);
+  --text-placeholder: #656d76;
+
+  /* Light theme shadows */
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.10), 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Light theme body */
+:root.light body {
+  background: var(--bg-main);
+  color: var(--text);
+}
+
+/* Light theme cards */
+:root.light .card,
+:root.light .project-card,
+:root.light .card-item,
+:root.light .skill-card {
+  background: var(--surface) !important;
+  border-color: var(--border) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* Light theme sections */
+:root.light .section {
+  border-top-color: rgba(27, 31, 36, 0.08);
+}
+
+/* Light theme header */
+:root.light .site-header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
+  border-bottom-color: rgba(27, 31, 36, 0.08);
+}
+
+/* Light theme nav links */
+:root.light .nav-list a {
+  color: var(--muted);
+}
+
+:root.light .nav-list a:hover,
+:root.light .nav-list a.active {
+  color: var(--accent);
+}
+
+/* Light theme footer */
+:root.light footer {
+  border-top-color: rgba(27, 31, 36, 0.08);
+}
+
+/* Light theme back-to-top */
+:root.light #backTop {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* ============================================================
+   FULL RESPONSIVE DESIGN
+   ============================================================ */
+
+/* Base: Mobile-First (< 768px) */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 2.5rem 0;
+}
+
+/* Hero Section - Mobile */
+@media (max-width: 767px) {
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .avatar-wrap {
+    order: -1;
+    margin: 0 auto;
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* About & Resume - Mobile */
+@media (max-width: 767px) {
+
+  .card-grid.two-col,
+  .two-col {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .resume-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Skills Grid - Mobile */
+@media (max-width: 767px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem;
+  }
+
+  .skill-card {
+    padding: 1rem !important;
+  }
+
+  .skill-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-circle svg {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Projects Grid - Mobile */
+@media (max-width: 767px) {
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+}
+
+/* Contact Grid - Mobile */
+@media (max-width: 767px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  #contactForm .actions {
+    flex-direction: column;
+  }
+
+  #contactForm .btn {
+    width: 100%;
+  }
+}
+
+/* Footer - Mobile */
+@media (max-width: 767px) {
+  footer .container>div {
+    flex-direction: column !important;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  footer .container>div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-inner {
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+  }
+
+  .avatar {
+    width: 260px;
+    height: 260px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr 360px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr 420px;
+  }
+}
+
+/* Typography Scaling */
+@media (max-width: 767px) {
+  :root {
+    --h1: 2.25rem;
+    --h2: 1.75rem;
+    --base-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Ensure no horizontal scroll */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   FOOTER CREDIT STYLING
+   ============================================================ */
+.footer-credit {
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.7;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+:root.light .footer-credit {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+@media (max-width: 767px) {
+  .footer-credit {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================================ */
+
+/* Ensure touch targets are adequate on mobile */
+@media (max-width: 767px) and (hover: none) {
+
+  .btn,
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .nav-list a {
+    padding: 0.875rem 1rem;
+  }
+}
+
+/* Focus visible improvements */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  :root.light {
+    --border: rgba(27, 31, 36, 0.3) !important;
+  }
+
+  .btn {
+    border-width: 2px !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ================================================================
+   MOBILE-FOCUSED FIXES & IMPROVEMENTS
+   Hero spacing, projects carousel, reduced mobile length
+   ================================================================ */
+
+/* ============================================================
+   HERO SECTION - IMPROVED MOBILE SPACING
+   ============================================================ */
+
+/* Mobile: More comfortable spacing between avatar and text */
+@media (max-width: 767px) {
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    /* Increased from 2rem */
+    text-align: center;
+    padding: 2rem 0 3rem !important;
+  }
+
+  .avatar-wrap {
+    order: -1;
+    margin: 0 auto 1.5rem !important;
+    /* Extra bottom margin */
+  }
+
+  .avatar {
+    width: 180px !important;
+    /* Slightly smaller */
+    height: 180px !important;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.875rem;
+    margin-top: 1.5rem !important;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+/* ============================================================
+   MOBILE PROJECTS - HORIZONTAL SCROLL CAROUSEL
+   ============================================================ */
+
+/* Mobile-only carousel container */
+@media (max-width: 767px) {
+  .projects-section {
+    padding: 2rem 0 !important;
+    /* Reduced from 2.5rem */
+  }
+
+  /* Carousel wrapper */
+  .projects-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    gap: 1rem !important;
+    padding: 1rem 0 1rem 1rem !important;
+    margin: 0 -1rem !important;
+    /* Bleed to edges */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .projects-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Project cards in carousel */
+  .projects-grid .card-item {
+    flex: 0 0 85% !important;
+    /* 85% width cards */
+    max-width: 340px !important;
+    scroll-snap-align: start;
+    margin-right: 0 !important;
+  }
+
+  .projects-grid .card-item:last-child {
+    margin-right: 1rem !important;
+    /* Right padding on last item */
+  }
+
+  /* More compact card content */
+  .projects-grid .card-item {
+    padding: 1.25rem !important;
+  }
+
+  .project-media {
+    height: 160px !important;
+    /* Shorter images */
+    margin-bottom: 1rem !important;
+  }
+
+  .project-info h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .project-info p {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .project-tags {
+    gap: 0.4rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .tech-tag {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Carousel scroll indicator (optional) */
+@media (max-width: 767px) {
+  .projects-section::after {
+    content: '← Deslizar para ver mais projetos →';
+    display: block;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 1rem;
+    opacity: 0.7;
+  }
+}
+
+/* ============================================================
+   REDUCED MOBILE SPACING - OVERALL LENGTH
+   ============================================================ */
+
+/* Reduce section padding on mobile */
+@media (max-width: 767px) {
+  .section {
+    padding: 2rem 0 !important;
+    /* Reduced from 2.5rem / 3rem */
+  }
+
+  /* Specific sections */
+  #about {
+    padding: 2rem 0 !important;
+  }
+
+  #resume {
+    padding: 2rem 0 !important;
+  }
+
+  #skills {
+    padding: 2rem 0 !important;
+  }
+
+  #contact {
+    padding: 2rem 0 !important;
+  }
+
+  /* Section titles */
+  .section h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1.25rem !important;
+    /* Reduced */
+  }
+
+  /* Card gaps reduced */
+  .card-grid,
+  .resume-grid {
+    gap: 1.25rem !important;
+    /* Reduced from 1.5rem */
+  }
+
+  .skills-grid {
+    gap: 0.875rem !important;
+    /* Reduced */
+  }
+
+  /* Card padding reduced */
+  .card {
+    padding: 1.25rem !important;
+    /* Reduced from 1.5rem */
+  }
+
+  .skill-card {
+    padding: 1rem !important;
+  }
+}
+
+/* ============================================================
+   RESUME SECTION - COMPACT ON MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+  #resume .card {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  #resume .card-item {
+    padding-bottom: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  #resume .card-item strong {
+    font-size: 1rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  #resume .card-item .muted {
+    font-size: 0.85rem !important;
+  }
+
+  #resume .card-item p {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* ============================================================
+   SKILLS - MORE COMPACT ON MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .skill-circle {
+    width: 70px !important;
+    /* Reduced from 80px */
+    height: 70px !important;
+  }
+
+  .skill-circle svg {
+    width: 56px !important;
+    /* Reduced */
+    height: 56px !important;
+  }
+
+  .skill-card p {
+    font-size: 0.85rem !important;
+    margin-top: 0.5rem !important;
+  }
+}
+
+/* ============================================================
+   CONTACT - COMPACT ON MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+  #contact {
+    padding: 2rem 0 !important;
+  }
+
+  .contact-grid {
+    gap: 1.5rem !important;
+    /* Reduced from 2rem */
+  }
+
+  #contactForm {
+    gap: 1rem !important;
+    /* Reduced */
+  }
+
+  #contactForm label {
+    margin-bottom: 0.4rem !important;
+  }
+
+  #contactForm input,
+  #contactForm textarea {
+    padding: 0.75rem 0.875rem !important;
+    /* Slightly reduced */
+  }
+
+  #contactForm textarea {
+    min-height: 120px !important;
+    /* Reduced from 140px */
+  }
+
+  #contactForm .btn {
+    padding: 0.75rem 1.5rem !important;
+  }
+}
+
+/* ============================================================
+   FOOTER - COMPACT ON MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+  footer {
+    padding: 1.5rem 0 !important;
+    /* Reduced from 2rem */
+  }
+
+  footer .container>div {
+    gap: 1rem !important;
+  }
+
+  .footer-credit {
+    margin-top: 0.75rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* ============================================================
+   STICKY HEADER - BETTER MOBILE NAVIGATION
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  :root.light .site-header {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* ============================================================
+   BACK TO TOP - MORE PROMINENT ON MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+  #backTop {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.5rem !important;
+    bottom: 1.5rem;
+    right: 1rem;
+  }
+}
+
+/* ============================================================
+   TYPOGRAPHY ADJUSTMENTS - READABILITY
+   ============================================================ */
+
+@media (max-width: 767px) {
+  body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.35;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    line-height: 1.4;
+  }
+
+  p {
+    margin-bottom: 0.875rem;
+  }
+}
+
+/* ============================================================
+   PREVENT LAYOUT SHIFTS
+   ============================================================ */
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ================================================================
+   CRITICAL BUG FIXES - Consolidated
+   Hero typing, language colors, hamburger menu, duplicate toggles
+   ================================================================ */
+
+/* ============================================================
+   FIX 1: HERO TYPING - DESKTOP STABLE LAYOUT
+   ============================================================ */
+
+/* Desktop: Allow natural wrapping, no constraints */
+@media (min-width: 1024px) {
+  .hero-title {
+    white-space: normal !important;
+    overflow: visible !important;
+    min-height: auto !important;
+    max-width: 100% !important;
+  }
+
+  /* During typing on desktop: still allow wrapping */
+  .hero-title.typing {
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+
+  /* Hero grid stable on desktop */
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Avatar column fixed */
+  .avatar-wrap {
+    width: 360px;
+    height: 360px;
+    flex-shrink: 0;
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Tablet: Balance between mobile and desktop */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-title {
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 3rem;
+  }
+
+  .hero-title.typing {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .hero-title:not(.typing) {
+    white-space: normal;
+    overflow: visible;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+  }
+
+  .avatar-wrap {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* Mobile: Keep overflow hidden */
+@media (max-width: 767px) {
+  .hero-title {
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 3.5rem;
+    font-size: 1.75rem !important;
+  }
+
+  .hero-title.typing {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .hero-title:not(.typing) {
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+}
+
+/* ============================================================
+   FIX 2: LANGUAGE TOGGLE - LIGHT THEME COLORS
+   ============================================================ */
+
+/* Dark theme (default) - already correct */
+.lang-switcher {
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+.lang-option {
+  color: var(--muted);
+}
+
+.lang-option[aria-pressed="true"] {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lang-divider {
+  color: var(--border);
+}
+
+/* Light theme - proper contrast */
+:root.light .lang-switcher {
+  background: transparent;
+  border: 1px solid rgba(27, 31, 36, 0.15);
+}
+
+:root.light .lang-switcher:hover {
+  border-color: var(--accent);
+  background: rgba(6, 214, 160, 0.05);
+}
+
+:root.light .lang-option {
+  color: #57606a;
+  /* Muted but readable */
+}
+
+:root.light .lang-option:hover {
+  color: #24292f;
+  /* Dark text */
+  background: rgba(0, 0, 0, 0.03);
+}
+
+:root.light .lang-option[aria-pressed="true"] {
+  color: #06d6a0;
+  /* Accent green - stands out */
+  font-weight: 700;
+}
+
+:root.light .lang-divider {
+  color: rgba(27, 31, 36, 0.2);
+}
+
+/* ============================================================
+   FIX 3: HAMBURGER MENU - ENSURE CLICKABLE
+   ============================================================ */
+
+/* Increase z-index and ensure pointer events */
+.mobile-menu-overlay.active {
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  display: flex !important;
+}
+
+/* Ensure nav links are clickable */
+.mobile-menu-overlay .mobile-nav a {
+  position: relative;
+  z-index: 100000;
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(6, 214, 160, 0.2);
+}
+
+/* Make sure close button works */
+.mobile-menu-overlay .mobile-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 100001;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Prevent body scroll when menu open */
+body.nav-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* ============================================================
+   FIX 4: HIDE DUPLICATE TOGGLES IN HAMBURGER
+   ============================================================ */
+
+/* Hide the mobile toggles section completely */
+.mobile-menu-overlay .mobile-toggles {
+  display: none !important;
+}
+
+/* Keep header toggles visible and accessible on mobile */
+@media (max-width: 767px) {
+  .header-actions {
+    display: flex !important;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .lang-switcher,
+  .theme-toggle {
+    display: flex !important;
+  }
+}
+
+/* Ensure header is always visible */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+:root.light .site-header {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================================
+   ADDITIONAL FIXES
+   ============================================================ */
+
+/* Ensure hamburger button is tappable */
+#navToggle {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(6, 214, 160, 0.2);
+}
+
+/* Visual feedback for hamburger click */
+#navToggle:active {
+  transform: scale(0.95);
+}
+
+/* Prevent any overlay interference */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  touch-action: pan-y;
+}
+
+/* Smooth transitions */
+.mobile-menu-overlay {
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.mobile-menu-overlay:not(.active) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Nav link active state */
+.mobile-menu-overlay .mobile-nav a:active {
+  background: rgba(6, 214, 160, 0.1);
+  transform: translateX(6px) scale(0.98);
+}
+
+
+/* ================================================================
+   TYPING ANIMATION FIX - Additional CSS Override
+   Ensures full text displays without truncation
+   ================================================================ */
+
+/* Force proper text wrapping during typing animation */
+.hero-title {
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  hyphens: auto;
+}
+
+/* Even during typing, allow wrapping on small screens */
+@media (max-width: 767px) {
+  .hero-title.typing {
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+}
+
+/* Tablet and desktop: allow natural wrapping */
+@media (min-width: 768px) {
+  .hero-title {
+    white-space: normal !important;
+    min-height: auto;
+  }
+
+  .hero-title.typing {
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+}
+
+/* Ensure text never gets cut off */
+.hero-title::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+}
+
+
+
+
+/* ================================================================
+   RESPONSIVE NAVIGATION FIX
+   Hide hamburger on desktop, show proper nav
+   ================================================================ */
+
+/* Desktop: Hide hamburger, show navigation */
+@media (min-width: 769px) {
+
+  #navToggle,
+  .nav-toggle,
+  .hamburger-menu,
+  .mobile-menu-toggle {
+    display: none !important;
+    /* Hide hamburger on desktop */
+  }
+
+  .nav-list {
+    display: flex !important;
+    /* Show desktop nav */
+    position: static !important;
+    flex-direction: row !important;
+    transform: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+
+  .mobile-menu-overlay {
+    display: none !important;
+    /* No mobile overlay on desktop */
+  }
+}
+
+/* Mobile: Show hamburger, hide desktop nav */
+@media (max-width: 768px) {
+
+  #navToggle,
+  .nav-toggle {
+    display: flex !important;
+    /* Show hamburger on mobile */
+  }
+
+  .nav-list {
+    /* Mobile navigation handled by overlay */
+    position: fixed;
+    transform: translateX(100%);
+  }
+}

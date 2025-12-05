@@ -16,6 +16,7 @@
             'edu.azure': 'Virtualização, Sistemas Operativos e Redes',
             'edu.pint': 'SPLNET: Software C# para automação industrial, redes Ethernet e videovigilância',
             'resume.title': 'Currículo', 'resume.education': 'Educação', 'resume.education.detail': 'Programação (Java, C/C++), Redes, Bases de Dados, Engenharia de Software.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, bancos de dados', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testes', 'resume.experience': 'Experiência', 'resume.position': 'Colaborador académico / Desenvolvedor', 'resume.experience.detail': 'Desenvolvimento de backends, integração com BD e pipelines CI/CD',
+            'nav.about': 'Sobre', 'nav.resume': 'CV', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.contact': 'Contacto',
             'skills.title': 'Skills', 'skills.lead': 'Competências principais com percentagens representadas visualmente.', 'projects.title': 'Projetos', 'projects.lead': 'Projetos académicos e pessoais com foco em backend, APIs e Azure.', 'blog.title': 'Blog & Artigos', 'contact.title': 'Contacto', 'contact.response': 'Respondo em 24h via email/LinkedIn', 'form.name': 'Nome', 'form.email': 'Email', 'form.message': 'Mensagem', 'form.send': 'Enviar', 'form.clear': 'Limpar', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'Todos os direitos reservados.', 'project.api.title': 'API de Gestão Académica', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'Pipeline PINT / J.A.R.V.I.S.', 'project.pint.tech': 'Node.js • GitHub Actions • Testes • IaC', 'project.auth.title': 'Microserviço de Autenticação', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Procurar artigos, tutoriais...'
         },
         en: {
@@ -32,10 +33,14 @@
             'edu.azure': 'Virtualization, Operating Systems and Networks',
             'edu.pint': 'SPLNET: C# software for industrial automation, Ethernet networks and video surveillance',
             'resume.title': 'Resume', 'resume.education': 'Education', 'resume.education.detail': 'Programming (Java, C/C++), Networks, Databases, Software Engineering.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, databases', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testing', 'resume.experience': 'Experience', 'resume.position': 'Academic collaborator / Developer', 'resume.experience.detail': 'Backend development, DB integration and CI/CD pipelines',
+            'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills', 'nav.projects': 'Projects', 'nav.contact': 'Contact',
             'skills.title': 'Skills', 'skills.lead': 'Core competencies with percentages visualised.', 'projects.title': 'Projects', 'projects.lead': 'Academic and personal projects focused on backend, APIs and Azure.', 'blog.title': 'Blog & Articles', 'contact.title': 'Contact', 'contact.response': 'I reply within 24h via email/LinkedIn', 'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send', 'form.clear': 'Clear', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'All rights reserved.', 'project.api.title': 'Academic Management API', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'PINT / J.A.R.V.I.S. Pipeline', 'project.pint.tech': 'Node.js • GitHub Actions • Testing • IaC', 'project.auth.title': 'Authentication Microservice', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Search posts, tutorials...'
         },
         es: {}
     };
+
+    // Expose I18N globally for other scripts
+    window.I18N = I18N;
 
     const $ = s => document.querySelector(s);
     const $$ = s => Array.from(document.querySelectorAll(s));
@@ -93,37 +98,51 @@
         try { if (window._updateMobileOverlay) window._updateMobileOverlay(); } catch (e) { /* ignore */ }
     }
     applyLang(localStorage.getItem(LANG_KEY) || lang);
-    // Restore simple cycle toggle (click to rotate languages). Do not show a dropdown.
+
+    // Expose applyLang globally for language toggle
+    window.applyLang = applyLang;
+
+    // NEW: Setup language buttons (PT | EN)
     (function setupLangToggle() {
-        const langBtn = $('#langToggle');
-        if (!langBtn) return;
-        // Only support Portuguese and English in the cycle to avoid accidental Spanish fallbacks
-        const order = ['pt', 'en'];
+        const langButtons = $$('.lang-option');
+        if (!langButtons || langButtons.length === 0) return;
 
-        // Ensure any previously injected menu is hidden/removed
-        try {
-            const existing = document.getElementById('langMenu');
-            if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-        } catch (e) { /* ignore */ }
+        // Update button states based on current language
+        function updateLangButtons(currentLang) {
+            langButtons.forEach(btn => {
+                const btnLang = btn.getAttribute('data-lang');
+                const isActive = btnLang === currentLang;
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+        }
 
-        langBtn.setAttribute('aria-haspopup', 'false');
-        langBtn.setAttribute('aria-expanded', 'false');
+        // Initialize button states
+        updateLangButtons(lang);
 
-        langBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            let idx = order.indexOf(lang);
-            if (idx < 0) idx = 0;
-            idx = (idx + 1) % order.length;
-            applyLang(order[idx]);
+        // Add click handlers
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const newLang = btn.getAttribute('data-lang');
+                if (newLang && (newLang === 'pt' || newLang === 'en')) {
+                    applyLang(newLang);
+                    updateLangButtons(newLang);
+                }
+            });
         });
     })();
+
 
     /* Theme */
     const THEME_KEY = 'site_theme';
     let theme = localStorage.getItem(THEME_KEY) || 'dark';
     function applyTheme(t) {
         if (t === 'light') document.documentElement.classList.add('light'); else document.documentElement.classList.remove('light');
-        const dt = $('#darkToggle'); if (dt) dt.setAttribute('aria-pressed', String(t !== 'light'));
+        // Update both old and new theme toggle buttons
+        const dt = $('#darkToggle');
+        const tt = $('#themeToggle');
+        if (dt) dt.setAttribute('aria-pressed', String(t !== 'light'));
+        if (tt) tt.setAttribute('aria-pressed', String(t === 'dark'));
         localStorage.setItem(THEME_KEY, t);
         // update overlay attribute so CSS can react immediately
         try {
@@ -133,11 +152,23 @@
         try { if (window._updateMobileOverlay) window._updateMobileOverlay(); } catch (e) { /* ignore */ }
     }
     applyTheme(localStorage.getItem(THEME_KEY) || theme);
-    // guard header theme toggle (may be hidden on mobile)
-    const _hdrThemeBtn = $('#darkToggle');
+
+    // Handle both old and new theme toggle buttons
+    const _hdrThemeBtn = $('#darkToggle') || $('#themeToggle');
+    const _newThemeBtn = $('#themeToggle');
+
     if (_hdrThemeBtn) {
         _hdrThemeBtn.addEventListener('click', () => {
             console.debug('[theme] header toggle clicked');
+            theme = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+            applyTheme(theme);
+            showToast(theme === 'dark' ? 'Modo escuro ativado' : 'Modo claro ativado');
+        });
+    }
+
+    if (_newThemeBtn && _newThemeBtn !== _hdrThemeBtn) {
+        _newThemeBtn.addEventListener('click', () => {
+            console.debug('[theme] new toggle clicked');
             theme = document.documentElement.classList.contains('light') ? 'dark' : 'light';
             applyTheme(theme);
             showToast(theme === 'dark' ? 'Modo escuro ativado' : 'Modo claro ativado');
@@ -170,10 +201,6 @@
                 ov.innerHTML = `
                 <button class="mobile-close" aria-label="Fechar menu">×</button>
                 <nav class="mobile-nav" role="navigation" aria-label="Menu móvel"></nav>
-                <div class="mobile-toggles">
-                  <button class="mobile-lang btn" aria-label="Mudar idioma">${langBtn ? langBtn.textContent : '🌐'}</button>
-                  <button class="mobile-theme btn" aria-label="Alternar tema">${themeBtn ? themeBtn.textContent : '🌓'}</button>
-                </div>
             `;
                 document.body.appendChild(ov);
                 return ov;
@@ -226,41 +253,14 @@
                 ov.removeEventListener('click', overlayBackdropHandler);
                 ov.addEventListener('click', overlayBackdropHandler);
 
-                // wire nav links to close and navigate
+                // Wire nav links to close and navigate
+                // DISABLED: comprehensive-fixes.js handles mobile links now
+                /*
                 Array.from(nav.querySelectorAll('.mobile-nav-link')).forEach(l => {
                     l.removeEventListener('click', mobileNavLinkHandler);
                     l.addEventListener('click', mobileNavLinkHandler);
                 });
-
-                // wire toggles: call applyLang/applyTheme directly for robustness
-                const mobileLang = ov.querySelector('.mobile-lang');
-                const mobileTheme = ov.querySelector('.mobile-theme');
-                if (mobileLang) {
-                    mobileLang.removeEventListener('click', mobileLang._handler);
-                    mobileLang._handler = function () {
-                        try {
-                            console.debug('[nav] mobile-lang clicked');
-                            // cycle languages (only pt/en)
-                            const order = ['pt', 'en'];
-                            const current = localStorage.getItem(LANG_KEY) || lang;
-                            let idx = order.indexOf(current); if (idx < 0) idx = 0; idx = (idx + 1) % order.length;
-                            applyLang(order[idx]);
-                        } catch (err) { console.error('[nav] mobile-lang handler error', err); }
-                    };
-                    mobileLang.addEventListener('click', mobileLang._handler);
-                }
-                if (mobileTheme) {
-                    mobileTheme.removeEventListener('click', mobileTheme._handler);
-                    mobileTheme._handler = function () {
-                        try {
-                            console.debug('[nav] mobile-theme clicked');
-                            theme = document.documentElement.classList.contains('light') ? 'dark' : 'light';
-                            applyTheme(theme);
-                            showToast(theme === 'dark' ? 'Modo escuro ativado' : 'Modo claro ativado');
-                        } catch (err) { console.error('[nav] mobile-theme handler error', err); }
-                    };
-                    mobileTheme.addEventListener('click', mobileTheme._handler);
-                }
+                */
 
                 // focus management: move focus to first link
                 const first = nav.querySelector('.mobile-nav-link'); if (first) first.focus();
@@ -295,13 +295,32 @@
         function overlayBackdropHandler(ev) { if (ev.target === ev.currentTarget) closeMenu(); }
 
         function mobileNavLinkHandler(e) {
+            // Stop propagation to prevent global anchor handler from interfering
             e.preventDefault();
+            e.stopPropagation();
+
+            const h = e.currentTarget.getAttribute('data-href') || e.currentTarget.getAttribute('href');
+
+            console.debug('[nav] mobile nav link clicked:', h);
+
+            // Close menu first
             closeMenu();
-            const h = e.currentTarget.getAttribute('data-href');
-            if (h && h.startsWith('#')) {
-                const target = document.querySelector(h);
-                if (target) { const top = target.getBoundingClientRect().top + window.scrollY - (16 + 56); window.scrollTo({ top, behavior: 'smooth' }); }
-            } else if (h && h !== '#') { window.location.href = h; }
+
+            // Then navigate
+            if (h && h.startsWith('#') && h !== '#') {
+                // Small delay to let menu close smoothly
+                setTimeout(() => {
+                    const target = document.querySelector(h);
+                    if (target) {
+                        const top = target.getBoundingClientRect().top + window.scrollY - (16 + 56);
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                }, 100);
+            } else if (h && h !== '#') {
+                setTimeout(() => {
+                    window.location.href = h;
+                }, 100);
+            }
         }
 
         // expose helper to refresh overlay labels and ensure translations update
@@ -332,7 +351,19 @@
 
     /* Smooth anchor scrolling with offset */
     const OFFSET = 16 + 56; // 1rem + header
-    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const href = a.getAttribute('href'); if (!href || href === '#') return; const target = document.querySelector(href); if (target) { e.preventDefault(); const top = target.getBoundingClientRect().top + window.scrollY - OFFSET; window.scrollTo({ top, behavior: 'smooth' }); } }));
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+        // Skip mobile nav links - they have their own handler
+        if (a.classList.contains('mobile-nav-link')) return;
+
+        const href = a.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+    }));
 
     /* Header shrink & back-to-top */
     const header = $('.site-header'); const backTop = $('#backTop'); window.addEventListener('scroll', () => { const y = window.scrollY || window.pageYOffset; header.classList.toggle('scrolled', y > 48); backTop.classList.toggle('visible', y > 600); }, { passive: true }); backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -657,5 +688,364 @@
     } else {
         initGitHubProjects();
     }
+
+})();
+
+/* ================================================================
+   COMPREHENSIVE BUG FIXES - With Debug Logging
+   Navigation, Mobile Menu, Language, Animations, Scroll Spy
+   ================================================================ */
+
+(function ComprehensiveFixes() {
+    'use strict';
+
+    console.log('[SCROLL DEBUG] Comprehensive fixes script loaded');
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+
+    /* ============================================================
+       FIX 1 & 2: SIMPLIFIED NAVIGATION SCROLL HANDLER
+       Direct approach - attach to links immediately
+       ============================================================ */
+
+    function setupNavigationScroll() {
+        console.log('[SCROLL DEBUG] setupNavigationScroll() called');
+
+        const OFFSET = 72; // Header height
+
+        // Get ALL anchor links immediately
+        const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
+
+        console.log('[SCROLL DEBUG] Found', allAnchorLinks.length, 'anchor links');
+
+        if (allAnchorLinks.length === 0) {
+            console.warn('[SCROLL DEBUG] NO anchor links found! DOM may not be ready');
+            return;
+        }
+
+        allAnchorLinks.forEach((link, index) => {
+            const href = link.getAttribute('href');
+            console.log('[SCROLL DEBUG] Attaching handler to link #' + index + ':', href);
+
+
+            // Define handler function (shared by both click and touch events)
+            const clickHandler = function (e) {
+                console.log('[SCROLL DEBUG] ========================================');
+                console.log('[SCROLL DEBUG] CLICK EVENT FIRED!');
+                console.log('[SCROLL DEBUG] Clicked element:', this);
+                console.log('[SCROLL DEBUG] Event:', e);
+                console.log('[SCROLL DEBUG] Target href:', href);
+
+                if (!href || href === '#') {
+                    console.log('[SCROLL DEBUG] Empty or # href, ignoring');
+                    return;
+                }
+
+                // Prevent default immediately
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                console.log('[SCROLL DEBUG] Default prevented, propagation stopped');
+
+                // Try to find target by ID
+                const targetId = href.substring(1); // Remove #
+                console.log('[SCROLL DEBUG] Looking for element with ID:', targetId);
+
+                const target = document.getElementById(targetId);
+                console.log('[SCROLL DEBUG] Target element found:', target);
+
+                if (!target) {
+                    console.error('[SCROLL DEBUG] Target element NOT FOUND for ID:', targetId);
+                    return;
+                }
+
+                // Close mobile menu if open
+                const overlay = document.querySelector('.mobile-menu-overlay');
+                if (overlay && overlay.classList.contains('active')) {
+                    console.log('[SCROLL DEBUG] Mobile menu is open, closing it');
+                    closeMobileMenu();
+                }
+
+                // Calculate scroll position
+                const targetRect = target.getBoundingClientRect();
+                const targetTop = targetRect.top;
+                const currentScroll = window.scrollY || window.pageYOffset;
+                const targetPosition = targetTop + currentScroll - OFFSET;
+
+                console.log('[SCROLL DEBUG] Target rect top:', targetTop);
+                console.log('[SCROLL DEBUG] Current scroll:', currentScroll);
+                console.log('[SCROLL DEBUG] Calculated position:', targetPosition);
+                console.log('[SCROLL DEBUG] Offset used:', OFFSET);
+
+                // Small delay if menu was closing
+                const delay = (overlay && overlay.classList.contains('active')) ? 150 : 0;
+
+                setTimeout(() => {
+                    console.log('[SCROLL DEBUG] Using scrollIntoView (bypasses CSS overflow issues)');
+
+                    try {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                            inline: 'nearest'
+                        });
+                        console.log('[SCROLL DEBUG] scrollIntoView executed successfully');
+
+                        // FORCE CLOSE mobile menu after scroll completes
+                        setTimeout(() => {
+                            const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+                            const navToggle = document.getElementById('navToggle');
+
+                            if (mobileOverlay) {
+                                mobileOverlay.classList.remove('active', 'open');
+                                console.log('[SCROLL DEBUG] Overlay closed');
+                            }
+                            if (navToggle) {
+                                navToggle.classList.remove('active');
+                                navToggle.setAttribute('aria-expanded', 'false');
+                            }
+                            document.body.classList.remove('nav-open', 'menu-open');
+                            console.log('[SCROLL DEBUG] Menu force-closed');
+                        }, 300);
+
+                    } catch (error) {
+                        console.error('[SCROLL DEBUG] Error during scrollIntoView:', error);
+                        // Fallback to instant scroll
+                        target.scrollIntoView({ block: 'start' });
+                    }
+                }, delay);
+
+                console.log('[SCROLL DEBUG] ========================================');
+            };
+
+            // Attach both click AND touch event handlers for mobile support
+            link.addEventListener('click', clickHandler, true); // Desktop
+            link.addEventListener('touchend', clickHandler, true); // Mobile
+
+            console.log('[SCROLL DEBUG] Click + Touch handlers attached to link #' + index);
+        });
+
+        console.log('[SCROLL DEBUG] All click handlers attached');
+    }
+
+    function closeMobileMenu() {
+        const overlay = $('.mobile-menu-overlay');
+        const navToggle = $('#navToggle');
+
+        if (overlay) {
+            overlay.classList.remove('active');
+            document.body.classList.remove('nav-open');
+            console.log('[SCROLL DEBUG] Mobile overlay closed');
+        }
+
+        if (navToggle) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            console.log('[SCROLL DEBUG] Nav toggle updated');
+        }
+    }
+
+    /* ============================================================
+       FIX 3: ENHANCED LANGUAGE TOGGLE
+       ============================================================ */
+
+    function setupLanguageToggle() {
+        console.log('[LANG DEBUG] Setting up language toggle');
+
+        if (window.I18N) {
+            if (!window.I18N.pt['nav.about']) {
+                window.I18N.pt['nav.about'] = 'Sobre';
+                window.I18N.pt['nav.resume'] = 'CV';
+                window.I18N.pt['nav.skills'] = 'Skills';
+                window.I18N.pt['nav.projects'] = 'Projetos';
+                window.I18N.pt['nav.contact'] = 'Contacto';
+
+                window.I18N.en['nav.about'] = 'About';
+                window.I18N.en['nav.resume'] = 'Resume';
+                window.I18N.en['nav.skills'] = 'Skills';
+                window.I18N.en['nav.projects'] = 'Projects';
+                window.I18N.en['nav.contact'] = 'Contact';
+
+                console.log('[LANG DEBUG] Navigation keys added');
+            }
+        }
+
+        const langButtons = $$('.lang-option');
+        console.log('[LANG DEBUG] Found', langButtons.length, 'language buttons');
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const targetLang = this.getAttribute('data-lang');
+                console.log('[LANG DEBUG] Language button clicked:', targetLang);
+
+                if (window.applyLang && typeof window.applyLang === 'function') {
+                    window.applyLang(targetLang);
+
+                    langButtons.forEach(b => {
+                        const isActive = b.getAttribute('data-lang') === targetLang;
+                        b.setAttribute('aria-pressed', String(isActive));
+                    });
+
+                    console.log('[LANG DEBUG] Language switched to:', targetLang);
+                }
+            });
+        });
+    }
+
+    /* ============================================================
+       FIX 4: TYPING ANIMATION - SIMPLE FIX
+       Just disable wrapping constraints entirely
+       ============================================================ */
+
+    function fixTypingAnimation() {
+        console.log('[TYPING DEBUG] Fixing typing animation');
+
+        const heroTitle = $('.hero-title');
+        if (!heroTitle) {
+            console.warn('[TYPING DEBUG] Hero title not found');
+            return;
+        }
+
+        // Force text to wrap naturally
+        heroTitle.style.whiteSpace = 'normal';
+        heroTitle.style.overflowWrap = 'break-word';
+        heroTitle.style.wordBreak = 'break-word';
+        heroTitle.style.minWidth = 'auto';
+        heroTitle.style.maxWidth = '100%';
+        heroTitle.style.width = 'auto';
+
+        console.log('[TYPING DEBUG] Title styles set to allow wrapping');
+    }
+
+    /* ============================================================
+       FIX 5: SKILLS PERCENTAGE ANIMATION
+       ============================================================ */
+
+    function setupSkillsAnimation() {
+        console.log('[SKILLS DEBUG] Setting up skills animation');
+
+        const skillPercentages = $$('.skill-percentage, .skill-text, [data-progress]');
+        const animatedSkills = new Set();
+
+        console.log('[SKILLS DEBUG] Found', skillPercentages.length, 'skill elements');
+
+        function animatePercentage(el) {
+            if (animatedSkills.has(el)) {
+                console.log('[SKILLS DEBUG] Element already animated');
+                return;
+            }
+            animatedSkills.add(el);
+
+            const targetText = el.getAttribute('data-progress') || el.textContent || '0%';
+            const target = parseInt(targetText.replace('%', '')) || 0;
+
+            console.log('[SKILLS DEBUG] Animating to', target + '%');
+
+            let current = 0;
+            const duration = 1500;
+            const startTime = performance.now();
+
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                current = Math.round(target * easeOut);
+
+                el.textContent = current + '%';
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    el.textContent = target + '%';
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('[SKILLS DEBUG] Element in view, animating');
+                    animatePercentage(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillPercentages.forEach(el => observer.observe(el));
+    }
+
+    /* ============================================================
+       FIX 8: SCROLL SPY
+       ============================================================ */
+
+    function setupScrollSpy() {
+        console.log('[SCROLL SPY DEBUG] Setting up scroll spy');
+
+        const sections = $$('section[id]');
+        const navLinks = $$('.nav-list a[href^="#"], .mobile-nav a[href^="#"]');
+
+        console.log('[SCROLL SPY DEBUG] Sections:', sections.length);
+        console.log('[SCROLL SPY DEBUG] Nav links:', navLinks.length);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    const targetHref = `#${id}`;
+
+                    console.log('[SCROLL SPY DEBUG] Section in view:', id);
+
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href === targetHref) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '-72px 0px -50% 0px'
+        });
+
+        sections.forEach(section => observer.observe(section));
+    }
+
+    /* ============================================================
+       INITIALIZATION
+       ============================================================ */
+
+    function initializeAllFixes() {
+        console.log('[INIT] Initializing all fixes...');
+        console.log('[INIT] DOM state:', document.readyState);
+        console.log('[INIT] Body children:', document.body.children.length);
+
+        // Run immediately, no delay
+        setupNavigationScroll();
+        setupLanguageToggle();
+        fixTypingAnimation();
+        setupSkillsAnimation();
+        setupScrollSpy();
+
+        console.log('[INIT] All fixes initialized');
+    }
+
+    // Initialize based on DOM state
+    if (document.readyState === 'loading') {
+        console.log('[INIT] DOM still loading, waiting for DOMContentLoaded');
+        document.addEventListener('DOMContentLoaded', initializeAllFixes);
+    } else {
+        console.log('[INIT] DOM already loaded, initializing immediately');
+        initializeAllFixes();
+    }
+
+    // Expose functions
+    window.closeMenu = closeMobileMenu;
+
+    console.log('[SCROLL DEBUG] Script initialization complete');
 
 })();
