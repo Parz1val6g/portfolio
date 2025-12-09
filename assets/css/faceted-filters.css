@@ -1,0 +1,309 @@
+/* ============================================
+   Faceted Filter System
+   ============================================ */
+
+/* Faceted filter container */
+.faceted-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Dropdowns row */
+.filter-dropdowns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Individual dropdown */
+.filter-dropdown {
+  position: relative;
+}
+
+/* Dropdown toggle button */
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--card);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  border-color: var(--primary);
+  background: var(--glass);
+}
+
+.dropdown-toggle.active {
+  border-color: var(--primary);
+  background: rgba(8, 210, 167, 0.1);
+  color: var(--primary);
+}
+
+/* Selected count badge */
+.selected-count {
+  display: none;
+  padding: 0.125rem 0.4rem;
+  border-radius: 0.25rem;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  font-size: 0.75rem;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
+
+.selected-count.visible {
+  display: inline-block;
+}
+
+/* Chevron icon animation */
+.chevron {
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-toggle.open .chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  min-width: 200px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
+  display: none;
+  z-index: 1000;
+}
+
+.dropdown-menu.open {
+  display: block;
+  animation: dropdownFadeIn 0.15s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar styling for dropdown */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Checkbox options */
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.filter-option:hover {
+  background: var(--glass);
+}
+
+.filter-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.filter-option label {
+  flex: 1;
+  font-size: 0.875rem;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text);
+}
+
+/* Filter chips container */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Individual filter chip */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.6rem;
+  background: rgba(8, 210, 167, 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(8, 210, 167, 0.3);
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  animation: chipFadeIn 0.2s ease;
+}
+
+@keyframes chipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Chip remove button */
+.filter-chip button {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.filter-chip button:hover {
+  opacity: 1;
+}
+
+/* Clear all filters button */
+.clear-filters {
+  font-weight: 500;
+}
+
+.clear-filters:hover {
+  background: rgba(255, 100, 100, 0.1);
+  border-color: rgba(255, 100, 100, 0.3);
+  color: #ff6464;
+}
+
+/* Light theme adjustments */
+html.light .dropdown-toggle {
+  background: #ffffff;
+  border-color: #dddddd;
+}
+
+html.light .dropdown-toggle:hover {
+  border-color: var(--primary);
+  background: #f9f9f9;
+}
+
+html.light .dropdown-toggle.active {
+  background: rgba(6, 214, 160, 0.08);
+}
+
+html.light .dropdown-menu {
+  background: #ffffff;
+  border-color: #dddddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+html.light .filter-option:hover {
+  background: #f5f5f5;
+}
+
+html.light .filter-chip {
+  background: rgba(6, 214, 160, 0.12);
+  border-color: rgba(6, 214, 160, 0.25);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .filter-dropdowns {
+    width: 100%;
+  }
+
+  .filter-dropdown {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dropdown-menu {
+    left: 0;
+    right: 0;
+    width: auto;
+    min-width: auto;
+  }
+
+  /* Ensure chips wrap nicely on mobile */
+  .filter-chips {
+    font-size: 0.85rem;
+  }
+  
+  .filter-chip {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* Accessibility: Focus styles */
+.dropdown-toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.filter-option input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.filter-chip button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 50%;
+}

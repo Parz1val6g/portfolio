@@ -6,43 +6,61 @@
     /* Translations */
     const I18N = {
         pt: {
-            'hero.badge': 'Junior Developer • C# & Node.js • Industrial Automation & Networking',
-            'hero.title': 'Junior Full Stack Developer | C#, Node.js | Industrial Automation & Networking Specialist',
-            'hero.sub': 'Desenvolvo software de controlo industrial em C# e aplicações web com Node.js. Especializado em automação, redes Ethernet e sistemas de videovigilância.',
-            'hero.lead': 'Experiência em comunicação serial/IP, TCP/IP, virtualização de desktops e gestão de sistemas. Procuro oportunidades para aplicar conhecimentos em automação industrial e desenvolvimento full-stack.',
-            'hero.projects': 'Ver Projetos', 'hero.cv': 'Ver CV', 'hero.contactnote': 'Respondo em 24h via email / LinkedIn • Mangualde, Viseu, Portugal', 'hero.cvdownload': 'Descarregar CV',
+            'hero.badge': 'Estudante de Engenharia Informática',
+            'hero.title': 'Estudante de Engenharia Informática | C, Java & JavaScript | Backend & Full-Stack Development',
+            'hero.sub': 'Estudante de Engenharia Informática na ESTGV com experiência em desenvolvimento web (Node.js, React) e programação em C e Java. À procura de oportunidades de estágio em backend e full-stack development.',
+            'hero.lead': 'Experiência prática em desenvolvimento de projetos académicos com tecnologias web modernas. Notas de excelência em programação: Estruturas de Dados (18/19.5), POO (18), PINT (18). Procuro estágio onde possa continuar a aprender e contribuir para projetos reais.',
+            'hero.projects': 'Ver Projetos', 'hero.cv': 'Ver CV', 'hero.contactnote': 'Respondo em 24h via email / LinkedIn • Mangualde, Portugal', 'hero.cvdownload': 'Descarregar CV',
             'cvpreview.title': 'Curriculum Vitae',
             'cvpreview.lead': 'Visualize o meu CV completo abaixo ou descarregue em PDF.',
             'cvpreview.download': 'Descarregar PDF',
             'about.title': 'Sobre Mim',
-            'about.p1': 'Sou estudante de Engenharia Informática no Instituto Politécnico de Viseu. Tenho experiência prática em desenvolvimento de software industrial (C#) e redes empresariais.',
-            'about.p2': 'Desenvolvi um sistema de controlo em C# para captura 360º de vestuário com comunicação serial e TCP/IP. Também realizei instalações de redes Ethernet, videovigilância (NVR/DVR) e configuração de acessos remotos.',
-            'about.subtitle': 'Resumo Académico & Experiência',
+            'about.p1': 'Estudante de Engenharia Informática na ESTGV (Instituto Politécnico de Viseu), com forte interesse em programação em C e Java e experiência em desenvolvimento web com backend em Node.js/Sequelize e frontend em React. Terminei o ensino profissional em Gestão e Programação de Sistemas Informáticos com 18 valores e um projeto final (PAP - EptoKiosk) avaliado em 20 valores — a melhor nota do curso.',
+            'about.p2': 'Na licenciatura tenho mantido excelentes classificações em cadeiras de programação: Estruturas de Dados (18 valores - nota final, 19.5 valores - projeto), Programação Orientada a Objetos (18 valores), e Projeto Integrado do 2.º ano - PINT (18 valores, desenvolvido com backend em Node.js/Sequelize e frontend em React). Tenho também experiência prática em desenvolvimento de software industrial em C# e configuração de redes Ethernet. Estou aberto a oportunidades de estágio onde possa continuar a aprender, contribuir para projetos reais e explorar diferentes áreas dentro da engenharia informática.',
+            'about.subtitle': 'Resumo Académico & Formações',
             'edu.institution': 'Instituto Politécnico de Viseu',
             'edu.azure': 'Virtualização, Sistemas Operativos e Redes',
             'edu.pint': 'SPLNET: Software C# para automação industrial, redes Ethernet e videovigilância',
             'resume.title': 'Currículo', 'resume.education': 'Educação', 'resume.education.detail': 'Programação (Java, C/C++), Redes, Bases de Dados, Engenharia de Software.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, bancos de dados', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testes', 'resume.experience': 'Experiência', 'resume.position': 'Colaborador académico / Desenvolvedor', 'resume.experience.detail': 'Desenvolvimento de backends, integração com BD e pipelines CI/CD',
             'nav.about': 'Sobre', 'nav.resume': 'CV', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.contact': 'Contacto', 'nav.cvpreview': 'Ver CV',
+            'skill.cjava': 'Linguagens de programação core, estruturas de dados, algoritmos',
+            'skill.jsnode': 'Desenvolvimento backend, APIs, Sequelize ORM',
+            'skill.react': 'Desenvolvimento de UI baseado em componentes, design responsivo',
+            'skill.php': 'Desenvolvimento web, projetos full-stack',
+            'skill.csharp': 'Software industrial, comunicação serial/IP, redes Ethernet',
+            'filter.technology': 'Tecnologia',
+            'filter.origin': 'Origem',
+            'filter.clear': 'Limpar filtros',
+            'filter.noResults': 'Nenhum projeto encontrado com estes filtros.',
             'skills.title': 'Skills', 'skills.lead': 'Competências principais com percentagens representadas visualmente.', 'projects.title': 'Projetos', 'projects.lead': 'Projetos académicos e pessoais com foco em backend, APIs e Azure.', 'blog.title': 'Blog & Artigos', 'contact.title': 'Contacto', 'contact.response': 'Respondo em 24h via email/LinkedIn', 'form.name': 'Nome', 'form.email': 'Email', 'form.message': 'Mensagem', 'form.send': 'Enviar', 'form.clear': 'Limpar', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'Todos os direitos reservados.', 'project.api.title': 'API de Gestão Académica', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'Pipeline PINT / J.A.R.V.I.S.', 'project.pint.tech': 'Node.js • GitHub Actions • Testes • IaC', 'project.auth.title': 'Microserviço de Autenticação', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Procurar artigos, tutoriais...'
         },
         en: {
-            'hero.badge': 'Junior Developer • C# & Node.js • Industrial Automation & Networking',
-            'hero.title': 'Junior Full Stack Developer | C#, Node.js | Industrial Automation & Networking Specialist',
-            'hero.sub': 'I develop industrial control software in C# and web applications with Node.js. Specialized in automation, Ethernet networks and video surveillance systems.',
-            'hero.lead': 'Experience in serial/IP communication, TCP/IP, desktop virtualization and systems management. Looking for opportunities to apply knowledge in industrial automation and full-stack development.',
-            'hero.projects': 'View Projects', 'hero.cv': 'View CV', 'hero.contactnote': 'I reply within 24h via email / LinkedIn • Mangualde, Viseu, Portugal', 'hero.cvdownload': 'Download CV',
+            'hero.badge': 'Computer Engineering Student',
+            'hero.title': 'Computer Engineering Student | C, Java & JavaScript | Backend & Full-Stack Development',
+            'hero.sub': 'Computer Engineering student at ESTGV with experience in web development (Node.js, React) and C and Java programming. Looking for internship opportunities in backend and full-stack development.',
+            'hero.lead': 'Practical experience developing academic projects with modern web technologies. Excellence in programming: Data Structures (18/19.5), OOP (18), PINT (18). Looking for internship where I can continue learning and contribute to real projects.',
+            'hero.projects': 'View Projects', 'hero.cv': 'View CV', 'hero.contactnote': 'I reply within 24h via email / LinkedIn • Mangualde, Portugal', 'hero.cvdownload': 'Download CV',
             'cvpreview.title': 'Curriculum Vitae',
             'cvpreview.lead': 'View my complete CV below or download as PDF.',
             'cvpreview.download': 'Download PDF',
             'about.title': 'About Me',
-            'about.p1': 'I am a Computer Engineering student at the Polytechnic Institute of Viseu. I have practical experience in industrial software development (C#) and enterprise networking.',
-            'about.p2': 'I developed a control system in C# for 360º capture of clothing with serial and TCP/IP communication. I also performed Ethernet network installations, video surveillance (NVR/DVR) and remote access configuration.',
-            'about.subtitle': 'Academic Summary & Experience',
+            'about.p1': 'Computer Engineering student at ESTGV (Polytechnic Institute of Viseu), with a strong interest in C and Java programming and experience in web development with backend in Node.js/Sequelize and frontend in React. I completed vocational education in IT Systems Management and Programming with a grade of 18 and a final project (PAP - EptoKiosk) graded 20 — the highest grade in the course.',
+            'about.p2': 'Throughout my degree, I have maintained excellent performance in programming courses: Data Structures (18 - final grade, 19.5 - project), Object-Oriented Programming (18), and 2nd Year Integrated Project - PINT (18, developed with backend in Node.js/Sequelize and frontend in React). I also have practical experience in industrial software development in C# and Ethernet network configuration. I am open to internship opportunities where I can continue learning, contribute to real projects, and explore different areas within computer engineering.',
+            'about.subtitle': 'Academic Summary & Background',
             'edu.institution': 'Polytechnic Institute of Viseu',
             'edu.azure': 'Virtualization, Operating Systems and Networks',
             'edu.pint': 'SPLNET: C# software for industrial automation, Ethernet networks and video surveillance',
             'resume.title': 'Resume', 'resume.education': 'Education', 'resume.education.detail': 'Programming (Java, C/C++), Networks, Databases, Software Engineering.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, databases', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testing', 'resume.experience': 'Experience', 'resume.position': 'Academic collaborator / Developer', 'resume.experience.detail': 'Backend development, DB integration and CI/CD pipelines',
             'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills', 'nav.projects': 'Projects', 'nav.contact': 'Contact', 'nav.cvpreview': 'View CV',
+            'skill.cjava': 'Core programming languages, data structures, algorithms',
+            'skill.jsnode': 'Backend development, APIs, Sequelize ORM',
+            'skill.react': 'Component-based UI development, responsive design',
+            'skill.php': 'Web development, full-stack projects',
+            'skill.csharp': 'Industrial software, serial/IP communication, Ethernet networks',
+            'filter.technology': 'Technology',
+            'filter.origin': 'Origin',
+            'filter.clear': 'Clear filters',
+            'filter.noResults': 'No projects found with these filters.',
             'skills.title': 'Skills', 'skills.lead': 'Core competencies with percentages visualised.', 'projects.title': 'Projects', 'projects.lead': 'Academic and personal projects focused on backend, APIs and Azure.', 'blog.title': 'Blog & Articles', 'contact.title': 'Contact', 'contact.response': 'I reply within 24h via email/LinkedIn', 'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send', 'form.clear': 'Clear', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'All rights reserved.', 'project.api.title': 'Academic Management API', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'PINT / J.A.R.V.I.S. Pipeline', 'project.pint.tech': 'Node.js • GitHub Actions • Testing • IaC', 'project.auth.title': 'Authentication Microservice', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Search posts, tutorials...'
         },
         es: {}
@@ -707,7 +725,7 @@
             // Extract and render filter buttons
             const topics = extractTopics(projects);
             if (topics.length > 0) {
-                renderFilters(topics);
+                window.FacetedFilters?.render(topics);
             }
 
             console.log(`[GitHub] Loaded ${projects.length} projects with ${topics.length} unique topics`);
