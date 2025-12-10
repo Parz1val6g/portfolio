@@ -22,6 +22,9 @@
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/faceted-filters.css">
+
+  <!-- Cloudflare Turnstile for Web3Forms Captcha -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -347,7 +350,11 @@
             <p><strong>Local:</strong> Viseu, Portugal</p>
           </div>
 
-          <form id="contactForm" class="card" novalidate data-endpoint="">
+          <form id="contactForm" class="card" method="POST" action="https://api.web3forms.com/submit" novalidate
+            data-endpoint="https://api.web3forms.com/submit">
+            <!-- Web3Forms access key (required) -->
+            <input type="hidden" name="access_key" value="9c290ba5-0874-4567-b79f-ff4568b3b575">
+
             <label for="name" data-i18n="form.name">Nome</label>
             <input id="name" name="name" type="text" placeholder="Nome completo" required data-i18n="form.name">
             <label for="email" data-i18n="form.email">Email</label>
@@ -355,6 +362,11 @@
             <label for="message" data-i18n="form.message">Mensagem</label>
             <textarea id="message" name="message" rows="5" placeholder="Escreva a sua mensagem..." required
               data-i18n="form.message"></textarea>
+
+            <!-- Turnstile Captcha Widget -->
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAzcKwnoN23pEGzs" data-theme="auto" data-language="auto"
+              style="margin-top: 1rem;"></div>
+
             <div class="actions" style="margin-top:.4rem">
               <button type="submit" class="btn primary" data-i18n="form.send">Enviar</button>
               <button type="reset" class="btn ghost" data-i18n="form.clear">Limpar</button>

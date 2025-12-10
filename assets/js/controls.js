@@ -487,8 +487,141 @@
     function filterPosts() { const q = ($('#blogSearch')?.value || '').toLowerCase(); const cat = ($('#blogCategory')?.value || 'all'); let visible = 0; posts.forEach(p => { const text = p.textContent.toLowerCase(); const matchesQ = !q || text.includes(q); const matchesCat = cat === 'all' || (p.querySelector('.muted')?.textContent || '').toLowerCase().includes(cat); p.style.display = (matchesQ && matchesCat) ? '' : 'none'; if (matchesQ && matchesCat) visible++; }); emptyState.style.display = visible ? 'none' : 'block'; }
     $('#blogSearch')?.addEventListener('input', filterPosts); $('#blogCategory')?.addEventListener('change', filterPosts);
 
-    /* Contact form handling */
-    const contactForm = $('#contactForm'); contactForm?.addEventListener('submit', function (e) { e.preventDefault(); const name = this.name.value.trim(), email = this.email.value.trim(), message = this.message.value.trim(); const fb = $('#contactFeedback'); fb.style.color = ''; if (!name || !email || !message) { fb.textContent = 'Preencha todos os campos antes de enviar.'; fb.style.color = 'var(--accent)'; return; } if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { fb.textContent = 'Por favor insira um email válido.'; fb.style.color = 'var(--accent)'; return; } fb.textContent = 'A enviar...'; const btn = this.querySelector('button[type="submit"]'); btn.disabled = true; const endpoint = this.dataset.endpoint; if (endpoint) { const fd = new FormData(this); fetch(endpoint, { method: 'POST', body: fd }).then(r => { if (r.ok) { fb.textContent = 'Mensagem enviada. Obrigado!'; contactForm.reset(); } else fb.textContent = 'Erro ao enviar.' }).catch(() => fb.textContent = 'Erro ao enviar.').finally(() => btn.disabled = false); } else { setTimeout(() => { fb.textContent = 'Mensagem enviada. Obrigado! (simulado)'; contactForm.animate([{ transform: 'scale(.995)' }, { transform: 'scale(1)' }], { duration: 300 }); contactForm.reset(); btn.disabled = false; }, 900); } });
+    /* Contact form handling with Formspree integration */
+    const contactForm = $('#contactForm');
+    contactForm?.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form values
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        const message = this.message.value.trim();
+        const fb = $('#contactFeedback');
+        const btn = this.querySelector('button[type="submit"]');
+
+        // Reset feedback styling
+        fb.style.color = '';
+
+        // Validation messages (bilingual support)
+        const messages = {
+            pt: {
+                allFields: 'Preencha todos os campos antes de enviar.',
+                invalidEmail: 'Por favor insira um email válido.',
+                sending: 'A enviar...',
+                success: 'Mensagem enviada. Obrigado!',
+                error: 'Erro ao enviar. Por favor, tente novamente.'
+            },
+            en: {
+                allFields: 'Please fill in all fields before submitting.',
+                invalidEmail: 'Please enter a valid email address.',
+                sending: 'Sending...',
+                success: 'Message sent. Thank you!',
+                error: 'Error sending message. Please try again.'
+            }
+        };
+
+        // Get current language (default to 'pt' if not set)
+        const currentLang = localStorage.getItem('site_lang') || 'pt';
+        const msg = messages[currentLang] || messages.pt;
+
+        // Validate required fields
+        if (!name || !email || !message) {
+            fb.textContent = msg.allFields;
+            fb.style.color = 'var(--accent)';
+            return;
+        }
+
+        // Validate email format
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            fb.textContent = msg.invalidEmail;
+            fb.style.color = 'var(--accent)';
+            return;
+        }
+
+        // Validate Turnstile captcha (if enabled)
+        const captchaResponse = document.querySelector('[name="cf-turnstile-response"]');
+        if (captchaResponse && !captchaResponse.value) {
+            // Captcha not completed
+            const captchaMsg = currentLang === 'pt'
+                ? 'Por favor, complete a verificação de segurança (captcha).'
+                : 'Please complete the security verification (captcha).';
+            fb.textContent = captchaMsg;
+            fb.style.color = 'var(--accent)';
+            btn.disabled = false;
+            return;
+        }
+
+        // Show sending status
+        fb.textContent = msg.sending;
+        fb.style.color = '';
+        btn.disabled = true;
+
+        // Get Web3Forms endpoint from data attribute
+        const endpoint = this.dataset.endpoint || this.action;
+
+        if (endpoint && endpoint.includes('web3forms.com')) {
+            console.log('[Contact Form] Submitting to Web3Forms:', endpoint);
+
+            // Use fetch with Accept: application/json header
+            // Web3Forms returns JSON response: { success: true/false, message: "..." }
+            const formData = new FormData(this);
+
+            fetch(endpoint, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    console.log('[Contact Form] Response status:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('[Contact Form] Response data:', data);
+
+                    if (data.success) {
+                        // Success - Web3Forms returns { success: true }
+                        console.log('[Contact Form] ✅ Submission successful!');
+                        fb.textContent = msg.success;
+                        fb.style.color = 'var(--success, #10b981)';
+
+                        // Animate form on success
+                        contactForm.animate(
+                            [{ transform: 'scale(.995)' }, { transform: 'scale(1)' }],
+                            { duration: 300 }
+                        );
+
+                        // Clear form fields
+                        contactForm.reset();
+                    } else {
+                        // Web3Forms error response
+                        console.error('[Contact Form] ❌ Error from Web3Forms:', data);
+                        fb.textContent = data.message || msg.error;
+                        fb.style.color = 'var(--accent)';
+                    }
+                })
+                .catch(error => {
+                    // Network or parsing error
+                    console.error('[Contact Form] ❌ Submission error:', error);
+                    fb.textContent = msg.error;
+                    fb.style.color = 'var(--accent)';
+                })
+                .finally(() => {
+                    // Re-enable submit button
+                    btn.disabled = false;
+                });
+        } else {
+            // Fallback: no endpoint configured (should not happen with proper setup)
+            setTimeout(() => {
+                fb.textContent = msg.success + ' (simulado - configure o endpoint)';
+                fb.style.color = 'var(--muted)';
+                contactForm.reset();
+                btn.disabled = false;
+            }, 900);
+        }
+    });
+
 
     /* Accessibility: enlarge icon buttons hit area */
     Array.from(document.querySelectorAll('.btn.icon')).forEach(b => { b.style.minWidth = '44px'; b.style.minHeight = '44px'; });
