@@ -815,6 +815,49 @@
         return `https://via.placeholder.com/1200x675/${color}/ffffff?text=${encodeURIComponent(name)}`;
     }
 
+    // Generate consistent gradient from project name
+    function getProjectGradient(name) {
+        const gradients = [
+            'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+            'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+            'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+            'linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)'
+        ];
+        const hash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+        return gradients[hash % gradients.length];
+    }
+
+    // Determine project type/origin from topics or name
+    function getProjectBadge(project) {
+        const name = project.name.toLowerCase();
+        const topics = project.topics.map(t => t.toLowerCase());
+
+        // Check topics for origin clues
+        if (topics.includes('pap') || name.includes('pap')) {
+            return 'PAP';
+        }
+        if (topics.includes('academic') || topics.includes('school') || topics.includes('university')) {
+            return 'Académico';
+        }
+        if (topics.includes('personal') || topics.includes('portfolio')) {
+            return 'Pessoal';
+        }
+
+        // Check name patterns
+        if (name.includes('pint') || name.includes('se-') || name.includes('se_')) {
+            return 'Académico';
+        }
+        if (name.includes('2-ano') || name.includes('ano-lei')) {
+            return 'Académico';
+        }
+
+        return 'Projeto';
+    }
+
     // Fetch repositories from GitHub organization
     async function fetchGitHubProjects() {
         try {
@@ -867,33 +910,42 @@
     // Render a single project card
     function renderProjectCard(project) {
         const article = document.createElement('article');
-        article.className = 'card-item reveal in-view';
+        article.className = 'card-item project-card reveal in-view';
         article.dataset.topics = JSON.stringify(project.topics);
         article.dataset.projectName = project.name; // Store for re-rendering on language change
         article.dataset.githubDescription = project.description || ''; // Store GitHub description as fallback
 
-        // Determine which image to use (can be enhanced with repo social preview later)
-        const imgSrc = getProjectPlaceholder(project.name);
+        // Generate gradient, format project name, and get badge
+        const gradient = getProjectGradient(project.name);
+        const projectName = project.name.replace(/-/g, ' ');
+        const projectBadge = getProjectBadge(project);
 
-        // Build tech stack display from topics + language
-        const techStack = [];
-        if (project.language) techStack.push(project.language);
-        techStack.push(...project.topics.slice(0, 3)); // Show max 3 topics
-        const techText = techStack.join(' • ') || 'Várias tecnologias';
+        // Build tech tags from topics + language (limit to 4, exclude meta topics)
+        const excludeTopics = ['pap', 'academic', 'school', 'personal', 'portfolio', 'university'];
+        const techItems = [];
+        if (project.language) techItems.push(project.language);
+        const filteredTopics = project.topics.filter(t => !excludeTopics.includes(t.toLowerCase()));
+        techItems.push(...filteredTopics);
+
+        const techTags = techItems.slice(0, 4).map(tag =>
+            `<span class="project-tag">${tag}</span>`
+        ).join('');
 
         // Get translated description (with GitHub description as fallback)
         const description = getProjectDescription(project.name, project.description);
 
         article.innerHTML = `
-            <div class="project-media">
-                <img alt="${project.name}" src="${imgSrc}" loading="lazy">
+            <div class="project-header" style="background: ${gradient}">
+                <span class="project-name">${projectName}</span>
+                <span class="project-badge">${projectBadge}</span>
             </div>
-            <h3>${project.name.replace(/-/g, ' ')}</h3>
-            <p class="muted">${techText}</p>
-            <p class="project-description" style="font-size:0.95rem; margin-top:0.5rem">${description}</p>
-            <div class="project-actions" style="margin-top:auto;">
-                <a class="btn ghost" href="${project.url}" target="_blank" rel="noopener">GitHub</a>
-                ${project.homepage ? `<a class="btn primary" href="${project.homepage}" target="_blank" rel="noopener">Demo</a>` : ''}
+            <div class="project-content">
+                <p class="project-description">${description}</p>
+                ${techTags ? `<div class="project-tags">${techTags}</div>` : ''}
+            </div>
+            <div class="project-actions">
+                <a class="btn ghost" href="${project.url}" target="_blank" rel="noopener" data-i18n="project.action.github">GitHub</a>
+                ${project.homepage ? `<a class="btn primary" href="${project.homepage}" target="_blank" rel="noopener" data-i18n="project.action.demo">Demo</a>` : ''}
             </div>
         `;
 

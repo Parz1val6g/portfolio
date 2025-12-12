@@ -2,11 +2,21 @@
    Faceted Filter System
    ============================================ */
 
-/* Faceted filter container */
+/* Faceted filter container - visually integrated */
 .faceted-filters {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+html.light .faceted-filters {
+  background: rgba(0, 0, 0, 0.01);
 }
 
 /* Dropdowns row */
@@ -105,6 +115,7 @@
     opacity: 0;
     transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -188,6 +199,7 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -284,7 +296,7 @@ html.light .filter-chip {
   .filter-chips {
     font-size: 0.85rem;
   }
-  
+
   .filter-chip {
     font-size: 0.75rem;
     padding: 0.3rem 0.5rem;
