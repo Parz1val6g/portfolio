@@ -1,0 +1,46 @@
+name: Auto-Translate Content
+
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    # Runs every Sunday at 00:00 UTC
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+    # Allows manual trigger from GitHub UI
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Run auto-translation script
+        run: |
+          cd scripts
+          node auto-translate.js
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet assets/data/translations.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/data/translations.json
+          git commit -m "chore: auto-update translations [skip ci]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

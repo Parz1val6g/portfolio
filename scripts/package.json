@@ -1,0 +1,10 @@
+{
+    "name": "portfolio-translation-scripts",
+    "version": "1.0.0",
+    "description": "Auto-translation scripts for portfolio",
+    "scripts": {
+        "translate": "node auto-translate.js"
+    },
+    "author": "Joel Tavares Martins",
+    "license": "MIT"
+}

@@ -22,7 +22,7 @@
             'edu.azure': 'Virtualização, Sistemas Operativos e Redes',
             'edu.pint': 'SPLNET: Software C# para automação industrial, redes Ethernet e videovigilância',
             'resume.title': 'Currículo', 'resume.education': 'Educação', 'resume.education.detail': 'Programação (Java, C/C++), Redes, Bases de Dados, Engenharia de Software.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, bancos de dados', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testes', 'resume.experience': 'Experiência', 'resume.position': 'Colaborador académico / Desenvolvedor', 'resume.experience.detail': 'Desenvolvimento de backends, integração com BD e pipelines CI/CD',
-            'nav.about': 'Sobre', 'nav.resume': 'CV', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.contact': 'Contacto', 'nav.cvpreview': 'Ver CV',
+            'nav.about': 'Sobre', 'nav.resume': 'Currículo', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.contact': 'Contacto', 'nav.cvpreview': 'Ver CV',
             'skill.cjava': 'Linguagens de programação core, estruturas de dados, algoritmos',
             'skill.jsnode': 'Desenvolvimento backend, APIs, Sequelize ORM',
             'skill.react': 'Desenvolvimento de UI baseado em componentes, design responsivo',
@@ -32,6 +32,42 @@
             'filter.origin': 'Origem',
             'filter.clear': 'Limpar filtros',
             'filter.noResults': 'Nenhum projeto encontrado com estes filtros.',
+            // Education section
+            'edu.ipv.title': 'Licenciatura em Engenharia Informática — IPV',
+            'edu.ipv.period': '2023 — Presente',
+            'edu.ipv.details': 'Destaques: Estruturas de Dados (18), Programação Orientada a Objetos (18), Projeto Integrado 2.º ano (18)',
+            'edu.eptoliva.title': 'Gestão e Programação de Sistemas Informáticos — EPTOLIVA',
+            'edu.eptoliva.period': '2020 — 2023',
+            'edu.eptoliva.grade': 'Nota final: 18 valores | Nível 4 QNQ/QEQ',
+            'edu.eptoliva.pap': 'PAP - EptoKiosk: 20 valores (melhor nota do curso)',
+            'edu.eptoliva.certs': 'Certificações: Diploma de Ensino Secundário (Curso Profissional) + Certificado de Qualificações',
+            'certifications.title': 'Certificações',
+            'edu.graduatestudent.title': 'Graduate Student',
+            'edu.graduatestudent.org': 'Instituto Politécnico de Viseu',
+            'edu.graduatestudent.period': 'Set 2023 - Presente',
+            'edu.graduatestudent.desc': 'Virtualização de desktops, sistemas operativos e infraestruturas de rede.',
+            'edu.technic.title': 'Computer and Network Technician (Intern)',
+            'edu.technic.org': 'SPLNET, LDA',
+            'edu.technic.period': 'Dez 2022',
+            'edu.technic.desc': 'Desenvolvi software em C# para controlo industrial de captura 360º com comunicação serial/IP. Instalações de redes Ethernet, videovigilância (NVR/DVR) e acessos remotos.',
+            'edu.intern.title': 'Student Intern',
+            'edu.intern.org': 'Mixlife - Digital Agency',
+            'edu.intern.period': 'Jan-Fev 2022',
+            'edu.intern.desc': 'Desenvolvimento web com HTML, CSS, JavaScript e PHP.',
+            'edu.student.title': 'Aluno',
+            'edu.student.org': 'EPTOLIVA',
+            'edu.student.period': 'Jan 2021 - Out 2023',
+            'edu.student.desc': 'Formação em Gestão e Programação de Sistemas Informáticos.',
+            // Contact section
+            'contact.info': 'Informação',
+            'contact.email': 'Email:',
+            'contact.phone': 'Telefone:',
+            'contact.github': 'GitHub:',
+            'contact.linkedin': 'LinkedIn:',
+            'contact.location': 'Local:',
+            'footer.credit': 'Desenvolvido com a ajuda do navegador Comet e da aplicação Antigravity.',
+            'cert.verify': 'Verificar no Passaporte Qualifica ↗',
+            'project.default': 'Projeto sem descrição',
             'skills.title': 'Skills', 'skills.lead': 'Competências principais com percentagens representadas visualmente.', 'projects.title': 'Projetos', 'projects.lead': 'Projetos académicos e pessoais com foco em backend, APIs e Azure.', 'blog.title': 'Blog & Artigos', 'contact.title': 'Contacto', 'contact.response': 'Respondo em 24h via email/LinkedIn', 'form.name': 'Nome', 'form.email': 'Email', 'form.message': 'Mensagem', 'form.send': 'Enviar', 'form.clear': 'Limpar', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'Todos os direitos reservados.', 'project.api.title': 'API de Gestão Académica', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'Pipeline PINT / J.A.R.V.I.S.', 'project.pint.tech': 'Node.js • GitHub Actions • Testes • IaC', 'project.auth.title': 'Microserviço de Autenticação', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Procurar artigos, tutoriais...'
         },
         en: {
@@ -61,6 +97,42 @@
             'filter.origin': 'Origin',
             'filter.clear': 'Clear filters',
             'filter.noResults': 'No projects found with these filters.',
+            // Education section
+            'edu.ipv.title': 'Bachelor in Computer Engineering — IPV',
+            'edu.ipv.period': '2023 — Present',
+            'edu.ipv.details': 'Highlights: Data Structures (18), Object-Oriented Programming (18), 2nd Year Integrated Project (18)',
+            'edu.eptoliva.title': 'IT Systems Management and Programming — EPTOLIVA',
+            'edu.eptoliva.period': '2020 — 2023',
+            'edu.eptoliva.grade': 'Final grade: 18/20 | Level 4 NQF/EQF',
+            'edu.eptoliva.pap': 'Final Project - EptoKiosk: 20/20 (highest grade in the course)',
+            'edu.eptoliva.certs': 'Certifications: Professional Secondary Education Diploma + Qualifications Certificate',
+            'certifications.title': 'Certifications',
+            'edu.graduatestudent.title': 'Graduate Student',
+            'edu.graduatestudent.org': 'Polytechnic Institute of Viseu',
+            'edu.graduatestudent.period': 'Sep 2023 - Present',
+            'edu.graduatestudent.desc': 'Desktop virtualization, operating systems and network infrastructures.',
+            'edu.technic.title': 'Computer and Network Technician (Intern)',
+            'edu.technic.org': 'SPLNET, LDA',
+            'edu.technic.period': 'Dec 2022',
+            'edu.technic.desc': 'Developed C# software for industrial 360º capture control with serial/IP communication. Ethernet network installations, video surveillance (NVR/DVR) and remote access.',
+            'edu.intern.title': 'Student Intern',
+            'edu.intern.org': 'Mixlife - Digital Agency',
+            'edu.intern.period': 'Jan-Feb 2022',
+            'edu.intern.desc': 'Web development with HTML, CSS, JavaScript and PHP.',
+            'edu.student.title': 'Student',
+            'edu.student.org': 'EPTOLIVA',
+            'edu.student.period': 'Jan 2021 - Oct 2023',
+            'edu.student.desc': 'IT Systems Management and Programming training.',
+            // Contact section
+            'contact.info': 'Information',
+            'contact.email': 'Email:',
+            'contact.phone': 'Phone:',
+            'contact.github': 'GitHub:',
+            'contact.linkedin': 'LinkedIn:',
+            'contact.location': 'Location:',
+            'footer.credit': 'Developed with the help of Comet browser and Antigravity application.',
+            'cert.verify': 'Verify on Passaporte Qualifica ↗',
+            'project.default': 'Project without description',
             'skills.title': 'Skills', 'skills.lead': 'Core competencies with percentages visualised.', 'projects.title': 'Projects', 'projects.lead': 'Academic and personal projects focused on backend, APIs and Azure.', 'blog.title': 'Blog & Articles', 'contact.title': 'Contact', 'contact.response': 'I reply within 24h via email/LinkedIn', 'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send', 'form.clear': 'Clear', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'All rights reserved.', 'project.api.title': 'Academic Management API', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'PINT / J.A.R.V.I.S. Pipeline', 'project.pint.tech': 'Node.js • GitHub Actions • Testing • IaC', 'project.auth.title': 'Authentication Microservice', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Search posts, tutorials...'
         },
         es: {}
@@ -68,6 +140,42 @@
 
     // Expose I18N globally for other scripts
     window.I18N = I18N;
+
+    // Load external translations from JSON file
+    async function loadTranslations() {
+        try {
+            const response = await fetch('assets/data/translations.json');
+            if (!response.ok) return;
+
+            const data = await response.json();
+
+            // Merge project translations into I18N
+            if (data.projects) {
+                Object.entries(data.projects.pt || {}).forEach(([key, value]) => {
+                    I18N.pt[`project.${key}`] = value;
+                });
+                Object.entries(data.projects.en || {}).forEach(([key, value]) => {
+                    I18N.en[`project.${key}`] = value;
+                });
+            }
+
+            // Merge site translations
+            if (data.site) {
+                Object.assign(I18N.pt, data.site.pt || {});
+                Object.assign(I18N.en, data.site.en || {});
+            }
+
+            console.log('[i18n] Loaded external translations:',
+                Object.keys(data.projects?.pt || {}).length, 'projects');
+        } catch (error) {
+            console.warn('[i18n] Could not load external translations:', error.message);
+        }
+    }
+
+    // Load translations before initializing
+    loadTranslations().then(() => {
+        console.log('[i18n] Ready');
+    });
 
     const $ = s => document.querySelector(s);
     const $$ = s => Array.from(document.querySelectorAll(s));
@@ -123,6 +231,8 @@
         try { typeHeroTitle(100); } catch (e) { /* ignore */ }
         // If mobile overlay exists, update its contents to reflect new language
         try { if (window._updateMobileOverlay) window._updateMobileOverlay(); } catch (e) { /* ignore */ }
+        // Update project descriptions
+        try { if (window._updateProjectDescriptions) window._updateProjectDescriptions(); } catch (e) { /* ignore */ }
     }
     applyLang(localStorage.getItem(LANG_KEY) || lang);
 
@@ -732,11 +842,35 @@
         }
     }
 
+    // Helper: Get translated project description
+    function getProjectDescription(projectName, githubDescription) {
+        const key = `project.${projectName}`;
+        const fallbackChains = { pt: ['pt', 'en'], en: ['en', 'pt'], es: ['es', 'pt', 'en'] };
+        const chain = fallbackChains[lang] || [lang, 'pt', 'en'];
+
+        // Try to find translation
+        for (const c of chain) {
+            if (I18N[c] && I18N[c][key]) return I18N[c][key];
+        }
+
+        // Fallback to GitHub description if available
+        if (githubDescription) return githubDescription;
+
+        // Fallback to default message
+        const defaultKey = 'project.default';
+        for (const c of chain) {
+            if (I18N[c] && I18N[c][defaultKey]) return I18N[c][defaultKey];
+        }
+        return 'Project without description';
+    }
+
     // Render a single project card
     function renderProjectCard(project) {
         const article = document.createElement('article');
         article.className = 'card-item reveal in-view';
         article.dataset.topics = JSON.stringify(project.topics);
+        article.dataset.projectName = project.name; // Store for re-rendering on language change
+        article.dataset.githubDescription = project.description || ''; // Store GitHub description as fallback
 
         // Determine which image to use (can be enhanced with repo social preview later)
         const imgSrc = getProjectPlaceholder(project.name);
@@ -747,13 +881,16 @@
         techStack.push(...project.topics.slice(0, 3)); // Show max 3 topics
         const techText = techStack.join(' • ') || 'Várias tecnologias';
 
+        // Get translated description (with GitHub description as fallback)
+        const description = getProjectDescription(project.name, project.description);
+
         article.innerHTML = `
             <div class="project-media">
                 <img alt="${project.name}" src="${imgSrc}" loading="lazy">
             </div>
             <h3>${project.name.replace(/-/g, ' ')}</h3>
             <p class="muted">${techText}</p>
-            <p style="font-size:0.95rem; margin-top:0.5rem">${project.description}</p>
+            <p class="project-description" style="font-size:0.95rem; margin-top:0.5rem">${description}</p>
             <div class="project-actions" style="margin-top:auto;">
                 <a class="btn ghost" href="${project.url}" target="_blank" rel="noopener">GitHub</a>
                 ${project.homepage ? `<a class="btn primary" href="${project.homepage}" target="_blank" rel="noopener">Demo</a>` : ''}
@@ -867,6 +1004,21 @@
             grid.innerHTML = '<div class="card-item" style="grid-column: 1 / -1; text-align:center; padding:2rem"><p class="muted">Erro ao carregar projetos. Por favor, tente novamente mais tarde.</p></div>';
         }
     }
+
+    // Expose function to update project descriptions on language change
+    window._updateProjectDescriptions = function () {
+        const projectCards = $$('.card-item[data-project-name]');
+        projectCards.forEach(card => {
+            const projectName = card.dataset.projectName;
+            const githubDescription = card.dataset.githubDescription || '';
+            if (!projectName) return;
+
+            const descriptionEl = card.querySelector('.project-description');
+            if (descriptionEl) {
+                descriptionEl.textContent = getProjectDescription(projectName, githubDescription);
+            }
+        });
+    };
 
     // Initialize GitHub projects on DOM ready
     if (document.readyState === 'loading') {
