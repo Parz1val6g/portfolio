@@ -242,7 +242,7 @@
         const cvDownloadBtn = document.getElementById('cvDownloadFromPreview');
 
         // Set CV path based on current language  
-        const cvFile = (lang === 'en') ? 'cv_eng.pdf' : 'cv_pt.pdf';
+        const cvFile = (lang === 'en') ? 'Joel Tavares Martins - CV (Inglês).pdf' : 'Joel Tavares Martins - CV (Português).pdf';
         const cvPath = `assets/files/${cvFile}`;
 
         if (cvIframe) cvIframe.setAttribute('src', cvPath);
