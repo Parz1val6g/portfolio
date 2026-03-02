@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joel Tavares Martins - CV (Português)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a; --accent: #2563eb; --text: #334155;
+            --bg-page: #f8fafc; --bg-paper: #ffffff; --border: #cbd5e1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; }
+        
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-page); color: var(--text); line-height: 1.5; display: flex; justify-content: center; padding: 40px 0; }
+        .page { width: 210mm; min-height: 297mm; background: var(--bg-paper); padding: 12mm 15mm; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; }
+        
+        /* HEADER PRINCIPAL */
+        header { 
+            border-bottom: 2px solid var(--primary); 
+            padding-bottom: 20px; 
+            margin-bottom: 22px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .header-left { display: flex; align-items: center; gap: 20px; }
+
+        .photo-container {
+            width: 110px; height: 110px; border-radius: 50%;
+            border: 3px solid var(--accent); overflow: hidden; flex-shrink: 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); background-color: #f1f5f9; 
+        }
+
+        .photo-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .name-section h1 { font-size: 30px; font-weight: 800; color: var(--primary); text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
+        .name-section .title { font-size: 13px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .contact-info { text-align: right; font-size: 11px; color: #64748b; }
+        .contact-info a { color: var(--text); text-decoration: none; display: block; margin-top: 3px; font-weight: 500; }
+        .contact-info a:hover { color: var(--accent); }
+
+        /* SECTIONS E BLOCOS */
+        section { margin-bottom: 20px; }
+        h2 { font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px; margin-bottom: 10px; letter-spacing: 0.5px; page-break-after: avoid; break-after: avoid; }
+        p { font-size: 12px; color: var(--text); text-align: justify; margin-bottom: 8px; }
+
+        .item-block { margin-bottom: 14px; page-break-inside: avoid; break-inside: avoid; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+        .item-role { font-size: 14px; font-weight: 700; color: var(--primary); }
+        .item-company { font-weight: 500; color: var(--text); }
+        .item-date { font-size: 11px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+        
+        .award-badge { display: inline-block; background-color: #eff6ff; color: var(--accent); font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-bottom: 4px; border: 1px solid #bfdbfe; }
+        
+        ul { list-style: none; margin-top: 5px; }
+        li { position: relative; padding-left: 12px; font-size: 12px; margin-bottom: 3px; color: #475569; }
+        li::before { content: "▪"; position: absolute; left: 0; color: var(--accent); font-size: 14px; line-height: 12px; }
+
+        .skills-container { display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; row-gap: 8px; page-break-inside: avoid; break-inside: avoid; }
+        .skill-group h3 { font-size: 11px; color: var(--accent); text-transform: uppercase; margin-bottom: 2px; font-weight: 700; }
+        .skill-list { font-size: 11px; color: var(--text); line-height: 1.5; }
+        .edu-row { display: flex; justify-content: space-between; margin-bottom: 2px; }
+        .edu-degree { font-weight: 700; font-size: 12px; color: var(--primary); }
+
+        /* ESCONDER REPETIÇÕES NO ECRÃ (Só aparecem na impressão) */
+        @media screen {
+            thead, tfoot, .header-cover { display: none; }
+        }
+
+        /* REGRAS NATIVAS DE IMPRESSÃO */
+        @media print { 
+            @page { margin: 0; } 
+            body { background: white; padding: 0; margin: 0; display: block; } 
+            
+            /* Removemos o padding de topo e fundo da .page porque o thead e tfoot vão criar esse espaço */
+            .page { box-shadow: none; width: 100%; margin: 0; padding: 0 15mm; position: relative; } 
+            
+            /* Usar a tabela para forçar o browser a repetir o header e o footer */
+            table { width: 100%; border-collapse: collapse; }
+            thead { display: table-header-group; }
+            tfoot { display: table-footer-group; }
+            td { padding: 0; }
+
+            /* Estilo do Cabeçalho que se repete (Página 2+) */
+            .header-content {
+                text-align: right;
+                font-size: 10px;
+                color: #94a3b8;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding-top: 12mm; /* Empurra o texto para baixo para não colar à margem do papel */
+                padding-bottom: 5mm;
+            }
+
+            /* O Remendo Branco que tapa o cabeçalho APENAS na Página 1 */
+            .header-cover {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 20mm;
+                background-color: white;
+                z-index: 50;
+            }
+
+            /* Estilo do Rodapé que se repete em TODAS as páginas */
+            .footer-content {
+                text-align: center;
+                font-size: 10px;
+                color: #64748b;
+                border-top: 1px solid var(--border);
+                padding-top: 5px;
+                padding-bottom: 12mm; /* Levanta o texto para a impressora não o cortar */
+                margin-top: 5mm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header-cover"></div>
+        
+        <table>
+            <thead>
+                <tr><td>
+                    <div class="header-content">Joel Tavares Martins | CV</div>
+                </td></tr>
+            </thead>
+            
+            <tbody>
+                <tr><td>
+                    <header>
+                        <div class="header-left">
+                            <div class="photo-container">
+                                <img src="profile.jpeg" alt="Joel Tavares Martins">
+                            </div>
+                            <div class="name-section">
+                                <h1>Joel Tavares Martins</h1>
+                                <div class="title">Engenheiro Informático | JS, C, Java</div>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div>Mangualde, Viseu, Portugal</div>
+                            <a href="mailto:joel.tavares.martins@outlook.pt">joel.tavares.martins@outlook.pt</a> 
+                            <a href="tel:+351928031513">+351 928 031 513</a>
+                            <a href="https://www.linkedin.com/in/joel-tavares-martins">linkedin.com/in/joel-tavares-martins</a>
+                            <a href="https://parz1val6g.github.io/portfolio/">parz1val6g.github.io/portfolio/</a>
+                        </div>
+                    </header>
+
+                    <section>
+                        <h2>Resumo Profissional</h2>
+                        <p>
+                            Engenheiro Informático Júnior (3º ano de Licenciatura) com forte domínio em <strong>JavaScript, C e Java</strong>, e especial interesse na administração e operação de <strong>sistemas Linux</strong>. Especializado na construção de aplicações full-stack (Node.js/React) e com bases sólidas no desenvolvimento de algoritmos. Combina um percurso académico de excelência com experiência prática no desenvolvimento de software e configuração de infraestruturas via linha de comandos (CLI). Fluente em Inglês, procuro integrar equipas onde possa aplicar as minhas bases sólidas de engenharia para construir soluções robustas e escaláveis.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Experiência Técnica Profissional</h2>
+                        
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div>
+                                    <span class="item-role">Programador e Técnico de Redes (Estagiário)</span> 
+                                    <span class="item-company">| SPLNET, LDA</span>
+                                </div>
+                                <span class="item-date">Dez 2022</span>
+                            </div>
+                            <ul>
+                                <li><strong>Automação Industrial em C#:</strong> Desenvolvimento de software (.NET Framework) para controlo de um sistema de captura 360º de vestuário, automatizando a movimentação da câmara e sincronizando as fotografias.</li>
+                                <li><strong>Integração de Hardware:</strong> Implementação de sistemas de controlo em tempo real com comunicação via porta série e IP (TCP/IP), estruturando e organizando os dados para posterior reconstrução 3D.</li>
+                                <li><strong>Infraestrutura e Videovigilância:</strong> Instalação de redes Ethernet e sistemas empresariais, incluindo passagem de cabos, configuração de câmaras, NVR/DVR e definição de acessos remotos através de software de gestão.</li>
+                            </ul>
+                        </div>
+
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div>
+                                    <span class="item-role">Programador Web Júnior</span> 
+                                    <span class="item-company">| Mixlife Digital Agency</span>
+                                </div>
+                                <span class="item-date">Jan 2022 - Fev 2022</span>
+                            </div>
+                            <ul>
+                                <li><strong>Desenvolvimento Full-Stack:</strong> Criação de interfaces responsivas com HTML/CSS e desenvolvimento backend utilizando PHP e integração com bases de dados SQL.</li>
+                                <li><strong>Administração de Sistemas e Cloud:</strong> Configuração e gestão de ambientes em Ubuntu Server e execução de operações de infraestrutura através da AWS CLI.</li>
+                                <li><strong>Troubleshooting:</strong> Resolução ativa de problemas técnicos (problem-solving) no deployment de soluções e gestão de ativos digitais.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Outras Experiências Profissionais</h2>
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div>
+                                    <span class="item-role">Colaborador de Sala & Bar</span> 
+                                    <span class="item-company">| Maria Antonieta</span>
+                                </div>
+                                <span class="item-date">Jun 2024 - Set 2024</span>
+                            </div>
+                            <ul>
+                                <li>Demonstração de fiabilidade e trabalho em equipa num ambiente de ritmo acelerado durante pausas académicas.</li>
+                                <li>Desenvolvimento de competências de comunicação sob pressão e gestão de atendimento ao cliente.</li>
+                            </ul>
+                        </div>
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div>
+                                    <span class="item-role">Colaborador de Sala</span> 
+                                    <span class="item-company">| Live Beach Mangualde (Grupo Cinderela)</span>
+                                </div>
+                                <span class="item-date">Jul 2022 - Set 2022</span>
+                            </div>
+                            <ul>
+                                <li>Gestão de atendimento ao público e coordenação em ambiente de elevada afluência e dinamismo.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Projetos Académicos e Pessoais de Destaque</h2>
+                        
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div><span class="item-role">Plataforma PINT & Arquitetura Web</span></div>
+                            </div>
+                            <ul>
+                                <li><strong>Desenvolvimento Backend (Node.js/JavaScript):</strong> Liderança na construção do lado do servidor para uma plataforma web de formação.</li>
+                                <li>Arquitetura de APIs RESTful com Express, integração de bases de dados relacionais e implementação da lógica de negócio e autenticação.</li>
+                            </ul>
+                        </div>
+
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div><span class="item-role">Estruturas de Dados Avançadas (Projeto Individual)</span></div>
+                            </div>
+                            <ul>
+                                <li><strong>Engenharia em C:</strong> Desenvolvimento a solo de um sistema complexo de gestão de dados com implementação nativa de <em>hash tables</em> e <em>linked lists</em>.</li>
+                                <li><strong>Controlo de Baixo Nível:</strong> Gestão e alocação dinâmica de memória (malloc/free) e manipulação avançada de ponteiros multidimensionais (até 5 níveis).</li>
+                            </ul>
+                        </div>
+
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div><span class="item-role">Engenharia de Software (ES2-RAJT)</span></div>
+                            </div>
+                            <ul>
+                                <li><strong>Arquitetura Java em Equipa:</strong> Desenvolvimento colaborativo focado na aplicação de <em>Design Patterns</em> estruturais e criacionais.</li>
+                                <li>Implementação nativa do padrão <em>Singleton</em> para garantir uma gestão de memória otimizada e instâncias globais seguras na aplicação.</li>
+                            </ul>
+                        </div>
+
+                        <div class="item-block">
+                            <div class="item-header">
+                                <div><span class="item-role">Projeto "EPTOKIOSK" (PAP)</span></div>
+                                <span class="item-date">2023</span>
+                            </div>
+                            <div class="award-badge">🏆 Prémio Melhor Projeto do Ano (Nota: 20/20)</div>
+                            <ul>
+                                <li>Desenvolvimento de um Quiosque Digital integral, assumindo a criação do backend em PHP e modelação da base de dados MySQL.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Competências Técnicas</h2>
+                        <div class="skills-container">
+                            <div class="skill-group">
+                                <h3>Linguagens e Bases de Dados</h3>
+                                <div class="skill-list"><strong>JavaScript, C, Java</strong>, Node.js, React.js, C#, .NET Framework, MySQL, PostgreSQL, PHP</div>
+                            </div>
+                            <div class="skill-group">
+                                <h3>Sistemas e Redes</h3>
+                                <div class="skill-list"><strong>Sistemas Linux (Administração e CLI / Bash)</strong>, Ubuntu Server, TCP/IP Suite, Comunicação Série, Virtualização (VMware)</div>
+                            </div>
+                            <div class="skill-group">
+                                <h3>Ferramentas e Hardware</h3>
+                                <div class="skill-list">Git, AWS CLI, Visual Studio, Integração de Hardware Industrial, Registo de Domínios, Photoshop</div>
+                            </div>
+                            <div class="skill-group">
+                                <h3>Idiomas</h3>
+                                <div class="skill-list">
+                                    <strong>Inglês: Fluente (C1/C2)</strong><br>
+                                    Português: Nativo<br>
+                                    Espanhol: Básico (B1) | Francês: Básico (B1)
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Educação e Formação</h2>
+                        <div class="item-block" style="margin-bottom: 8px;">
+                            <div class="edu-row">
+                                <div class="edu-degree">Licenciatura em Engenharia Informática</div>
+                                <div class="edu-date" style="font-size: 11px;">2023 - Presente</div>
+                            </div>
+                            <div style="font-size: 11px; color: #64748b;">Instituto Politécnico de Viseu</div>
+                        </div>
+                        <div class="item-block">
+                            <div class="edu-row">
+                                <div class="edu-degree">Curso Profissional Técnico de Gestão e Programação de Sistemas</div>
+                                <div class="edu-date" style="font-size: 11px;">2020 - 2023</div>
+                            </div>
+                            <div style="font-size: 11px; color: #64748b;">Escola Profissional de Oliveira do Hospital (EPTOLIVA)</div>
+                        </div>
+                    </section>
+                </td></tr>
+            </tbody>
+            
+            <tfoot>
+                <tr><td>
+                    <div class="footer-content">Joel Tavares Martins | Engenharia Informática | parz1val6g.github.io/portfolio/</div>
+                </td></tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
