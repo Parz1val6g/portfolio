@@ -6,28 +6,32 @@
     /* Translations */
     const I18N = {
         pt: {
-            'hero.badge': 'Estudante de Engenharia Informática',
-            'hero.title': 'Estudante de Engenharia Informática | C, Java & JavaScript | Backend & Full-Stack Development',
-            'hero.sub': 'Estudante de Engenharia Informática na ESTGV com experiência em desenvolvimento web (Node.js, React) e programação em C e Java. À procura de oportunidades de estágio em backend e full-stack development.',
-            'hero.lead': 'Experiência prática em desenvolvimento de projetos académicos com tecnologias web modernas. Notas de excelência em programação: Estruturas de Dados (18/19.5), POO (18), PINT (18). Procuro estágio onde possa continuar a aprender e contribuir para projetos reais.',
+            'hero.badge': '4.º Ano · Engenharia Informática · ESTGV',
+            'hero.title': 'Full-Stack Developer | Laravel 12 · React 19 · C/C++ | 4.º Ano Engenharia Informática',
+            'hero.sub': 'Estudante de 4.º ano de Engenharia Informática (ESTGV) com experiência profissional em desenvolvimento full-stack — Laravel 12, React 19, Inertia.js — e programação de sistemas em C/C++.',
+            'hero.lead': 'Experiência enterprise real: arquitetura DDD, RBAC granular, Redis, sidecar C sandboxed para análise de ficheiros. Notas de excelência: Eng. Software II (19), Sistemas Distribuídos (19), ED (18). Disponível para estágio a partir de fev 2027.',
             'hero.projects': 'Ver Projetos', 'hero.cv': 'Ver CV', 'hero.contactnote': 'Respondo em 24h via email / LinkedIn • Mangualde, Portugal', 'hero.cvdownload': 'Descarregar CV',
             'cvpreview.title': 'Curriculum Vitae',
             'cvpreview.lead': 'Visualize o meu CV completo abaixo ou descarregue em PDF.',
             'cvpreview.download': 'Descarregar PDF',
             'about.title': 'Sobre Mim',
-            'about.p1': 'Estudante de Engenharia Informática na ESTGV (Instituto Politécnico de Viseu), com forte interesse em programação em C e Java e experiência em desenvolvimento web com backend em Node.js/Sequelize e frontend em React. Terminei o ensino profissional em Gestão e Programação de Sistemas Informáticos com 18 valores e um projeto final (PAP - EptoKiosk) avaliado em 20 valores — a melhor nota do curso.',
-            'about.p2': 'Na licenciatura tenho mantido excelentes classificações em cadeiras de programação: Estruturas de Dados (18 valores - nota final, 19.5 valores - projeto), Programação Orientada a Objetos (18 valores), e Projeto Integrado do 2.º ano - PINT (18 valores, desenvolvido com backend em Node.js/Sequelize e frontend em React). Tenho também experiência prática em desenvolvimento de software industrial em C# e configuração de redes Ethernet. Estou aberto a oportunidades de estágio onde possa continuar a aprender, contribuir para projetos reais e explorar diferentes áreas dentro da engenharia informática.',
+            'about.p1': 'Estudante de 4.º ano de Engenharia Informática (ESTGV, IPV) com experiência profissional em desenvolvimento full-stack — Laravel 12, React 19, Inertia.js, Tailwind CSS v4 — e programação de sistemas em C/C++. Concluí o ensino profissional em Gestão e Programação de Sistemas Informáticos com 18 valores e PAP (EptoKiosk) com 20 valores — a melhor nota do curso.',
+            'about.p2': 'Notas de excelência: Eng. Software II (19), Sistemas Distribuídos (19), POO (18), Estruturas de Dados (18). Experiência em arquitetura DDD, RBAC granular, Redis e sidecar C sandboxed para análise de ficheiros uploaded. Disponível para estágio curricular a partir de fevereiro de 2027.',
             'about.subtitle': 'Resumo Académico & Formações',
             'edu.institution': 'Instituto Politécnico de Viseu',
             'edu.azure': 'Virtualização, Sistemas Operativos e Redes',
-            'edu.pint': 'SPLNET: Software C# para automação industrial, redes Ethernet e videovigilância',
+            'edu.pint': 'Projeto PINT (2.º ano): plataforma de cursos full-stack com Node.js, Express, Sequelize e React — 18 valores (<a href="https://github.com/Parz1val6g" target="_blank" rel="noopener">GitHub ↗</a>)',
             'resume.title': 'Currículo', 'resume.education': 'Educação', 'resume.education.detail': 'Programação (Java, C/C++), Redes, Bases de Dados, Engenharia de Software.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, bancos de dados', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testes', 'resume.experience': 'Experiência', 'resume.position': 'Colaborador académico / Desenvolvedor', 'resume.experience.detail': 'Desenvolvimento de backends, integração com BD e pipelines CI/CD',
             'nav.about': 'Sobre', 'nav.resume': 'Currículo', 'nav.skills': 'Skills', 'nav.projects': 'Projetos', 'nav.contact': 'Contacto', 'nav.cvpreview': 'Ver CV',
-            'skill.cjava': 'Linguagens de programação core, estruturas de dados, algoritmos',
-            'skill.jsnode': 'Desenvolvimento backend, APIs, Sequelize ORM',
-            'skill.react': 'Desenvolvimento de UI baseado em componentes, design responsivo',
-            'skill.php': 'Desenvolvimento web, projetos full-stack',
-            'skill.csharp': 'Software industrial, comunicação serial/IP, redes Ethernet',
+            'skill_systems_title': 'Programação de Sistemas & C/C++',
+            'skill_systems_desc': 'POSIX, gestão manual de memória, processos sandboxed, estruturas de dados e algoritmos.',
+            'skill_backend_title': 'Backend & Full-Stack (Laravel/PHP)',
+            'skill_backend_desc': 'Laravel 12, DDD, RBAC granular, Redis, PHPUnit, PHPStan, Node.js/Express.',
+            'skill_industrial_title': 'C# .NET & Redes',
+            'skill_industrial_desc': 'Windows Forms, comunicação serial/TCP-IP, redes Ethernet, videovigilância.',
+            'skill_react_title': 'React 19 & Frontend Moderno',
+            'skill_react_desc': 'React 19, Inertia.js, Tailwind CSS v4, TypeScript, Vitest, ESLint.',
+            'skills_tooltip': 'Nível de autonomia em projetos reais sem supervisão.',
             'filter.technology': 'Tecnologia',
             'filter.origin': 'Origem',
             'filter.clear': 'Limpar filtros',
@@ -68,31 +72,35 @@
             'footer.credit': 'Desenvolvido com a ajuda do navegador Comet e da aplicação Antigravity.',
             'cert.verify': 'Verificar no Passaporte Qualifica ↗',
             'project.default': 'Projeto sem descrição',
-            'skills.title': 'Skills', 'skills.lead': 'Competências principais com percentagens representadas visualmente.', 'projects.title': 'Projetos', 'projects.lead': 'Projetos académicos e pessoais com foco em backend, APIs e Azure.', 'blog.title': 'Blog & Artigos', 'contact.title': 'Contacto', 'contact.response': 'Respondo em 24h via email/LinkedIn', 'form.name': 'Nome', 'form.email': 'Email', 'form.message': 'Mensagem', 'form.send': 'Enviar', 'form.clear': 'Limpar', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'Todos os direitos reservados.', 'project.api.title': 'API de Gestão Académica', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'Pipeline PINT / J.A.R.V.I.S.', 'project.pint.tech': 'Node.js • GitHub Actions • Testes • IaC', 'project.auth.title': 'Microserviço de Autenticação', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Procurar artigos, tutoriais...'
+            'skills.title': 'Skills', 'skills.lead': 'Competências principais com percentagens representadas visualmente.', 'projects.title': 'Projetos', 'projects.lead': 'Projetos académicos e profissionais com foco em full-stack, sistemas e arquitetura.', 'blog.title': 'Blog & Artigos', 'contact.title': 'Contacto', 'contact.response': 'Respondo em 24h via email/LinkedIn', 'form.name': 'Nome', 'form.email': 'Email', 'form.message': 'Mensagem', 'form.send': 'Enviar', 'form.clear': 'Limpar', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'Todos os direitos reservados.', 'project.api.title': 'API de Gestão Académica', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'Pipeline PINT / J.A.R.V.I.S.', 'project.pint.tech': 'Node.js • GitHub Actions • Testes • IaC', 'project.auth.title': 'Microserviço de Autenticação', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Procurar artigos, tutoriais...'
         },
         en: {
-            'hero.badge': 'Computer Engineering Student',
-            'hero.title': 'Computer Engineering Student | C, Java & JavaScript | Backend & Full-Stack Development',
-            'hero.sub': 'Computer Engineering student at ESTGV with experience in web development (Node.js, React) and C and Java programming. Looking for internship opportunities in backend and full-stack development.',
-            'hero.lead': 'Practical experience developing academic projects with modern web technologies. Excellence in programming: Data Structures (18/19.5), OOP (18), PINT (18). Looking for internship where I can continue learning and contribute to real projects.',
+            'hero.badge': '4th Year · Computer Engineering · ESTGV',
+            'hero.title': 'Full-Stack Developer | Laravel 12 · React 19 · C/C++ | 4th Year Computer Engineering',
+            'hero.sub': '4th-year Computer Engineering student (ESTGV) with professional experience in full-stack development — Laravel 12, React 19, Inertia.js — and C/C++ systems programming.',
+            'hero.lead': 'Real-world enterprise experience: DDD architecture, granular RBAC, Redis, sandboxed C sidecar for file analysis. Academic excellence: Software Eng. II (19), Distributed Systems (19), Data Structures (18). Available for internship from Feb 2027.',
             'hero.projects': 'View Projects', 'hero.cv': 'View CV', 'hero.contactnote': 'I reply within 24h via email / LinkedIn • Mangualde, Portugal', 'hero.cvdownload': 'Download CV',
             'cvpreview.title': 'Curriculum Vitae',
             'cvpreview.lead': 'View my complete CV below or download as PDF.',
             'cvpreview.download': 'Download PDF',
             'about.title': 'About Me',
-            'about.p1': 'Computer Engineering student at ESTGV (Polytechnic Institute of Viseu), with a strong interest in C and Java programming and experience in web development with backend in Node.js/Sequelize and frontend in React. I completed vocational education in IT Systems Management and Programming with a grade of 18 and a final project (PAP - EptoKiosk) graded 20 — the highest grade in the course.',
-            'about.p2': 'Throughout my degree, I have maintained excellent performance in programming courses: Data Structures (18 - final grade, 19.5 - project), Object-Oriented Programming (18), and 2nd Year Integrated Project - PINT (18, developed with backend in Node.js/Sequelize and frontend in React). I also have practical experience in industrial software development in C# and Ethernet network configuration. I am open to internship opportunities where I can continue learning, contribute to real projects, and explore different areas within computer engineering.',
+            'about.p1': '4th-year Computer Engineering student (ESTGV, IPV) with professional experience in full-stack development — Laravel 12, React 19, Inertia.js, Tailwind CSS v4 — and C/C++ systems programming. I completed vocational education in IT Systems Management with 18/20 and final project EptoKiosk with 20/20 — highest grade in the course.',
+            'about.p2': 'Academic excellence: Software Eng. II (19), Distributed Systems (19), OOP (18), Data Structures (18). Real-world experience with DDD architecture, policy-based granular RBAC, Redis, sandboxed C sidecar for file analysis. Available for internship from February 2027.',
             'about.subtitle': 'Academic Summary & Background',
             'edu.institution': 'Polytechnic Institute of Viseu',
             'edu.azure': 'Virtualization, Operating Systems and Networks',
-            'edu.pint': 'SPLNET: C# software for industrial automation, Ethernet networks and video surveillance',
+            'edu.pint': 'PINT Project (2nd year): full-stack course platform with Node.js, Express, Sequelize and React — 18/20 (<a href="https://github.com/Parz1val6g" target="_blank" rel="noopener">GitHub ↗</a>)',
             'resume.title': 'Resume', 'resume.education': 'Education', 'resume.education.detail': 'Programming (Java, C/C++), Networks, Databases, Software Engineering.', 'resume.lab.azure': 'Azure Labs: deploy, serverless, databases', 'resume.lab.devops': 'Workshops: Docker, GitHub Actions, testing', 'resume.experience': 'Experience', 'resume.position': 'Academic collaborator / Developer', 'resume.experience.detail': 'Backend development, DB integration and CI/CD pipelines',
             'nav.about': 'About', 'nav.resume': 'Resume', 'nav.skills': 'Skills', 'nav.projects': 'Projects', 'nav.contact': 'Contact', 'nav.cvpreview': 'View CV',
-            'skill.cjava': 'Core programming languages, data structures, algorithms',
-            'skill.jsnode': 'Backend development, APIs, Sequelize ORM',
-            'skill.react': 'Component-based UI development, responsive design',
-            'skill.php': 'Web development, full-stack projects',
-            'skill.csharp': 'Industrial software, serial/IP communication, Ethernet networks',
+            'skill_systems_title': 'Systems Programming & C/C++',
+            'skill_systems_desc': 'POSIX, manual memory management, sandboxed processes, data structures and algorithms.',
+            'skill_backend_title': 'Backend & Full-Stack (Laravel/PHP)',
+            'skill_backend_desc': 'Laravel 12, DDD, granular RBAC, Redis, PHPUnit, PHPStan, Node.js/Express.',
+            'skill_industrial_title': 'C# .NET & Networks',
+            'skill_industrial_desc': 'Windows Forms, serial/TCP-IP communication, Ethernet networks, surveillance.',
+            'skill_react_title': 'React 19 & Modern Frontend',
+            'skill_react_desc': 'React 19, Inertia.js, Tailwind CSS v4, TypeScript, Vitest, ESLint.',
+            'skills_tooltip': 'Autonomy level in real-world projects without supervision.',
             'filter.technology': 'Technology',
             'filter.origin': 'Origin',
             'filter.clear': 'Clear filters',
@@ -133,7 +141,7 @@
             'footer.credit': 'Developed with the help of Comet browser and Antigravity application.',
             'cert.verify': 'Verify on Passaporte Qualifica ↗',
             'project.default': 'Project without description',
-            'skills.title': 'Skills', 'skills.lead': 'Core competencies with percentages visualised.', 'projects.title': 'Projects', 'projects.lead': 'Academic and personal projects focused on backend, APIs and Azure.', 'blog.title': 'Blog & Articles', 'contact.title': 'Contact', 'contact.response': 'I reply within 24h via email/LinkedIn', 'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send', 'form.clear': 'Clear', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'All rights reserved.', 'project.api.title': 'Academic Management API', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'PINT / J.A.R.V.I.S. Pipeline', 'project.pint.tech': 'Node.js • GitHub Actions • Testing • IaC', 'project.auth.title': 'Authentication Microservice', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Search posts, tutorials...'
+            'skills.title': 'Skills', 'skills.lead': 'Core competencies with percentages visualised.', 'projects.title': 'Projects', 'projects.lead': 'Academic and professional projects focused on full-stack, systems and architecture.', 'blog.title': 'Blog & Articles', 'contact.title': 'Contact', 'contact.response': 'I reply within 24h via email/LinkedIn', 'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send', 'form.clear': 'Clear', 'footer.name': 'Joel Tavares Martins', 'footer.rights': 'All rights reserved.', 'project.api.title': 'Academic Management API', 'project.api.tech': 'Java (Spring Boot) • PostgreSQL • Docker • Azure WebApp', 'project.pint.title': 'PINT / J.A.R.V.I.S. Pipeline', 'project.pint.tech': 'Node.js • GitHub Actions • Testing • IaC', 'project.auth.title': 'Authentication Microservice', 'project.auth.tech': 'Express.js • JWT • PostgreSQL • Docker', 'project.action.github': 'GitHub', 'project.action.demo': 'Demo', 'blog.search.placeholder': 'Search posts, tutorials...'
         },
         es: {}
     };
@@ -159,14 +167,31 @@
                 });
             }
 
-            // Merge site translations
+            // Merge site translations, BUT PROTECT OUR SKILLS KEYS
+            // We only want to overwrite keys that are NOT related to the manual skills override
             if (data.site) {
-                Object.assign(I18N.pt, data.site.pt || {});
-                Object.assign(I18N.en, data.site.en || {});
+                const protectedPrefixes = ['skill_', 'skills_'];
+
+                Object.entries(data.site.pt || {}).forEach(([key, value]) => {
+                    // Only overwrite if it's not a protected skills key
+                    if (!protectedPrefixes.some(p => key.startsWith(p))) {
+                        I18N.pt[key] = value;
+                    }
+                });
+
+                Object.entries(data.site.en || {}).forEach(([key, value]) => {
+                    if (!protectedPrefixes.some(p => key.startsWith(p))) {
+                        I18N.en[key] = value;
+                    }
+                });
             }
 
             console.log('[i18n] Loaded external translations:',
                 Object.keys(data.projects?.pt || {}).length, 'projects');
+
+            // Re-apply language to ensure everything is up to date
+            applyLang(localStorage.getItem(LANG_KEY) || lang);
+
         } catch (error) {
             console.warn('[i18n] Could not load external translations:', error.message);
         }
@@ -804,8 +829,8 @@
        GITHUB PROJECTS: Dynamic loading & filtering
        ======================================== */
 
-    // Configuration - change this to your GitHub organization
-    const GITHUB_ORG = 'joel-portfolio';
+    // GitHub username for fetching repos
+    const GITHUB_USER = 'Parz1val6g';
 
     // Utility: Generate a placeholder image based on the project name
     function getProjectPlaceholder(name) {
@@ -858,10 +883,10 @@
         return 'Projeto';
     }
 
-    // Fetch repositories from GitHub organization
+    // Fetch repositories from GitHub user
     async function fetchGitHubProjects() {
         try {
-            const response = await fetch(`https://api.github.com/orgs/${GITHUB_ORG}/repos?sort=updated&per_page=100`);
+            const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=100`);
             if (!response.ok) {
                 throw new Error(`GitHub API returned ${response.status}`);
             }

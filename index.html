@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joel Tavares Martins — Engenharia Informática | Portfólio</title>
   <meta name="description"
-    content="Portefólio académico e profissional de Joel Tavares Martins — Estudante de Engenharia Informática (ESTGV/IPV). Backend, Cloud, Java, Node.js, C/C++, Azure.">
-  <link rel="canonical" href="http://localhost:8000/">
+    content="Portefólio profissional de Joel Tavares Martins — Full-Stack Developer, Engenharia Informática 4.º ano (ESTGV/IPV). Laravel 12, React 19, C/C++, DDD, RBAC.">
+  <link rel="canonical" href="https://parz1val6g.github.io/portfolio/">
   <meta property="og:title" content="Joel Tavares Martins — Portfólio">
   <meta property="og:description" content="Portefólio académico e projetos: backend, cloud e integrações.">
   <meta property="og:image"
@@ -231,58 +231,57 @@
     <!-- Skills -->
     <section id="skills" class="section reveal" aria-label="Competências">
       <div class="container">
-        <h2 data-i18n="skills.title" data-lang="pt">Skills</h2>
+        <div class="skills-header" style="display:flex;align-items:center;gap:0.5rem">
+          <h2 data-i18n="skills.title" data-lang="pt">Skills</h2>
+          <div class="tooltip-container" tabindex="0">
+            <span class="icon">ⓘ</span>
+            <span class="tooltip-text" data-i18n="skills_tooltip">As percentagens indicam o meu Nível de Autonomia para
+              entregar projetos reais sem supervisão técnica.</span>
+          </div>
+        </div>
+
         <p class="muted" data-i18n="skills.lead" data-lang="pt">Competências principais com percentagens e visualização.
         </p>
         <div class="skills-grid" style="margin-top:1rem">
-          <!-- Skill 1: C / Java (85%) -->
+          <!-- Skill 1: C & Systems (85%) -->
           <div class="card-item skill-card reveal" data-value="85">
             <div class="skill-circle" data-value="85"><svg viewBox="0 0 36 36">
                 <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
                 <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
               </svg><span class="pct">0%</span></div>
-            <div class="skill-label">C / Java</div>
-            <div class="muted" data-i18n="skill.cjava" data-lang="pt">Linguagens de programação core, estruturas de
-              dados, algoritmos</div>
+            <div class="skill-label" data-i18n="skill_systems_title">Programação de Sistemas & C</div>
+            <div class="muted" data-i18n="skill_systems_desc">Gestão manual de memória, Ponteiros, Hash Tables e
+              Estruturas de Dados complexas.</div>
           </div>
-          <!-- Skill 2: JavaScript / Node.js (80%) -->
+          <!-- Skill 2: Node.js Backend (80%) -->
           <div class="card-item skill-card reveal" data-value="80">
             <div class="skill-circle" data-value="80"><svg viewBox="0 0 36 36">
                 <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
                 <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
               </svg><span class="pct">0%</span></div>
-            <div class="skill-label">JavaScript / Node.js</div>
-            <div class="muted" data-i18n="skill.jsnode" data-lang="pt">Desenvolvimento backend, APIs, Sequelize ORM
-            </div>
+            <div class="skill-label" data-i18n="skill_backend_title">Arquitetura Backend (Node.js)</div>
+            <div class="muted" data-i18n="skill_backend_desc">APIs RESTful, Autenticação JWT, Sequelize ORM e
+              Arquitetura MVC.</div>
           </div>
-          <!-- Skill 3: React.js / Frontend (75%) -->
+          <!-- Skill 3: C# & Industrial (85%) -->
+          <div class="card-item skill-card reveal" data-value="85">
+            <div class="skill-circle" data-value="85"><svg viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
+              </svg><span class="pct">0%</span></div>
+            <div class="skill-label" data-i18n="skill_industrial_title">C# .NET & Automação</div>
+            <div class="muted" data-i18n="skill_industrial_desc">Automação Industrial, Protocolos TCP/IP, Windows Forms
+              e Integração de Hardware.</div>
+          </div>
+          <!-- Skill 4: React & UI (75%) -->
           <div class="card-item skill-card reveal" data-value="75">
             <div class="skill-circle" data-value="75"><svg viewBox="0 0 36 36">
                 <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
                 <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
               </svg><span class="pct">0%</span></div>
-            <div class="skill-label">React.js / Frontend</div>
-            <div class="muted" data-i18n="skill.react" data-lang="pt">Desenvolvimento de UI baseado em componentes,
-              design responsivo</div>
-          </div>
-          <!-- Skill 4: PHP / HTML / CSS (70%) -->
-          <div class="card-item skill-card reveal" data-value="70">
-            <div class="skill-circle" data-value="70"><svg viewBox="0 0 36 36">
-                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-              </svg><span class="pct">0%</span></div>
-            <div class="skill-label">PHP / HTML / CSS</div>
-            <div class="muted" data-i18n="skill.php" data-lang="pt">Desenvolvimento web, projetos full-stack</div>
-          </div>
-          <!-- Skill 5: C# / Industrial Automation (65%) -->
-          <div class="card-item skill-card reveal" data-value="65">
-            <div class="skill-circle" data-value="65"><svg viewBox="0 0 36 36">
-                <path class="bg" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-                <path class="progress" d="M18 2.1a15.9 15.9 0 1 0 0 31.8" />
-              </svg><span class="pct">0%</span></div>
-            <div class="skill-label">C# / Industrial Automation</div>
-            <div class="muted" data-i18n="skill.csharp" data-lang="pt">Software industrial, comunicação serial/IP, redes
-              Ethernet</div>
+            <div class="skill-label" data-i18n="skill_react_title">React & UI Moderno</div>
+            <div class="muted" data-i18n="skill_react_desc">Single Page Applications (SPA), Hooks, Componentes
+              Reutilizáveis e Design Responsivo.</div>
           </div>
         </div>
       </div>
